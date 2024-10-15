@@ -1,0 +1,48 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    width: 100%;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+}
+.left_col{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+.left_col .menu_icon{
+    font-size: 40px;
+    transform: rotate(180deg);
+}
+.logo{
+    font-size: 20px;
+    color: var(--white);
+    font-weight: bolder;
+}
+.right_col ul{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.right_col ul li{
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.right_col ul li .menu_icon{
+    font-size: 25px;
+}
+.right_col ul li:hover{
+    color: var(--active);
+}
+.right_col .active{
+    color: var(--active);
+}
