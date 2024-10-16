@@ -1,0 +1,27 @@
+.side_bar{
+width: 100%;
+}
+.header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px;
+    color: var(--text-color);
+    border-bottom: var(--text-color) 1px solid;
+}
+.header input{
+    flex: 1;
+    background-color: transparent;
+    outline: none;
+    height: 100%;
+    border: none;
+    font-size: 20px;
+    color: var(--text-color);
+}
+.header label{
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

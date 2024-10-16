@@ -42,3 +42,20 @@
   flex-direction: column;
   gap: 20px;
 }
+.content{
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  padding: 0 5%;
+}
+.sidebar{
+  flex-basis: 25%;
+  border: var(--text-color) 0.5px solid;
+  padding-top: 5px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+.main{
+  flex-basis: 70%;
+  margin-top: 10px;
+}

@@ -19,4 +19,10 @@ export const subNavbarData = [
         title: "Hockey",
         path: "/hockey",
     },
+];
+
+const sideBarData = [
+    {
+        region:[{title:"England", img:""}]
+    }
 ]
