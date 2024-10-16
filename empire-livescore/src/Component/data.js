@@ -1,4 +1,4 @@
-export const navbarData = [
+export const subNavbarData = [
     {
         title: "Football",
         path: "/football",

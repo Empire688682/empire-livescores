@@ -1,5 +1,5 @@
 import React from 'react';
-import './basketball.module.css';
+import style from './hockey.module.css'
 
 const page = () => {
   return (

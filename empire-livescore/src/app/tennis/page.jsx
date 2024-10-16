@@ -1,10 +1,10 @@
 import React from 'react';
-import './basketball.module.css';
+import style from'./tennis.module.css'
 
 const page = () => {
   return (
     <div>
-      <h1>HOCKEY PAGE HERE</h1>
+      <h1>TENNIS PAGE HERE</h1>
     </div>
   )
 }
