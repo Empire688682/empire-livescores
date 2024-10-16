@@ -1,9 +1,9 @@
 import React from 'react';
-import './cricket.module.css'
+import style from './cricket.module.css'
 
 const page = () => {
   return (
-    <div>
+    <div className={style.cricket}>
       <h1>CRICKETPAGE HERE</h1>
     </div>
   )

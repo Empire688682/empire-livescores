@@ -1,9 +1,9 @@
 import React from 'react';
-import './football.module.css';
+import style from './football.module.css';
 
 const page = () => {
   return (
-    <div>
+    <div className={style.football}>
       <h1>FOOTBALL PAGE HERE</h1>
     </div>
   )

@@ -3,7 +3,7 @@ import style from './hockey.module.css'
 
 const page = () => {
   return (
-    <div>
+    <div className={style.hockey}>
       <h1>HOCKEY PAGE HERE</h1>
     </div>
   )

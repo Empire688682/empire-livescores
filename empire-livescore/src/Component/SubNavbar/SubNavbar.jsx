@@ -8,8 +8,8 @@ const SubNavbar = () => {
         <div className={style.subNavbar}>
             <ul>
                 {
-                    subNavbarData.map((item, index) => (
-                        <li key={index}>
+                    subNavbarData.map((item, id) => (
+                        <li key={id}>
                             <Link className={style.links} href={item.path}>{item.title}</Link>
                         </li>
                     ))
