@@ -34,3 +34,11 @@
   --bg-color: #ffffff;
   --heading-color:white;
 }
+.layout{
+  width:100% ;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
