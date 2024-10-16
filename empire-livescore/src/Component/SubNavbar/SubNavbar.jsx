@@ -1,15 +1,16 @@
 import React from 'react';
 import style from './SubNavbar.module.css';
 import { subNavbarData } from '../data';
+import Link from 'next/link';
 
 const SubNavbar = () => {
     return (
-        <div className='subNavbar'>
+        <div className={style.subNavbar}>
             <ul>
                 {
                     subNavbarData.map((item, index) => (
                         <li key={index}>
-                            <a href={item.path}>{item.title}</a>
+                            <Link className={style.links} href={item.path}>{item.title}</Link>
                         </li>
                     ))
                 }
