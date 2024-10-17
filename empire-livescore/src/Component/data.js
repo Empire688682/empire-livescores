@@ -1,3 +1,9 @@
+import man_U from '../public/manchester_united.png'
+import man_City from '../public/man_city.png'
+import arsenal from '../public/arsenal.png';
+import chelsea from '../public/chelsea.png';
+import liverpool from '../public/liverpool.png';
+import aston_Villa from '../public/aston-villa.png';
 export const subNavbarData = [
     {
         title: "Football",
@@ -33,12 +39,12 @@ export const sideBarData = [
     },
     {
         teams: [
-            { title: "Man United", icon: "fi-es", league: "England" },
-            { title: "Liverpool", icon: "fi-es", league: "England" },
-            { title: "Man City", icon: "fi-es", league: "England" },
-            { title: "Arsenal", icon: "fi-es", league: "England" },
-            { title: "Everton", icon: "fi-es", league: "England" },
-            { title: "Aston Villa", icon: "fi-es", league: "England" },
+            { title: "Man United", img: man_U, league: "England" },
+            { title: "Liverpool", img: liverpool, league: "England" },
+            { title: "Man City", img: man_City, league: "England" },
+            { title: "Arsenal", img: arsenal, league: "England" },
+            { title: "Chelsea", img: chelsea, league: "England" },
+            { title: "Aston Villa", img: aston_Villa, league: "England" },
         ]
     }
 ];

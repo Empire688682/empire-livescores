@@ -3,6 +3,7 @@ import style from './SideBar.module.css';
 import { IoSearchOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { sideBarData } from '../data';
+import Image from 'next/image';
 
 const SideBar = () => {
     return (
@@ -42,7 +43,9 @@ const SideBar = () => {
                     {
                         sideBarData[1].teams.map((team)=>(
                             <div key={team.title} className={style.colum_cart}>
-                                  <span class={`fi ${team.icon}`}></span>
+                                  <div className={style.imgCon}>
+                                    <Image src={team.img} alt='Logo' fill/>
+                                  </div>
                                 <span className={style.colum_title}>
                                     {team.title}
                                 </span>

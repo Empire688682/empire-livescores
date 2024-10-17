@@ -55,3 +55,8 @@ color: var(--text-color);
     display: flex;
     gap: 10px;
 }
+.imgCon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
