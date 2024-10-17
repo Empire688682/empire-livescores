@@ -21,7 +21,7 @@
     transition: .3s ease-in-out;
 }
 .links:hover{
-    background-color: var(--active);
+    background-color:#cecedbad ;
     color: white;
 }
 .links.active{
