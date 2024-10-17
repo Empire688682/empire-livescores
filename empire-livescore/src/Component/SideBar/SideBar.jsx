@@ -31,6 +31,7 @@ const SideBar = () => {
                         ))
                     }
                 </div>
+
             </div>
             <div className={`${style.colum} ${style.team}`}>
                 <div className={style.colum_header}>
@@ -52,6 +53,34 @@ const SideBar = () => {
                                     </span>
                                     <span className={style.colum_league}>
                                         {team.league}
+                                    </span>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+            
+            <div className={`${style.colum} ${style.competition}`}>
+                <div className={style.colum_header}>
+                    <p>Competitions</p>
+                    <div className={style.icon}>
+                        <IoIosArrowForward />
+                    </div>
+                </div>
+                <div className={style.colum_content}>
+                    {
+                        sideBarData[2].competitions.map((competition) => (
+                            <div key={competition.title} className={style.colum_cart}>
+                                <div className={style.imgCon}>
+                                    <Image src={competition.img} alt='Logo' fill />
+                                </div>
+                                <div className={style.title_Con}>
+                                    <span className={style.colum_title}>
+                                        {competition.title}
+                                    </span>
+                                    <span className={style.colum_league}>
+                                        {competition.country}
                                     </span>
                                 </div>
                             </div>

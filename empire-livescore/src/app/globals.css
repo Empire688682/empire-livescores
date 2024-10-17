@@ -49,7 +49,7 @@
   padding: 0 5%;
 }
 .sidebar{
-  flex-basis: 25%;
+  flex-basis: 20%;
   border: var(--text-color) 0.5px solid;
   padding-top: 5px;
   border-radius: 10px;
