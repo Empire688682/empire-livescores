@@ -5,16 +5,19 @@ import Navbar from "@/Component/Navbar/Navbar";
 import Footer from "@/Component/Footer/Footer";
 import SubNavbar from "@/Component/SubNavbar/SubNavbar";
 import SideBar from "@/Component/SideBar/SideBar";
-export const metadata = {
-  title: "Empire Livescore",
-  description: "The official website for Empire Livescore",
-};
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <title>Empire Livescore</title>
+        <meta name="description" content='The official website for Empire Livescore' />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className='layout'>
       <AppProvider>
-        <body className='layout'>
           <Navbar/>
           <SubNavbar/>
           <div className="content">
@@ -26,8 +29,8 @@ export default function RootLayout({ children }) {
           </div>
           </div>
           <Footer/>
-        </body>
       </AppProvider>
+      </body>
     </html>
   );
 }

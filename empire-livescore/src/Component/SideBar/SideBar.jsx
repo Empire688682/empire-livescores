@@ -1,19 +1,38 @@
 import React from 'react';
 import style from './SideBar.module.css';
 import { IoSearchOutline } from "react-icons/io5";
+import { IoIosArrowForward } from "react-icons/io";
+import { sideBarData } from '../data';
 
 const SideBar = () => {
-  return (
-    <div className={style.side_bar}>
-      <div className={style.header}>
-        <label htmlFor="name"><IoSearchOutline /></label>
-      <input type="text" name="name" id="name" placeholder='Search' />
-      </div>
-      <div className={`${style.colum} ${style.region}`}>
-        
-      </div>
-    </div>
-  )
+    return (
+        <div className={style.side_bar}>
+            <div className={style.header}>
+                <label htmlFor="name"><IoSearchOutline /></label>
+                <input type="text" name="name" id="name" placeholder='Search' />
+            </div>
+            <div className={`${style.colum} ${style.region}`}>
+                <div className={style.colum_header}>
+                    <p>REGION</p>
+                    <div className={style.icon}>
+                        <IoIosArrowForward />
+                    </div>
+                </div>
+                <div className={style.region_content}>
+                    {
+                        sideBarData[0].regions.map((region)=>(
+                            <div key={region.title} className={style.region_cart}>
+                                  <span class={`fi ${region.icon}`}></span>
+                                <span className={style.region_title}>
+                                    {region.title}
+                                </span>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default SideBar
