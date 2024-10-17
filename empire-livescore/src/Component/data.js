@@ -33,12 +33,12 @@ export const sideBarData = [
     },
     {
         teams: [
-            { title: "Man United", imgSrc: "team-icon team-icon-mu", league: "England" },
-            { title: "Liverpool", imgSrc: "team-icon team-icon-liv", league: "England" },
-            { title: "Man City", imgSrc: "team-icon team-icon-tot", league: "England" },
-            { title: "Arsenal", imgSrc: "team-icon team-icon-ars", league: "England" },
-            { title: "Everton", imgSrc: "team-icon team-icon-eva", league: "England" },
-            { title: "Aston Villa", imgSrc: "team-icon team-icon-ast", league: "England" },
+            { title: "Man United", icon: "fi-es", league: "England" },
+            { title: "Liverpool", icon: "fi-es", league: "England" },
+            { title: "Man City", icon: "fi-es", league: "England" },
+            { title: "Arsenal", icon: "fi-es", league: "England" },
+            { title: "Everton", icon: "fi-es", league: "England" },
+            { title: "Aston Villa", icon: "fi-es", league: "England" },
         ]
     }
 ];
