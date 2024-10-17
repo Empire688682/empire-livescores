@@ -21,9 +21,9 @@ const SideBar = () => {
                 </div>
                 <div className={style.colum_content}>
                     {
-                        sideBarData[0].regions.map((region)=>(
+                        sideBarData[0].regions.map((region) => (
                             <div key={region.title} className={style.colum_cart}>
-                                  <span class={`fi ${region.icon}`}></span>
+                                <span class={`fi ${region.icon}`}></span>
                                 <span className={style.colum_title}>
                                     {region.title}
                                 </span>
@@ -32,7 +32,7 @@ const SideBar = () => {
                     }
                 </div>
             </div>
-            <div className={`${style.colum} ${style.region}`}>
+            <div className={`${style.colum} ${style.team}`}>
                 <div className={style.colum_header}>
                     <p>Teams</p>
                     <div className={style.icon}>
@@ -41,14 +41,19 @@ const SideBar = () => {
                 </div>
                 <div className={style.colum_content}>
                     {
-                        sideBarData[1].teams.map((team)=>(
+                        sideBarData[1].teams.map((team) => (
                             <div key={team.title} className={style.colum_cart}>
-                                  <div className={style.imgCon}>
-                                    <Image src={team.img} alt='Logo' fill/>
-                                  </div>
-                                <span className={style.colum_title}>
-                                    {team.title}
-                                </span>
+                                <div className={style.imgCon}>
+                                    <Image src={team.img} alt='Logo' fill />
+                                </div>
+                                <div className={style.title_Con}>
+                                    <span className={style.colum_title}>
+                                        {team.title}
+                                    </span>
+                                    <span className={style.colum_league}>
+                                        {team.league}
+                                    </span>
+                                </div>
                             </div>
                         ))
                     }
