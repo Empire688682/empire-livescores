@@ -26,8 +26,8 @@ const MainDate = () => {
         {days.map((day, index) => (
           <div key={day} className={style.day}>
             <div className={style.day_name}>{index === currentDayIndex ? "Today" : day}</div>
-            <div className={index === currentDayIndex ? style.today : ''}>
-              <p className={style.date}>{weekDates[index]}</p>
+            <div className={style.date_Container}>
+              <p className={index === currentDayIndex ? style.today : style.date}>{weekDates[index]}</p>
               <p className={style.month}>{months[month]}</p>
             </div>
           </div>

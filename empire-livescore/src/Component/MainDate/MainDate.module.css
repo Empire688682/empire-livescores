@@ -13,3 +13,13 @@
 .day{
     cursor: pointer;
 }
+.date_Container{
+    display: flex;
+    align-items: center;
+}
+.date_Container .today{
+   color: var(--white-color);
+}
+.month{
+    font-size: 10px;
+}
