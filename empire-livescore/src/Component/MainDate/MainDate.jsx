@@ -25,10 +25,10 @@ const MainDate = () => {
       <div className={style.days}>
         {days.map((day, index) => (
           <div key={day} className={style.day}>
-            <div>{index === currentDayIndex ? "Today" : day}</div>
+            <div className={style.day_name}>{index === currentDayIndex ? "Today" : day}</div>
             <div className={index === currentDayIndex ? style.today : ''}>
-              <p>{weekDates[index]}</p>
-              <p>{months[month+1]}</p>
+              <p className={style.date}>{weekDates[index]}</p>
+              <p className={style.month}>{months[month]}</p>
             </div>
           </div>
         ))}
