@@ -1,0 +1,15 @@
+.main_Data{
+    width: 100%;
+    color: var(--text-color);
+    padding-top: 10px;
+    padding-bottom: 18px;
+    border-bottom: var(--text-color) 0.5px solid;
+}
+.days{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.day{
+    cursor: pointer;
+}
