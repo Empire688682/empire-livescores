@@ -45,7 +45,7 @@ const SideBar = () => {
                         sideBarData[1].teams.map((team) => (
                             <div key={team.title} className={style.colum_cart}>
                                 <div className={style.imgCon}>
-                                    <Image src={team.img} alt='Logo' fill />
+                                    <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" src={team.img} alt='Logo' fill />
                                 </div>
                                 <div className={style.title_Con}>
                                     <span className={style.colum_title}>
@@ -73,7 +73,7 @@ const SideBar = () => {
                         sideBarData[2].competitions.map((competition) => (
                             <div key={competition.title} className={style.colum_cart}>
                                 <div className={style.imgCon}>
-                                    <Image src={competition.img} alt='Logo' fill />
+                                    <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" src={competition.img} alt='Logo' fill />
                                 </div>
                                 <div className={style.title_Con}>
                                     <span className={style.colum_title}>
