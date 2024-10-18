@@ -16,10 +16,15 @@
 .date_Container{
     display: flex;
     align-items: center;
+    gap: 5px;
 }
-.date_Container .today{
-   color: var(--white-color);
+.today{
+   color: white;
+}
+.today.month{
+    font-size: 13px;
+    color: white;
 }
 .month{
-    font-size: 10px;
+    font-size: 13px;
 }
