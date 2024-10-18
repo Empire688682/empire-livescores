@@ -1,30 +1,45 @@
-.main_Data{
+.main_Data {
     width: 100%;
     color: var(--text-color);
     padding-top: 10px;
     padding-bottom: 18px;
     border-bottom: var(--text-color) 0.5px solid;
 }
-.days{
+
+.days {
     display: flex;
     align-items: center;
     gap: 25px;
 }
-.day{
+
+.day {
     cursor: pointer;
 }
-.date_Container{
+
+.date_Container {
     display: flex;
     align-items: center;
     gap: 5px;
 }
-.today{
-   color: white;
+
+.day {
+    font-size: 14px;
 }
-.today.month{
+
+.date {
     font-size: 13px;
+}
+
+.today {
+    color: white;
+    font-size: 14px;
+}
+
+.today.month {
+    font-size: 11px;
     color: white;
 }
-.month{
-    font-size: 13px;
+
+.month {
+    font-size: 11px;
 }

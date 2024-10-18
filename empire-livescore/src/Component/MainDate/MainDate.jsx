@@ -6,7 +6,6 @@ const MainDate = () => {
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const today = new Date();
   const month = new Date().getMonth();
-  console.log("month: ", month);
   const currentDayIndex = today.getDay(); // Get today's index (0-6)
 
   // Function to generate the dates of the current week
