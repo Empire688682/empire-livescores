@@ -59,3 +59,9 @@
   border-radius: 10px;
   padding: 10px;
 }
+
+@media (max-width:919px){
+  .main{
+    flex-basis: 100%;
+  }
+}
