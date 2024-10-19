@@ -67,10 +67,10 @@
     transition: .1s ease-in-out;
 }
 .star_icon:hover{
-    background-color: var(--active);
-    color: white;
+    background-color: white;
+    color: var(--active);
 }
 .star_icon.active{
-    background-color: var(--active);
-    color: white;
+    background-color: white;
+    color: var(--active);
 }

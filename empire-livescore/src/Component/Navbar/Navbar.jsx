@@ -21,7 +21,6 @@ const Navbar = () => {
                 <li onClick={() => setMenu("scores")} className={menu === "scores" ? style.active : ""}> <IoIosFootball className={style.menu_icon} /> Scores </li>
                 <li onClick={()=> setMenu("favourite")} className={menu === "favourite" ? style.active : ""}> <MdFavoriteBorder className={style.menu_icon} /> Favourite </li>
                 <li onClick={() => setMenu("news")} className={menu === "news" ? style.active : ""}> <FaRegNewspaper className={style.menu_icon} /> News </li>
-                <li onClick={() => setMenu("news")} className={menu === "news" ? style.active : ""}> <FaRegNewspaper className={style.menu_icon} /> News </li>
             </ul>
         </div>
 
