@@ -51,9 +51,9 @@
     background-color: white;
     padding: 7px;
     border-radius: 3px;
+    cursor:pointer;
 }
 .live p{
     background-color: white;
-    cursor:poiter;
     font-size: 14px;
 }

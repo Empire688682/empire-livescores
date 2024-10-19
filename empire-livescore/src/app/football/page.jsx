@@ -1,13 +1,13 @@
 import React from 'react';
 import style from './football.module.css';
 import MainDate from '@/Component/MainDate/mainDate';
+import FootballCom from '@/Component/FootballCom/FootballCom';
 
 const page = () => {
   return (
     <div className={style.football}>
       <MainDate/>
-      <h1>FOOTBALL PAGE HERE</h1>
-
+      <FootballCom/>
     </div>
   )
 }
