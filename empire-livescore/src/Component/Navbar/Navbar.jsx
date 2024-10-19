@@ -5,6 +5,8 @@ import { MdOutlineMenuOpen } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaRegNewspaper } from "react-icons/fa";
 import { IoIosFootball } from "react-icons/io";
+import Image from 'next/image';
+import search_icon from '../../public/search_icon.svg';
 
 const Navbar = () => {
     const [menu, setMenu] = useState("scores");
@@ -22,6 +24,13 @@ const Navbar = () => {
                 <li onClick={()=> setMenu("favourite")} className={menu === "favourite" ? style.active : ""}> <MdFavoriteBorder className={style.menu_icon} /> Favourite </li>
                 <li onClick={() => setMenu("news")} className={menu === "news" ? style.active : ""}> <FaRegNewspaper className={style.menu_icon} /> News </li>
             </ul>
+        </div>
+        <div className={style.right_searchBar}>
+            <Image
+            src={search_icon}
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            fill
+            />
         </div>
 
     </div>

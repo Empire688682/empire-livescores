@@ -1,13 +1,16 @@
 'use client';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
-  const hello = "hello"; // Changed from 'helo' to 'hello'
+  const [showSidebar, setShowSidebar] = useState(false);
   
   return (
-    <AppContext.Provider value={{ hello }}>
+    <AppContext.Provider value={{
+      showSidebar,
+      setShowSidebar
+    }}>
       {children}
     </AppContext.Provider>
   );

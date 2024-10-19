@@ -2,6 +2,7 @@ import React from 'react';
 import style from './SideBar.module.css';
 import { IoSearchOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
+import { LiaTimesSolid } from "react-icons/lia";
 import { sideBarData } from '../data';
 import Image from 'next/image';
 
@@ -9,8 +10,14 @@ const SideBar = () => {
     return (
         <div className={style.side_bar}>
             <div className={style.header}>
+                <div className={style.icon}>
+                    <IoIosArrowForward />
+                </div>
                 <label htmlFor="name"><IoSearchOutline /></label>
                 <input type="text" name="name" id="name" placeholder='Search' />
+                <div className={style.icon}>
+                    <LiaTimesSolid />
+                </div>
             </div>
             <div className={`${style.colum} ${style.region}`}>
                 <div className={style.colum_header}>
@@ -60,7 +67,7 @@ const SideBar = () => {
                     }
                 </div>
             </div>
-            
+
             <div className={`${style.colum} ${style.competition}`}>
                 <div className={style.colum_header}>
                     <p>Competitions</p>

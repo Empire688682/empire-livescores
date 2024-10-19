@@ -26,6 +26,9 @@ color: var(--text-color);
     align-items: center;
     justify-content: center;
 }
+.header .icon{
+    display: none;
+}
 .colum{
     color: var(--text-color);
     padding: 10px;
@@ -106,4 +109,39 @@ color: var(--text-color);
 .colum_league{
     font-size: 13px;
     background-color: transparent;
+}
+
+@media screen and (max-width:919px){
+    .side_bar{
+        position: absolute;
+        top: 0;
+        z-index: 99;
+        left: 0;
+        width: 100%;
+    }
+    .header{
+        display: flex;
+        align-items: center;
+    }
+    .header .icon{
+        font-size: 25px;
+        cursor: pointer;
+        text-align: center;
+        transform: rotate(180deg);
+        color: white;
+        display: block;
+    }
+    .header input{
+        flex: 1;
+        background-color: transparent;
+        outline: none;
+        height: 100%;
+        border: none;
+        font-size: 15px;
+        color: var(--text-color);
+        font-weight: bolder;
+    }
+    .header label{
+        display: none;
+    }
 }
