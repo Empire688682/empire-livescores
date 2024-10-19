@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import style from './SideBar.module.css';
 import { IoSearchOutline } from "react-icons/io5";
@@ -5,18 +6,20 @@ import { IoIosArrowForward } from "react-icons/io";
 import { LiaTimesSolid } from "react-icons/lia";
 import { sideBarData } from '../data';
 import Image from 'next/image';
+import { useGlobalContext } from '../Context';
 
 const SideBar = () => {
+    const {showSidebar, setShowSidebar} = useGlobalContext();
     return (
-        <div className={style.side_bar}>
+        <div className={showSidebar? `${style.side_bar} ${style.display}`:style.side_bar}>
             <div className={style.header}>
-                <div className={style.icon}>
+                <div className={style.icon} onClick={()=>setShowSidebar(false)}>
                     <IoIosArrowForward />
                 </div>
                 <label htmlFor="name"><IoSearchOutline /></label>
                 <input type="text" name="name" id="name" placeholder='Search' />
                 <div className={style.icon}>
-                    <LiaTimesSolid />
+                    <LiaTimesSolid onClick={()=>setShowSidebar(false)} />
                 </div>
             </div>
             <div className={`${style.colum} ${style.region}`}>

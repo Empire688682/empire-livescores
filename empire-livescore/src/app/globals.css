@@ -51,10 +51,6 @@
 }
 .sidebar{
   flex-basis: 20%;
-  border: var(--text-color) 0.5px solid;
-  padding-top: 5px;
-  border-radius: 10px;
-  margin-top: 10px;
 }
 .main{
   flex-basis: 70%;
@@ -62,10 +58,4 @@
   border: var(--text-color) 0.5px solid;
   border-radius: 10px;
   padding: 10px;
-}
-
-@media screen and (max-width:919px){
-  .sidebar{
-    display: none;
-  }
 }
