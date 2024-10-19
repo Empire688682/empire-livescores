@@ -14,7 +14,7 @@
     justify-content: center;
 }
 .left_col .menu_icon{
-    font-size: 40px;
+    font-size: 30px;
     transform: rotate(180deg);
 }
 .logo{
@@ -45,4 +45,19 @@
 }
 .right_col .active{
     color: var(--active);
+}
+
+@media screen and (max-width: 919px){
+    .right_col{
+        position: fixed;
+        bottom: 0;
+        z-index: 99;
+        width: 100%;
+        padding-bottom: 20px;
+    }
+    .right_col ul{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 }

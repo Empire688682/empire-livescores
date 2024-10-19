@@ -85,6 +85,7 @@ color: var(--text-color);
 }
 .team .colum_cart:hover, .region .colum_cart:hover, .competition .colum_cart:hover{
     background-color:#444447ad  ;
+    color: white;
 }
 .imgCon{
     position: relative;
