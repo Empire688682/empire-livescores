@@ -23,7 +23,7 @@ const MainDate = () => {
     <div className={style.main_Data}>
       <div className={style.days}>
         <div className={style.live}>
-          <p>LIVE</p>
+          <p>Live</p>
         </div>
         {days.map((day, index) => (
           <div key={day} className={style.day}>
