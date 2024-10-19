@@ -59,7 +59,7 @@ color: var(--text-color);
     align-items: center;
     padding: 10px 5px;
     border-radius: 5px;
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 .team .colum_cart{
     display: flex;
@@ -68,7 +68,7 @@ color: var(--text-color);
     background-color:#4c4c501f ;
     padding: 5px;
     border-radius: 5px;
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 .competition{
     margin-bottom: 30px;
@@ -81,11 +81,10 @@ color: var(--text-color);
     background-color:#4c4c501f ;
     padding: 5px;
     border-radius: 5px;
-    transition: all .3s ease-in-out;
+    transition: all .1s ease-in-out;
 }
 .team .colum_cart:hover, .region .colum_cart:hover, .competition .colum_cart:hover{
-    background-color:#cecedbad ;
-    color: var(--black-color);
+    background-color:#444447ad  ;
 }
 .imgCon{
     position: relative;
@@ -98,7 +97,6 @@ color: var(--text-color);
 .title_Con{
     display: flex;
     flex-direction: column;
-    background-color: aqua;
     background-color: transparent;
 }
 .colum_title{

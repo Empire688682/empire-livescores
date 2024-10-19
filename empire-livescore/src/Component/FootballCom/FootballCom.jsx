@@ -3,6 +3,7 @@ import style from './FootballCom.module.css';
 import Image from 'next/image';
 import { IoIosArrowForward } from "react-icons/io";
 import premier_league from '../../public/premier-league.png';
+import MatchAfter from '../MatchAfter/MatchAfter';
 
 const FootballCom = () => {
   return (
@@ -14,7 +15,8 @@ const FootballCom = () => {
             src={premier_league}
             alt='Premier League'
             ssizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            fill/>
+            fill
+            />
         </div>
         <div className={style.title}>
           <h3>Premier League</h3>
@@ -25,6 +27,7 @@ const FootballCom = () => {
           <IoIosArrowForward className={style.header_icon}/>
         </div>
       </div>
+      <MatchAfter/>
     </div>
   )
 }
