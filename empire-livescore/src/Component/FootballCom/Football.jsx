@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Football.module.css';
 
-const Footballl = () => {
+const Football = () => {
   return (
     <div className={style.football}>
       
@@ -9,4 +9,4 @@ const Footballl = () => {
   )
 }
 
-export default Footballl
+export default Football
