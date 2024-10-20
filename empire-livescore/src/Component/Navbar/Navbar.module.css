@@ -21,6 +21,7 @@
     font-size: 20px;
     color: var(--white);
     font-weight: bolder;
+    text-decoration: none;
 }
 .right_col ul{
     display: flex;

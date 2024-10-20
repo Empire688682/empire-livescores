@@ -9,6 +9,7 @@ import Image from 'next/image';
 import search_icon from '../../public/search_icon.svg';
 import { useGlobalContext } from '../Context';
 import SideMenu from '../SideMenu/SideMenu';
+import Link from 'next/link';
 
 const Navbar = () => {
     const [menu, setMenu] = useState("scores");
@@ -19,9 +20,9 @@ const Navbar = () => {
                 <div className={style.menu_Con}>
                     <MdOutlineMenuOpen onClick={() => setShowSideMenu(true)} className={style.menu_icon} />
                 </div>
-                <div className={style.logo}>
+                <Link href="/" className={style.logo}>
                     E-Livescore
-                </div>
+                </Link>
                 <SideMenu/>
             </div>
             <div className={style.right_col}>

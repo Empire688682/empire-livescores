@@ -64,4 +64,7 @@
   .main{
     flex-basis: 100%;
   }
+  .content{
+    flex-wrap: wrap;
+  }
 }
