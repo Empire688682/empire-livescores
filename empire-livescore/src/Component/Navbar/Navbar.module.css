@@ -26,22 +26,22 @@
 .right_col ul{
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 20px;
     justify-content: center;
-    flex-wrap: wrap;
 }
-.right_col ul li{
+.right_col ul .menu{
     cursor: pointer;
     list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
-.right_col ul li .menu_icon{
+.right_col ul .menu .menu_icon{
     font-size: 25px;
 }
-.right_col ul li:hover{
+.right_col ul .menu:hover{
     color: var(--active);
 }
 .right_col .active{
@@ -69,6 +69,7 @@
     .right_col ul{
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
+        gap: 30px;
     }
 }
