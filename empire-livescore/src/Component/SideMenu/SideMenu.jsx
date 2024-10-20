@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import style from './SideMenu.module.css';
 import { LiaTimesSolid } from "react-icons/lia";
@@ -7,38 +8,41 @@ import { IoMdContact } from "react-icons/io";
 import { MdOutlinePhoneCallback } from "react-icons/md";
 import { FaQuestion } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
+import Link from 'next/link';
+import { useGlobalContext } from '../Context';
 
 const SideMenu = () => {
+    const { showSideMenu, setShowSideMenu } = useGlobalContext();
     return (
-        <div className={style.side_menu}>
+        <div className={showSideMenu ? `${style.side_menu} ${style.display}` : style.side_menu}>
             <div className={style.header}>
                 <h1 className={style.logo}>E-Livescore</h1>
-                <LiaTimesSolid className={style.menu_off_icon} />
+                <LiaTimesSolid onClick={() => setShowSideMenu(false)} className={style.menu_off_icon} />
             </div>
             <ul>
+                <Link className={style.link} href="/">
+                    <IoMdHome className={style.icon} />
+                    <p>Home</p>
+                </Link>
+                <Link className={style.link} href="/about">
+                    <BsTicketDetailed className={style.icon} />
+                    <p>About</p>
+                </Link>
+                <Link className={style.link} href="/contact">
+                    <MdOutlinePhoneCallback className={style.icon} />
+                    <p>Contact</p>
+                </Link>
+                <Link className={style.link} href="/profile">
+                    <IoMdContact className={style.icon} />
+                    <p>Profile</p>
+                </Link>
+                <Link className={style.link} href="/faq">
+                    <FaQuestion className={style.icon} />
+                    <p>FAQ</p>
+                </Link>
                 <li>
-                    <IoMdHome />
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <BsTicketDetailed />
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <MdOutlinePhoneCallback />
-                    <a href="#">Contact</a>
-                </li>
-                <li>
-                    <IoMdContact />
-                    <a href="#">Profile</a>
-                </li>
-                <li>
-                    <FaQuestion />
-                    <a href="#">FAQ</a>
-                </li>
-                <li>
-                    <FiLogOut />
-                    <a href="#">Logout</a>
+                    <FiLogOut className={style.icon} />
+                    <p>Logout</p>
                 </li>
             </ul>
         </div>

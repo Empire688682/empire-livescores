@@ -5,11 +5,14 @@ const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showSideMenu, setShowSideMenu] = useState(false);
   
   return (
     <AppContext.Provider value={{
       showSidebar,
-      setShowSidebar
+      setShowSidebar,
+      showSideMenu,
+      setShowSideMenu
     }}>
       {children}
     </AppContext.Provider>
