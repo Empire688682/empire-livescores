@@ -1,11 +1,12 @@
 import React from 'react';
 import style from './newsId.module.css';
+import SingleNewsCom from '@/Component/SingleNewsCom/SingleNewsCom';
 
 const page = () => {
   return (
     <div className={style.single_news}>
       <h1>
-        Single News Page
+        <SingleNewsCom/>
       </h1>
     </div>
   )
