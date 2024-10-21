@@ -3,7 +3,7 @@ import style from './SingleNewsCom.module.css';
 import Image from 'next/image';
 import author_Img from '../../public/author_img.webp';
 import news_banner from '../../public/news_img.jpg';
-import NewsCom from '../NewsCom/NewsCom';
+import RelatedNews from '../RelatedNews/RelatedNews';
 
 const SingleNewsCom = () => {
     return (
@@ -46,7 +46,7 @@ const SingleNewsCom = () => {
                 <p>This mouth-watering Euro clash sees new Barca boss Hansi Flick go up against his old club, while Barca striker Robert Lewandowski faces his former side in a matchday three game laden with sub-plots.</p>
             </div>
             <div className={style.related_news}>
-                <NewsCom />
+                <RelatedNews/>
             </div>
         </div>
     )

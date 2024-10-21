@@ -6,6 +6,7 @@ import news_Img from '../../public/news_img.jpg';
 const RelatedNews = () => {
     return (
         <div className={style.related_news}>
+            <h3>Related News</h3>
             <div className={style.content}>
                 <div className={style.img_Col}>
                     <Image src={news_Img} alt='news' fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
