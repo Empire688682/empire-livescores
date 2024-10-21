@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import style from './Navbar.module.css'
 import { MdOutlineMenuOpen } from "react-icons/md";
-import { MdFavoriteBorder } from "react-icons/md";
+import { CiStar } from "react-icons/ci";
 import { FaRegNewspaper } from "react-icons/fa";
 import { IoIosFootball } from "react-icons/io";
 import Image from 'next/image';
@@ -28,7 +28,7 @@ const Navbar = () => {
             <div className={style.right_col}>
                 <ul>
                     <Link href='/score' onClick={() => setMenu("scores")} className={menu === "scores" ? style.active : style.menu}> <IoIosFootball className={style.menu_icon} /> Scores </Link>
-                    <Link href='/favourite' onClick={() => setMenu("favourite")} className={menu === "favourite" ? style.active : style.menu}> <MdFavoriteBorder className={style.menu_icon} /> Favourite </Link>
+                    <Link href='/favourite' onClick={() => setMenu("favourite")} className={menu === "favourite" ? style.active : style.menu}> <CiStar className={style.menu_icon} /> Favourite </Link>
                     <Link href='/news' onClick={() => setMenu("news")} className={menu === "news" ? style.active : style.menu}> <FaRegNewspaper className={style.menu_icon} /> News </Link>
                 </ul>
             </div>

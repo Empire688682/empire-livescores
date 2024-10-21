@@ -1,0 +1,29 @@
+.favourite {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border: 0.5px solid var(--text-color);
+    height: 50px;
+    padding: 10px;
+    border-radius: 9px;
+}
+
+.header p {
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 16px;
+    transition: .1s ease-in-out;
+    font-weight: bolder;
+}
+.header p:hover {
+    color: var(--active);
+}
+.header .active{
+    color: var(--active);
+    font-weight: bolder;
+}
