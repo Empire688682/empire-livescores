@@ -38,18 +38,10 @@ const SideMenu = () => {
                     <MdOutlinePhoneCallback className={style.icon} />
                     <p>Contact</p>
                 </Link>
-                <Link onClick={() => setShowSideMenu(false)} className={style.link} href="/profile">
-                    <IoMdContact className={style.icon} />
-                    <p>Profile</p>
-                </Link>
                 <Link onClick={() => setShowSideMenu(false)} className={style.link} href="/faq">
                     <FaQuestion className={style.icon} />
                     <p>FAQ</p>
                 </Link>
-                <li onClick={() => setShowSideMenu(false)}>
-                    <FiLogOut className={style.icon} />
-                    <p>Logout</p>
-                </li>
             </ul>
         </div>
     )

@@ -32,7 +32,7 @@
     flex-direction: column;
     gap:40px ;
 }
-.side_menu ul .link, .side_menu ul li{
+.side_menu ul .link{
     list-style: none;
     display: flex;
     align-items: center;
