@@ -1,8 +1,9 @@
 'use client'
 import React, { useState } from 'react';
 import style from './FavouriteCom.module.css'
-import FootballCom from '../FootballCom/FootballCom';
 import CompetitionCom from '../CompetitionCom/CompetitionCom';
+import LeagueCom from '../League/LeagueCom';
+import MatchAfter from '../MatchAfter/MatchAfter';
 
 const FavouriteCom = () => {
   const [fav, setFav] = useState("matches");
@@ -14,7 +15,13 @@ const FavouriteCom = () => {
       </div>
       <div className={style.content}>
         {
-          fav === "matches"? <FootballCom />:<CompetitionCom/>
+          fav === "matches"? 
+          <>
+            <LeagueCom />
+            <MatchAfter/>
+          </>
+          :
+          <CompetitionCom/>
         }
       </div>
     </div>
