@@ -1,0 +1,44 @@
+.contactContainer {
+    padding: 10px;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 30px;
+    margin-bottom: 1rem;
+    color: tomato;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: var(--white);
+  }
+  
+  .contactDetails {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contactItem {
+    margin: 1rem 0;
+  }
+  .contactItem h2{
+    color: var(--text-color);
+    font-size: 18px;
+  }
+  
+  .contactLink {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .contactLink:hover {
+    text-decoration: underline;
+  }
+  
