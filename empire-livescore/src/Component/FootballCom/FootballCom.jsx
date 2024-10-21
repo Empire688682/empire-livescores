@@ -27,7 +27,6 @@ const FootballCom = () => {
           <IoIosArrowForward className={style.header_icon}/>
         </div>
       </div>
-      <MatchAfter/>
     </div>
   )
 }
