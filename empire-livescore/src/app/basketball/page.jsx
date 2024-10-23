@@ -36,7 +36,6 @@ const page = () => {
 
   useEffect(() => {
     fetchData();
-    console.log(new Date().toISOString().slice(0, 10));
   }, [])
   return (
     <div className={style.basketball}>

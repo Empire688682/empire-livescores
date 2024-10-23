@@ -34,9 +34,10 @@ const page = () => {
     }
   };
 
+  console.log("Data:", data)
+
   useEffect(() => {
     fetchData();
-    console.log(new Date().toISOString().slice(0, 10));
   }, [])
   return (
     <div className={style.page}>
