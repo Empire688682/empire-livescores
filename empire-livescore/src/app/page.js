@@ -11,15 +11,15 @@ const page = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://v3.football.api-sports.io/fixtures", {
+      const response = await axios.get("https://v1.basketball.api-sports.io/games", {
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
           "x-rapidapi-key": process.env.NEXT_PUBLIC_API
         },
-        params: {
+        params:{
           date: new Date().toISOString().slice(0, 10)
         }
-
+        
       });
       console.log(response);
       if (response) {
@@ -31,20 +31,23 @@ const page = () => {
   };
 
   console.log("Data:", data);
-  useEffect(() => {
+  useEffect(()=>{
     fetchData();
-  }, [])
+    console.log(new Date().toISOString().slice(0, 10));
+  },[])
   return (
     <div className={style.page}>
-      <MainDate />
-      <FootballCom />
-      <MatchAfter />
+      <MainDate/>
       {
-        data.map((data) => {
+        data.map((data)=>{
           return (
             <div>
-              <FootballCom />
-              <MatchAfter />
+              <FootballCom/>
+              <MatchAfter/>
+              <p>{data.country.name}</p>
+              <p>{data.league.name}</p>
+              <p>{data.teams.away.name}</p>
+              <p>{data.teams.away.logo}</p>
             </div>
           )
         })
