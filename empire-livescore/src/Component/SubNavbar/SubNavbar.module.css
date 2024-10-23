@@ -10,23 +10,23 @@
 .subNavbar ul li{
     list-style: none;
 }
-.links{
+.link{
     text-decoration: none;
     color: var(--text-color);
     padding: 10px 10px;
     background-color:#4c4c501f ;
     border-radius: 9px;
-    font-size: 13px;
+    font-size: 12px;
     cursor: pointer;
     transition: .1s ease-in-out;
     font-weight: bolder;
     margin-bottom: 10px;
 }
-.links:hover{
-    background-color:#444447ad  ;
+.link:hover{
+    background-color: var(--active);
     color: white;
 }
-.links.active{
+.link.active{
     background-color: var(--active);
     color: white;
 }
