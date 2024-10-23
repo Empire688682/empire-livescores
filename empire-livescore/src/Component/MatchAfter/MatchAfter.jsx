@@ -25,20 +25,20 @@ const MatchAfter = ({team1Logo,team2Logo,team1,team2  }) => {
                             />
                         </div>
                         <div className={style.team_name}>
-                            Manchester United
+                            {team1}
                         </div>
                     </div>
                     <div className={style.team} id='team2'>
                         <div className={style.team_logo}>
                             <Image
-                                src={chelsea}
+                                src={team2Logo}
                                 alt='Premier League'
                                 ssizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 fill
                             />
                         </div>
                         <div className={style.team_name}>
-                            Chelsea
+                            {team2}
                         </div>
                     </div>
                 </div>
