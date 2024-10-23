@@ -33,7 +33,7 @@ const SideBar = () => {
                     {
                         sideBarData[0].regions.map((region) => (
                             <div key={region.title} className={style.colum_cart}>
-                                <span class={`fi ${region.icon}`}></span>
+                                <span className={`fi ${region.icon}`}></span>
                                 <span className={style.colum_title}>
                                     {region.title}
                                 </span>

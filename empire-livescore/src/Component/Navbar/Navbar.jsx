@@ -13,7 +13,7 @@ import Link from 'next/link';
 
 const Navbar = () => {
     const [menu, setMenu] = useState("scores");
-    const { setShowSidebar,setShowSideMenu, setSideMenu } = useGlobalContext();
+    const { setShowSidebar,setShowSideMenu, url } = useGlobalContext();
     return (
         <div className={style.navbar}>
             <div className={style.left_col}>
