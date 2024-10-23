@@ -1,15 +1,53 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import style from './basketball.module.css';
 import MainDate from '@/Component/MainDate/MainDate';
 import MatchAfter from '@/Component/MatchAfter/MatchAfter';
 import LeagueCom from '@/Component/League/LeagueCom';
+import axios from 'axios';
 
 const page = () => {
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("https://v1.basketball.api-sports.io/games", {
+        headers: {
+          "x-rapidapi-host": "v3.football.api-sports.io",
+          "x-rapidapi-key": process.env.NEXT_PUBLIC_API
+        },
+        params:{
+          date: new Date().toISOString().slice(0, 10)
+        }
+        
+      });
+      console.log(response);
+      if (response) {
+        setData(response.data.response);
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
+
+  console.log("Data:", data);
+  useEffect(()=>{
+    fetchData();
+    console.log(new Date().toISOString().slice(0, 10));
+  },[])
   return (
-    <div className={style.basketball}>
-      <MainDate />
-      <LeagueCom/>
-      <MatchAfter/>
+    <div className={style.page}>
+      <MainDate/>
+      {
+        data.map((data)=>{
+          return (
+            <div>
+              <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo}/>
+              <MatchAfter team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time}/>
+            </div>
+          )
+        })
+      }
     </div>
   )
 }

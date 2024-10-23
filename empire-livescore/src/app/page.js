@@ -1,10 +1,10 @@
 'use client'
-import FootballCom from '@/Component/FootballCom/FootballCom';
 import MainDate from '@/Component/MainDate/MainDate';
 import React, { useState, useEffect } from 'react';
 import style from './page.module.css';
 import MatchAfter from '@/Component/MatchAfter/MatchAfter';
 import axios from 'axios';
+import LeagueCom from '@/Component/League/LeagueCom';
 
 const page = () => {
   const [data, setData] = useState([]);
@@ -42,8 +42,8 @@ const page = () => {
         data.map((data)=>{
           return (
             <div>
-              <FootballCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo}/>
-              <MatchAfter team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name}/>
+              <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo}/>
+              <MatchAfter team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time}/>
             </div>
           )
         })
