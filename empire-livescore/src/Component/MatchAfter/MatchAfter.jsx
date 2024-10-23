@@ -6,7 +6,7 @@ import manchester from '../../public/manchester_united.png';
 import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
 
-const MatchAfter = () => {
+const MatchAfter = ({team1Logo,team2Logo,team1,team2  }) => {
     const [starClick, setStarClick] = useState(false);
     return (
         <div className={style.match_after}>
@@ -18,7 +18,7 @@ const MatchAfter = () => {
                     <div className={style.team} id='team1'>
                         <div className={style.team_logo}>
                             <Image
-                                src={manchester}
+                                src={team1Logo}
                                 alt='Premier League'
                                 ssizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 fill

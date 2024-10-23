@@ -42,12 +42,8 @@ const page = () => {
         data.map((data)=>{
           return (
             <div>
-              <FootballCom/>
-              <MatchAfter/>
-              <p>{data.country.name}</p>
-              <p>{data.league.name}</p>
-              <p>{data.teams.away.name}</p>
-              <p>{data.teams.away.logo}</p>
+              <FootballCom country={data.country.name} league={data.league.name}/>
+              <MatchAfter team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name}/>
             </div>
           )
         })
