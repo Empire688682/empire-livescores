@@ -13,7 +13,7 @@ export const AppProvider = ({ children }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://v3.football.api-sports.io/fixtures", {
+      const response = await axios.get("https://v3.football.api-sports.io/leagues", {
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
           "x-rapidapi-key": process.env.NEXT_PUBLIC_API
