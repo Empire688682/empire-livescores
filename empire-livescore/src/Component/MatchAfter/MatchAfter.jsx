@@ -15,7 +15,7 @@ const MatchAfter = () => {
                     <p>15:30</p>
                 </div>
                 <div className={style.teams}>
-                    <div className={style.team}>
+                    <div className={style.team} id='team1'>
                         <div className={style.team_logo}>
                             <Image
                                 src={manchester}
@@ -28,7 +28,7 @@ const MatchAfter = () => {
                             Manchester United
                         </div>
                     </div>
-                    <div className={style.team}>
+                    <div className={style.team} id='team2'>
                         <div className={style.team_logo}>
                             <Image
                                 src={chelsea}
