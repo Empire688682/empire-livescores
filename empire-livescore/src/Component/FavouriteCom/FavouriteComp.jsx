@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import style from './FavouriteCom.module.css'
 import CompetitionCom from '../CompetitionCom/CompetitionCom';
 import LeagueCom from '../League/LeagueCom';
-import MatchAfter from '../MatchAfter/MatchAfter';
+import MatchAfter from '../MatchAfter/MatchAfterBasketball';
 
 const FavouriteCom = () => {
   const [fav, setFav] = useState("matches");

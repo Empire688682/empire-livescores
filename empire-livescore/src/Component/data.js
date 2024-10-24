@@ -17,20 +17,20 @@ export const subNavbarData = [
         path: "/football",
     },
     {
-        title: "Cricket",
-        path: "/cricket",
-    },
-    {
         title: "Basketball",
         path: "/basketball",
     },
     {
-        title: "Tennis",
-        path: "/tennis",
+        title: "HandBall",
+        path: "/handball",
     },
     {
         title: "Hockey",
         path: "/hockey",
+    },
+    {
+        title: "Volleyball",
+        path: "/volleyball",
     },
 ];
 

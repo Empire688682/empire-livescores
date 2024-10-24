@@ -1,9 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import style from'./tennis.module.css';
+import style from'./handball.module.css';
 import MainDate from '@/Component/MainDate/MainDate';
 import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
+import MatchAfterHandball from '@/Component/MatchAfter/MatchAfterHandball';
 
 const page = () => {
   const [data, setData] = useState([]);
@@ -14,7 +15,7 @@ const page = () => {
   const fetchData = async () => {
     setLoding(true);
     try {
-      const response = await axios.get("https://v1.basketball.api-sports.io/games", {
+      const response = await axios.get("https://v1.handball.api-sports.io/games", {
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
           "x-rapidapi-key": process.env.NEXT_PUBLIC_API
@@ -24,7 +25,7 @@ const page = () => {
         }
 
       });
-      if (response.data.errors) {
+      if (response.data.errors > 0) {
         setLimitExceeded(true);
       }
       if (response) {
@@ -70,7 +71,7 @@ const page = () => {
                             return (
                               <div>
                                 <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfter team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} />
+                                <MatchAfterHandball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} />
                               </div>
                             )
                           })

@@ -4,6 +4,7 @@ import style from './hockey.module.css'
 import MainDate from '@/Component/MainDate/MainDate';
 import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
+import MatchAfterHockey from '@/Component/MatchAfter/MatchAfterHockey';
 
 const page = () => {
   const [data, setData] = useState([]);
@@ -24,7 +25,7 @@ const page = () => {
         }
 
       });
-      if (response.data.errors) {
+      if (response.data.errors > 0) {
         setLimitExceeded(true);
       }
       if (response) {
@@ -70,7 +71,7 @@ const page = () => {
                             return (
                               <div>
                                 <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfter team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} />
+                                <MatchAfterHockey team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} />
                               </div>
                             )
                           })

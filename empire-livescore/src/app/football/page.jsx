@@ -2,9 +2,9 @@
 import React, { useState, useEffect} from 'react';
 import style from './football.module.css';
 import MainDate from '@/Component/MainDate/MainDate';
-import MatchAfter from '@/Component/MatchAfter/MatchAfter';
 import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
+import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
 
 const page = () => {
   const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ const page = () => {
   const fetchData = async () => {
     setLoding(true);
     try {
-      const response = await axios.get("https://v1.basketball.api-sports.io/games", {
+      const response = await axios.get("https://v3.football.api-sports.io/fixtures", {
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
           "x-rapidapi-key": process.env.NEXT_PUBLIC_API
@@ -25,7 +25,8 @@ const page = () => {
         }
 
       });
-      if (response.data.errors) {
+      console.log("RESPONSE:", response);
+      if (response.data.errors > 0) {
         setLimitExceeded(true);
       }
       if (response) {
@@ -39,6 +40,7 @@ const page = () => {
       setLoding(false);
     }
   };
+  console.log("DATA:", data);
 
   useEffect(() => {
     fetchData();
@@ -70,8 +72,8 @@ const page = () => {
                           data.map((data) => {
                             return (
                               <div>
-                                <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfter team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} />
+                                <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
+                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.fixture.date} />
                               </div>
                             )
                           })
