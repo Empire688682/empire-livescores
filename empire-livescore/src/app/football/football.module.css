@@ -2,3 +2,12 @@
     width: 100%;
     min-height: 100vh;
 }
+.football h2 {
+    color: var(--white);
+    margin-top: 20px;
+}
+.limitExceeded p {
+    color: var(--white);
+    font-size: 15px;
+    margin-top: 20px;
+}

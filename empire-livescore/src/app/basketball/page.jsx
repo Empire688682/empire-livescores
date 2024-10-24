@@ -28,7 +28,6 @@ const page = () => {
       if (response.data.errors) {
         setLimitExceeded(true);
       }
-      console.log(response);
       if (response) {
         setData(response.data.response);
       }
@@ -40,8 +39,6 @@ const page = () => {
       setLoding(false);
     }
   };
-
-  console.log(data)
 
   useEffect(() => {
     fetchData();
