@@ -6,13 +6,22 @@ import manchester from '../../public/manchester_united.png';
 import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
 
-const MatchAfterHockey = ({ team1Logo, team2Logo, team1, team2, time }) => {
+const MatchAfterHockey = ({ team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const [starClick, setStarClick] = useState(false);
     return (
         <div className={style.match_after}>
             <div className={style.left_Content}>
                 <div className={style.time}>
-                    <p>{time}</p>
+                    {
+                        teamGoal1 !== null
+                            ?
+                            <>
+                                <p>{teamGoal1} : {teamGoal2}</p>
+                            </>
+                            :
+                            <p>{time}</p>
+                    }
+                    <p>{status}</p>
                 </div>
                 <div className={style.teams}>
                     <div className={style.team} id='team1'>
