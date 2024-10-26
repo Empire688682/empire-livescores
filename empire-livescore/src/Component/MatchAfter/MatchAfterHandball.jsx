@@ -19,7 +19,7 @@ const MatchAfterHandball = ({ team1Logo, team2Logo, team1, team2, time, status, 
                                 <p>{teamGoal1} : {teamGoal2}</p>
                             </>
                             :
-                            <p>{timeOnly}</p>
+                            <p>{time}</p>
                     }
                     <p>{status}</p>
                 </div>
