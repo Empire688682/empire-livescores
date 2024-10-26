@@ -6,7 +6,7 @@ import manchester from '../../public/manchester_united.png';
 import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
 
-const MatchAfterFootball = ({ status, team1Logo, team2Logo, teamGoal1, teamGoal2, team1, team2, time }) => {
+const MatchAfterFootball = ({team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
     return (
