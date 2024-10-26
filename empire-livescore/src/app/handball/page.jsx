@@ -39,6 +39,7 @@ const page = () => {
       setLoding(false);
     }
   };
+  console.log(data)
 
   useEffect(() => {
     fetchData();
@@ -71,7 +72,7 @@ const page = () => {
                             return (
                               <div>
                                 <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterHandball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} />
+                                <MatchAfterHandball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} />
                               </div>
                             )
                           })
