@@ -40,6 +40,8 @@ const page = () => {
     }
   };
 
+  console.log(data)
+
   useEffect(() => {
     fetchData();
   }, [])
@@ -67,11 +69,11 @@ const page = () => {
                       :
                       <>
                         {
-                          data.map((data) => {
+                          data.map((data, id) => {
                             return (
-                              <div>
+                              <div key={id}>
                                 <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterVolleyball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} />
+                                <MatchAfterVolleyball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} />
                               </div>
                             )
                           })
