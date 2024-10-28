@@ -17,11 +17,19 @@ const page = () => {
     return (
         <div className={style.matchContainer}>
             <div className={style.header}>
+                <div>
                 <Image src={arsenal} alt='logo' width={50} height={50} className={style.teamLogo} />
-                <h1>homeTeam.name vs awayTeam.name </h1>
+                <p>homeTeam</p>
+                </div>
+                <div className={style.scores}>
+                <p>Score:</p>
+                <p>1 - 2</p>
+                </div>
+                <div>
                 <Image src={aston_Villa} alt='logo' width={50} height={50} className={style.teamLogo} />
+                <p>awayTeam</p>
+                </div>
             </div>
-            <p>Score: 0 - 0</p>
 
             <section className={style.section}>
                 <h2>Match Statistics</h2>

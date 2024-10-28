@@ -11,6 +11,13 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .scores{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
   
   .teamLogo {
     width: 50px;
