@@ -1,49 +1,58 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './singleM.module.css';
 import Image from 'next/image';
+import arsenal from '../../../public/arsenal.png';
+import aston_Villa from '../../../public/aston-villa.png';
+
 
 const page = () => {
     const [match, setMatch] = useState(null);
+    
+    useEffect(()=>{
+        if(typeof window !== "undefined"){
+            setMatch(JSON.parse(localStorage.getItem("football")))
+        }
+    },[])
     return (
         <div className={style.matchContainer}>
             <div className={style.header}>
-                <Image src={`/images/${homeTeam.logo}`} alt={`${homeTeam.name} logo`} width={50} height={50} className={style.teamLogo} />
-                <h1>{homeTeam.name} vs {awayTeam.name}</h1>
-                <Image src={`/images/${awayTeam.logo}`} alt={`${awayTeam.name} logo`} width={50} height={50} className={style.teamLogo} />
+                <Image src={arsenal} alt='logo' width={50} height={50} className={style.teamLogo} />
+                <h1>homeTeam.name vs awayTeam.name </h1>
+                <Image src={aston_Villa} alt='logo' width={50} height={50} className={style.teamLogo} />
             </div>
-            <p>Score: {score.home} - {score.away}</p>
+            <p>Score: 0 - 0</p>
 
             <section className={style.section}>
                 <h2>Match Statistics</h2>
                 <ul className={style.statsList}>
-                    {stats.map((stat, index) => (
-                        <li key={index}>
-                            <strong>{stat.type}:</strong> {stat.home} - {stat.away}
+                        <li>
+                            <strong>shoot:</strong> <p>stat.home</p> - <p>stat.away</p>
                         </li>
-                    ))}
                 </ul>
             </section>
 
             <section className={style.section}>
                 <h2>Stadium Information</h2>
-                <p><strong>Name:</strong> {stadium.name}</p>
-                <p><strong>Location:</strong> {stadium.location}</p>
-                <p><strong>Capacity:</strong> {stadium.capacity}</p>
+                <p><strong>Name:</strong> stadium.name</p>
+                <p><strong>Location:</strong> stadium.location</p>
+                <p><strong>Capacity:</strong> stadium.capacity</p>
                 <div className={style.imageWrapper}>
-                    <Image src={`/images/${stadium.image}`} alt={`${stadium.name}`} width={400} height={250} />
+                    <Image src={arsenal} alt='stadium' width={400} height={250} />
                 </div>
             </section>
 
             <section className={style.section}>
                 <h2>Coaches</h2>
+                <div className={style.coaches}>
                 <div>
-                    <p><strong>Home Coach:</strong> {coach.home}</p>
-                    <Image src={`/images/${coach.homeImage}`} alt={`${coach.home} image`} width={100} height={100} />
+                    <p><strong>Coach:</strong> Daniel</p>
+                    <Image src={arsenal} alt='coach' width={50} height={50} />
                 </div>
                 <div>
-                    <p><strong>Away Coach:</strong> {coach.away}</p>
-                    <Image src={`/images/${coach.awayImage}`} alt={`${coach.away} image`} width={100} height={100} />
+                    <p><strong>Coach:</strong> Juwon</p>
+                    <Image src={aston_Villa} alt='coach' width={50} height={50} />
+                </div>
                 </div>
             </section>
         </div>

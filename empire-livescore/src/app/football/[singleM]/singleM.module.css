@@ -3,6 +3,7 @@
     max-width: 800px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    color: var(--white);
   }
   
   .header {
@@ -19,6 +20,10 @@
   .section {
     margin-top: 20px;
   }
+
+  .section h2{
+    margin-bottom: 15px;
+  }
   
   .statsList {
     list-style: none;
@@ -31,5 +36,11 @@
   
   .imageWrapper {
     margin-top: 10px;
+  }
+
+  .coaches{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   
