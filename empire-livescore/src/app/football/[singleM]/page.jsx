@@ -4,6 +4,7 @@ import style from './singleM.module.css';
 import Image from 'next/image';
 import arsenal from '../../../public/arsenal.png';
 import aston_Villa from '../../../public/aston-villa.png';
+import ScoreNotice from '@/Component/ScoreNotice/ScoreNotice';
 
 
 const page = () => {
@@ -30,6 +31,10 @@ const page = () => {
                     <p>awayTeam</p>
                 </div>
             </div>
+
+            <section className={style.section}>
+                <ScoreNotice/>
+            </section>
 
             <section className={style.section}>
                 <h2>Match Statistics</h2>

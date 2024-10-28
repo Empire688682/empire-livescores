@@ -1,0 +1,32 @@
+.noticeContainer {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f2f4f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    color: #333;
+  }
+  
+  .icon {
+    font-size: 2rem;
+    color: #0070f3;
+    margin-right: 15px;
+  }
+  
+  .textContainer {
+    flex: 1;
+  }
+  
+  .textContainer h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #0070f3;
+  }
+  
+  .textContainer p {
+    margin: 5px 0;
+    line-height: 1.5;
+  }
+  
