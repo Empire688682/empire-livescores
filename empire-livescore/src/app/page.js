@@ -1,7 +1,7 @@
 'use client'
-import MainDate from '@/Component/MainDate/MainDate';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import style from './page.module.css';
+import MainDate from '@/Component/MainDate/MainDate';
 import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
 import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
@@ -69,11 +69,11 @@ const page = () => {
                       :
                       <>
                         {
-                          data.map((data) => {
+                          data.map((data, id) => {
                             return (
-                              <div>
+                              <div key={id}>
                                 <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.fixture.date} />
+                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} />
                               </div>
                             )
                           })
