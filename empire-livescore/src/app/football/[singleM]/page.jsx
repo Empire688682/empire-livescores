@@ -1,8 +1,10 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 import style from './singleM.module.css';
 import Image from 'next/image';
 
 const page = () => {
+    const [match, setMatch] = useState(null);
     return (
         <div className={style.matchContainer}>
             <div className={style.header}>

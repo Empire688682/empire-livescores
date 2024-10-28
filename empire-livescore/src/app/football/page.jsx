@@ -31,6 +31,7 @@ const page = () => {
       }
       if (response) {
         setData(response.data.response);
+        localStorage.setItem("football", JSON.stringify(response.data.response));
       }
     } catch (error) {
       setNetworkError(error.message);
@@ -73,7 +74,7 @@ const page = () => {
                             return (
                               <div key={id}>
                                 <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} />
+                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} id={data.fixture.id} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} />
                               </div>
                             )
                           })

@@ -5,12 +5,14 @@ import Image from 'next/image';
 import manchester from '../../public/manchester_united.png';
 import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
+import { useRouter } from 'next/navigation';
 
-const MatchAfterFootball = ({team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
+const MatchAfterFootball = ({team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
+    const router = useRouter();
     return (
-        <div className={style.match_after}>
+        <div className={style.match_after} onClick={() => router.push(`/football/${id}`)}>
             <div className={style.left_Content}>
                 <div className={style.time}>
                     {
