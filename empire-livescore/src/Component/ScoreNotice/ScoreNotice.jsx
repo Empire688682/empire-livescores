@@ -4,7 +4,7 @@ import { FaInfoCircle } from 'react-icons/fa';
 
 const ScoreNotice = () => {
     return (
-      <div className={styles.noticeContainer}>
+      <div className={style.noticeContainer}>
         <FaInfoCircle className={style.icon} />
         <div className={style.textContainer}>
           <h3>Important Notice</h3>

@@ -27,11 +27,36 @@
   .section {
     margin-top: 20px;
   }
+  .section_stadium{
+    margin: 20px 0;
+  }
+  .section_stadium h2{
+    text-align: start;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+  .notice_section {
+    margin-top: 20px;
+    position: relative;
+  }
+  .cross_icon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    border: 0.5px solid var(--text-color);
+    margin-top: 20px;
+  }
 
-  .section h2{
+  .section h2, .notice_section h2{
     margin-bottom: 15px;
     font-size: 20px;
     text-align: center;
+  }
+  .notice_section.clear{
+    display: none;
   }
   
   .statsList {
@@ -59,5 +84,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+  .coaches div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
   

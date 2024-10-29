@@ -5,16 +5,35 @@ import Image from 'next/image';
 import arsenal from '../../../public/arsenal.png';
 import aston_Villa from '../../../public/aston-villa.png';
 import ScoreNotice from '@/Component/ScoreNotice/ScoreNotice';
+import { LiaTimesSolid } from "react-icons/lia";
+import { useParams } from 'next/navigation';
 
 
 const page = () => {
+    const [data, setData] = useState(null);
     const [match, setMatch] = useState(null);
+    const [noticeClear, setNoticeClear] = useState(false);
+    const param = useParams();
+    const id = param;
+    console.log("id", id)
+
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            setMatch(JSON.parse(localStorage.getItem("football")))
+            setData(JSON.parse(localStorage.getItem("football")))
         }
-    }, [])
+
+        if(data){
+            data.map((match)=>{
+                const actualMatch = match.id === id;
+                setMatch(actualMatch);
+            })
+        }
+
+    }, []);
+
+    console.log("MTACH:", data)
+
     return (
         <div className={style.matchContainer}>
             <div className={style.header}>
@@ -32,7 +51,8 @@ const page = () => {
                 </div>
             </div>
 
-            <section className={style.section}>
+            <section className={noticeClear? `${style.notice_section} ${style.clear}`:style.notice_section}>
+                <LiaTimesSolid className={style.cross_icon} onClick={()=>setNoticeClear(true)}/>
                 <ScoreNotice/>
             </section>
 
@@ -58,7 +78,7 @@ const page = () => {
                 </ul>
             </section>
 
-            <section className={style.section}>
+            <section className={style.section_stadium}>
                 <h2>Stadium Information</h2>
                 <p><strong>Name:</strong> stadium.name</p>
                 <p><strong>Location:</strong> stadium.location</p>
@@ -68,16 +88,21 @@ const page = () => {
                 </div>
             </section>
 
+            <section className={style.section_stadium}>
+                <h2>Refree Name</h2>
+                <p><strong>Refree:</strong> Olive</p>
+            </section>
+
             <section className={style.section}>
                 <h2>Coaches</h2>
                 <div className={style.coaches}>
                     <div>
+                    <Image src={arsenal} alt='coach' width={50} height={50} />
                         <p><strong>Coach:</strong> Daniel</p>
-                        <Image src={arsenal} alt='coach' width={50} height={50} />
                     </div>
                     <div>
+                    <Image src={aston_Villa} alt='coach' width={50} height={50} />
                         <p><strong>Coach:</strong> Juwon</p>
-                        <Image src={aston_Villa} alt='coach' width={50} height={50} />
                     </div>
                 </div>
             </section>

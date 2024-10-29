@@ -11,8 +11,16 @@ const MatchAfterFootball = ({team1Logo, id, team2Logo, team1, team2, time, statu
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
+    const handleClick = () => {
+        if (id) {
+          router.push(`/football/match/?id=${id}`);
+        } else {
+          console.error("ID is undefined");
+        }
+      };
+
     return (
-        <div className={style.match_after} onClick={() => router.push(`/football/${id}`)}>
+        <div className={style.match_after} onClick={handleClick}>
             <div className={style.left_Content}>
                 <div className={style.time}>
                     {
