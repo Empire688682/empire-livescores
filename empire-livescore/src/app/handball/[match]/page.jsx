@@ -19,7 +19,7 @@ const page = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const storedData = localStorage.getItem('football');
+            const storedData = localStorage.getItem('handball');
             if (storedData) {
                 setData(JSON.parse(storedData));
             } else {
@@ -30,7 +30,7 @@ const page = () => {
 
     const fetchMatch = () => {
         if (data) {
-            const foundMatch = data.find((match) => match.fixture.id === parseInt(id));
+            const foundMatch = data.find((match) => match.id === parseInt(id));
             if (foundMatch) {
                 setMatch(foundMatch);
                 console.log(foundMatch);
@@ -131,7 +131,7 @@ const page = () => {
                         </section>
                     </>
                     :
-                    <h3>Loading......</h3>
+                    <p className={style.loadingText}>Loading</p>
             }
         </div>
     );

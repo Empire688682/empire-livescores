@@ -1,15 +1,26 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './MatchAfter.module.css';
 import Image from 'next/image';
 import manchester from '../../public/manchester_united.png';
 import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
+import { useRouter } from 'next/navigation';
 
-const MatchAfterHandball = ({ team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
+const MatchAfterHandball = ({ team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2, id }) => {
     const [starClick, setStarClick] = useState(false);
+    const router = useRouter();
+
+    const handleClick = ()=>{
+        if(id){
+            router.push(`/handball/${id}`)
+        }
+        else{
+            console.log("ERROR:", "No id data found");
+        }
+    }
     return (
-        <div className={style.match_after}>
+        <div className={style.match_after} onClick={handleClick}>
             <div className={style.left_Content}>
                 <div className={style.time}>
                     {
