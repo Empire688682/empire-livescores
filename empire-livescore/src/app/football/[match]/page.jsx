@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import style from './singleM.module.css';
+import style from './Match.module.css';
 import Image from 'next/image';
 import arsenal from '../../../public/arsenal.png';
 import aston_Villa from '../../../public/aston-villa.png';
@@ -11,35 +11,52 @@ import { useParams } from 'next/navigation';
 
 const page = () => {
     const [data, setData] = useState(null);
-    const [match, setMatch] = useState(null);
+    const [match, setMatch] = useState({});
     const [noticeClear, setNoticeClear] = useState(false);
     const param = useParams();
-    const id = param;
-    console.log("id", id)
+    const id = param.match;
 
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            setData(JSON.parse(localStorage.getItem("football")))
+        if (typeof window !== 'undefined') {
+            const storedData = localStorage.getItem('football');
+            if (storedData) {
+                setData(JSON.parse(storedData));
+            } else {
+                console.log('No data found in localStorage');
+            }
         }
-
-        if(data){
-            data.map((match)=>{
-                const actualMatch = match.id === id;
-                setMatch(actualMatch);
-            })
-        }
-
     }, []);
 
-    console.log("MTACH:", data)
+    const fetchMatch = () =>{
+        if(data){
+          const foundMatch = data.find((match) => match.fixture.id === parseInt(id));
+          if(foundMatch){
+            setMatch(foundMatch);
+            console.log(foundMatch);
+          }
+          else{
+            console.log("No match found")
+          }
+        }
+        else{
+           console.log("No match found with the given ID");
+        }
+    }
+
+    useEffect(()=>{
+        fetchMatch();
+    },[data]);
+
+    console.log(match.fixture)
+
 
     return (
         <div className={style.matchContainer}>
             <div className={style.header}>
                 <div>
                     <Image src={arsenal} alt='logo' width={50} height={50} className={style.teamLogo} />
-                    <p>homeTeam</p>
+                    <p>match.teams.home.name</p>
                 </div>
                 <div className={style.scores}>
                     <p>Score:</p>
@@ -47,7 +64,7 @@ const page = () => {
                 </div>
                 <div>
                     <Image src={aston_Villa} alt='logo' width={50} height={50} className={style.teamLogo} />
-                    <p>awayTeam</p>
+                    <p>match.teams.home.name</p>
                 </div>
             </div>
 

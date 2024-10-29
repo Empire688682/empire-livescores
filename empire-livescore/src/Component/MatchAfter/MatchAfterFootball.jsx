@@ -13,7 +13,7 @@ const MatchAfterFootball = ({team1Logo, id, team2Logo, team1, team2, time, statu
     const router = useRouter();
     const handleClick = () => {
         if (id) {
-          router.push(`/football/match/?id=${id}`);
+          router.push(`/football/${id}`);
         } else {
           console.error("ID is undefined");
         }
