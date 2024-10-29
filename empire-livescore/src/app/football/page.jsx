@@ -25,11 +25,11 @@ const page = () => {
         }
 
       });
-      console.log("RESPONSE:", response);
-      if (response.data.errors > 0) {
+      if (response.data.errors.requests.length > 0) {
         setLimitExceeded(true);
       }
       if (response) {
+        console.log("DATA:", response.data.response);
         setData(response.data.response);
         localStorage.setItem("football", JSON.stringify(response.data.response));
       }
@@ -41,7 +41,6 @@ const page = () => {
       setLoding(false);
     }
   };
-  console.log("DATA:", data);
 
   useEffect(() => {
     fetchData();
