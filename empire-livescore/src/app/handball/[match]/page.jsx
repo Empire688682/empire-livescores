@@ -13,6 +13,7 @@ const page = () => {
     const [data, setData] = useState(null);
     const [match, setMatch] = useState({});
     const [noticeClear, setNoticeClear] = useState(false);
+    const [idError, setidError] = useState('');
     const param = useParams();
     const id = param.match;
 
@@ -33,13 +34,14 @@ const page = () => {
             const foundMatch = data.find((match) => match.id === parseInt(id));
             if (foundMatch) {
                 setMatch(foundMatch);
-                console.log(foundMatch);
             }
             else {
-                console.log("No match found")
+                setidError("No match found");
+                console.log("No match found");
             }
         }
         else {
+            setidError("No match found with the given ID");
             console.log("No match found with the given ID");
         }
     }
@@ -48,13 +50,10 @@ const page = () => {
         fetchMatch();
     }, [data]);
 
-    console.log(match)
-
-
     return (
         <div className={style.matchContainer}>
             {
-                match && match.fixture ?
+                match && match.country ?
                     <>
                         <div className={style.header}>
                             <div>
@@ -62,12 +61,12 @@ const page = () => {
                                 <p>{match.teams.home.name}</p>
                             </div>
                             <div className={style.scores}>
-                                <p>{match.goals.home} - {match.goals.away}</p>
+                                <p>{match.scores.home} - {match.scores.away}</p>
                                 <p style={{ color: "tomato" }}>
-                                    {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed}'
+                                    {match.status.short === "FT" ? "FT" : match.status.elapsed}'
                                 </p>
                                 <p style={{ color: "tomato" }}>
-                                {match.fixture.status.short === "HT" ? "HT" : null}
+                                {match.status.short === "HT" ? "HT" : null}
                                 </p>
                             </div>
                             <div>
@@ -87,18 +86,18 @@ const page = () => {
                                 <div className={style.half_time}>
                                     <h4>HT</h4>
                                     <div>
-                                        <p>{match.score.halftime.home}</p>
+                                        <p>{match.periods.first.home}</p>
                                         <p>-</p>
-                                        <p>{match.score.halftime.away}</p>
+                                        <p>{match.periods.first.away}</p>
                                     </div>
                                 </div>
                                 {
-                                    match.score.fulltime.home !== null && <div className={style.full_time}>
+                                    match.scores.home !== null && <div className={style.full_time}>
                                         <h4>FT</h4>
                                         <div>
-                                            <p>{match.score.fulltime.home}</p>
+                                            <p>{match.scores.home}</p>
                                             <p>-</p>
-                                            <p>{match.score.fulltime.home}</p>
+                                            <p>{match.scores.home}</p>
                                         </div>
                                     </div>
                                 }
@@ -107,13 +106,8 @@ const page = () => {
 
                         <section className={style.section_stadium}>
                             <h2>Stadium Information</h2>
-                            <p><strong>Name:</strong> {match.fixture.venue.name}</p>
-                            <p><strong>Location:</strong> {match.fixture.venue.city}</p>
-                        </section>
-
-                        <section className={style.section_stadium}>
-                            <h2>Referee Name</h2>
-                            <p><strong>Referee:</strong> {match.fixture.referee}</p>
+                            <p><strong>Name:</strong> {match.country.name}</p>
+                            <p><strong>Location:</strong> {match.country.city}</p>
                         </section>
 
                         <section className={style.section}>
@@ -131,7 +125,13 @@ const page = () => {
                         </section>
                     </>
                     :
-                    <p className={style.loadingText}>Loading</p>
+                    <>
+                    {
+                        idError? <p>{idError}</p>
+                        :
+                        <p className={style.loadingText}>Loading</p>
+                    }
+                    </>
             }
         </div>
     );
