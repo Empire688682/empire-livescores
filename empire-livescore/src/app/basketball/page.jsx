@@ -47,7 +47,7 @@ const page = () => {
     <div className={style.basketball}>
       <MainDate />
       {
-        loading ? <h2>LOADING.....</h2>
+        loading ? <p className={style.loadingText}>Loading</p>
           :
           <>
             {

@@ -11,3 +11,36 @@
     font-size: 15px;
     margin-top: 20px;
 }
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loadingText {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 1.5em;
+    font-weight: bold;
+    position: relative;
+    color: var(--white);
+    margin-top: 20px;
+  }
+  
+  .loadingText::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 6px solid white;
+    border-top: var(--active) 6px solid;
+    animation: spin 1s linear infinite;
+    top: 0;
+    left: 0;
+  }
