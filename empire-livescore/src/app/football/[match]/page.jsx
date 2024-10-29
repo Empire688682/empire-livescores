@@ -48,13 +48,13 @@ const page = () => {
         fetchMatch();
     }, [data]);
 
-    console.log(match.fixture)
+    console.log(match)
 
 
     return (
         <div className={style.matchContainer}>
             {
-                match && match.fixture?
+                match && match.fixture ?
                     <>
                         <div className={style.header}>
                             <div>
@@ -63,7 +63,7 @@ const page = () => {
                             </div>
                             <div className={style.scores}>
                                 <p>Score:</p>
-                                <p>1 - 2</p>
+                                <p>{match.goals.home} - {match.goals.away}</p>
                             </div>
                             <div>
                                 <Image src={match.teams.away.logo} alt='logo' width={50} height={50} className={style.teamLogo} />
@@ -82,19 +82,21 @@ const page = () => {
                                 <div className={style.half_time}>
                                     <h4>HT</h4>
                                     <div>
-                                        <p>1</p>
+                                        <p>{match.score.halftime.home}</p>
                                         <p>-</p>
-                                        <p>0</p>
+                                        <p>{match.score.halftime.away}</p>
                                     </div>
                                 </div>
-                                <div className={style.full_time}>
-                                    <h4>FT</h4>
-                                    <div>
-                                        <p>1</p>
-                                        <p>-</p>
-                                        <p>2</p>
+                                {
+                                    match.score.fulltime.home !== null && <div className={style.full_time}>
+                                        <h4>FT</h4>
+                                        <div>
+                                            <p>1</p>
+                                            <p>-</p>
+                                            <p>2</p>
+                                        </div>
                                     </div>
-                                </div>
+                                }
                             </ul>
                         </section>
 
@@ -109,8 +111,8 @@ const page = () => {
                         </section>
 
                         <section className={style.section_stadium}>
-                            <h2>Refree Name</h2>
-                            <p><strong>Refree:</strong> Olive</p>
+                            <h2>Referee Name</h2>
+                            <p><strong>Referee:</strong> {match.fixture.referee}</p>
                         </section>
 
                         <section className={style.section}>
