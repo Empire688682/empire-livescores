@@ -64,7 +64,8 @@ const page = () => {
                             <div className={style.scores}>
                                 <p>{match.scores.home.total} - {match.scores.away.total}</p>
                                 <p style={{ color: "tomato" }}>
-                                    {match.status.short === "FT" ? "FT" : match.status.elapsed}'
+                                    {match.status.short === "FT" ? "FT" : match.status.elapsed}
+                                    {match.status.short !== "FT" ? `${match.status.short} - ${match.status.timer}` : match.status.elapsed}
                                 </p>
                                 <p style={{ color: "tomato" }}>
                                 {match.status.short === "HT" ? "HT" : null}
@@ -118,7 +119,7 @@ const page = () => {
                                 </div>
                                 {
                                     match.scores.home.total !== null && <div className={style.full_time}>
-                                        <h4>FT</h4>
+                                        {match.status.short !== "FT" ? <h4>Total</h4>:<h4>FT</h4>}
                                         <div>
                                             <p>{match.scores.home.total}</p>
                                             <p>-</p>
