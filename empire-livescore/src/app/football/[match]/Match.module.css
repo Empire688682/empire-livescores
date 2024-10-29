@@ -4,12 +4,17 @@
     margin: 0 auto;
     font-family: Arial, sans-serif;
     color: var(--white);
+    min-height: 100vh;
   }
   
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .header div{
+    flex-basis: 50%;
   }
 
   .scores{
