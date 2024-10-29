@@ -6,6 +6,10 @@
     color: var(--white);
     min-height: 100vh;
   }
+
+  .matchContainer p, .matchContainer strong{
+    font-size: 14px;
+  }
   
   .header {
     display: flex;
@@ -23,6 +27,11 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  .scores p{
+    font-size: 20px;
+    font-weight: bolder;
+  }
   
   .teamLogo {
     width: 50px;
@@ -34,11 +43,14 @@
   }
   .section_stadium{
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   .section_stadium h2{
     text-align: start;
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 16px;
   }
   .notice_section {
     margin-top: 20px;
@@ -57,7 +69,7 @@
 
   .section h2, .notice_section h2{
     margin-bottom: 15px;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
   }
   .notice_section.clear{
@@ -79,10 +91,6 @@
     width: 100%;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  .imageWrapper {
-    margin-top: 10px;
   }
 
   .coaches{

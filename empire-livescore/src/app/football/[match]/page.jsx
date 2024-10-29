@@ -62,8 +62,10 @@ const page = () => {
                                 <p>{match.teams.home.name}</p>
                             </div>
                             <div className={style.scores}>
-                                <p>Score:</p>
                                 <p>{match.goals.home} - {match.goals.away}</p>
+                                <p style={{ color: "tomato" }}>
+                                    {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed + "'"}
+                                </p>
                             </div>
                             <div>
                                 <Image src={match.teams.away.logo} alt='logo' width={50} height={50} className={style.teamLogo} />
@@ -91,9 +93,9 @@ const page = () => {
                                     match.score.fulltime.home !== null && <div className={style.full_time}>
                                         <h4>FT</h4>
                                         <div>
-                                            <p>1</p>
+                                            <p>{match.score.fulltime.home}</p>
                                             <p>-</p>
-                                            <p>2</p>
+                                            <p>{match.score.fulltime.home}</p>
                                         </div>
                                     </div>
                                 }
@@ -102,12 +104,8 @@ const page = () => {
 
                         <section className={style.section_stadium}>
                             <h2>Stadium Information</h2>
-                            <p><strong>Name:</strong> stadium.name</p>
-                            <p><strong>Location:</strong> stadium.location</p>
-                            <p><strong>Capacity:</strong> stadium.capacity</p>
-                            <div className={style.imageWrapper}>
-                                <Image src={arsenal} alt='stadium' width={400} height={250} />
-                            </div>
+                            <p><strong>Name:</strong> {match.fixture.venue.name}</p>
+                            <p><strong>Location:</strong> {match.fixture.venue.city}</p>
                         </section>
 
                         <section className={style.section_stadium}>
@@ -119,12 +117,12 @@ const page = () => {
                             <h2>Coaches</h2>
                             <div className={style.coaches}>
                                 <div>
-                                    <Image src={arsenal} alt='coach' width={50} height={50} />
-                                    <p><strong>Coach:</strong> Daniel</p>
+                                    <Image src={match.teams.home.logo} alt='coach' width={50} height={50} />
+                                    <p><strong>Coach:</strong> Not covered</p>
                                 </div>
                                 <div>
-                                    <Image src={aston_Villa} alt='coach' width={50} height={50} />
-                                    <p><strong>Coach:</strong> Juwon</p>
+                                    <Image src={match.teams.away.logo} alt='coach' width={50} height={50} />
+                                    <p><strong>Coach:</strong> Not covered</p>
                                 </div>
                             </div>
                         </section>

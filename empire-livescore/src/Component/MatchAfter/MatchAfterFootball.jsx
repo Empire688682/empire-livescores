@@ -7,7 +7,7 @@ import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
 
-const MatchAfterFootball = ({team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
+const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
@@ -31,6 +31,13 @@ const MatchAfterFootball = ({team1Logo, id, team2Logo, team1, team2, time, statu
                             </>
                             :
                             <p>{timeOnly}</p>
+                    }
+                    {
+                        timeCount !== null && status !== 'FT'
+                            ?
+                            <p>{timeCount}'</p>
+                            :
+                            null
                     }
                     <p>{status}</p>
                 </div>
