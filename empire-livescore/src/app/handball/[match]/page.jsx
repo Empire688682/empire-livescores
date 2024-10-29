@@ -107,7 +107,7 @@ const page = () => {
                         <section className={style.section_stadium}>
                             <h2>Stadium Information</h2>
                             <p><strong>Name:</strong> {match.country.name}</p>
-                            <p><strong>Location:</strong> {match.country.city}</p>
+                            <p><strong>Location:</strong> {match.country.name}</p>
                         </section>
 
                         <section className={style.section}>
