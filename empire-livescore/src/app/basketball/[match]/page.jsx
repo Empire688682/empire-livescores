@@ -19,7 +19,7 @@ const page = () => {
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
-            const storedData = localStorage.getItem('football');
+            const storedData = localStorage.getItem('basketball');
             if (storedData) {
                 setData(JSON.parse(storedData));
             } else {
@@ -30,7 +30,7 @@ const page = () => {
 
     const fetchMatch = () => {
         if (data) {
-            const foundMatch = data.find((match) => match.fixture.id === parseInt(id));
+            const foundMatch = data.find((match) => match.id === parseInt(id));
             if (foundMatch) {
                 setMatch(foundMatch);
                 console.log(foundMatch);
@@ -54,7 +54,7 @@ const page = () => {
     return (
         <div className={style.matchContainer}>
             {
-                match && match.fixture ?
+                match && match.country ?
                     <>
                         <div className={style.header}>
                             <div>
@@ -62,12 +62,12 @@ const page = () => {
                                 <p>{match.teams.home.name}</p>
                             </div>
                             <div className={style.scores}>
-                                <p>{match.goals.home} - {match.goals.away}</p>
+                                <p>{match.scores.home.total} - {match.scores.away.total}</p>
                                 <p style={{ color: "tomato" }}>
-                                    {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed}'
+                                    {match.status.short === "FT" ? "FT" : match.status.elapsed}'
                                 </p>
                                 <p style={{ color: "tomato" }}>
-                                {match.fixture.status.short === "HT" ? "HT" : null}
+                                {match.status.short === "HT" ? "HT" : null}
                                 </p>
                             </div>
                             <div>
@@ -85,20 +85,44 @@ const page = () => {
                             <h2>Match Statistics</h2>
                             <ul className={style.statsList}>
                                 <div className={style.half_time}>
-                                    <h4>HT</h4>
+                                    <h4>Qt-1</h4>
                                     <div>
-                                        <p>{match.score.halftime.home}</p>
+                                        <p>{match.scores.home.quarter_1}</p>
                                         <p>-</p>
-                                        <p>{match.score.halftime.away}</p>
+                                        <p>{match.scores.away.quarter_1}</p>
+                                    </div>
+                                </div>
+                                <div className={style.half_time}>
+                                    <h4>Qt-2</h4>
+                                    <div>
+                                        <p>{match.scores.home.quarter_2}</p>
+                                        <p>-</p>
+                                        <p>{match.scores.away.quarter_2}</p>
+                                    </div>
+                                </div>
+                                <div className={style.half_time}>
+                                    <h4>Qt-3</h4>
+                                    <div>
+                                        <p>{match.scores.home.quarter_3}</p>
+                                        <p>-</p>
+                                        <p>{match.scores.away.quarter_3}</p>
+                                    </div>
+                                </div>
+                                <div className={style.half_time}>
+                                    <h4>Qt-4</h4>
+                                    <div>
+                                        <p>{match.scores.home.quarter_4}</p>
+                                        <p>-</p>
+                                        <p>{match.scores.away.quarter_4}</p>
                                     </div>
                                 </div>
                                 {
-                                    match.score.fulltime.home !== null && <div className={style.full_time}>
+                                    match.scores.home.total !== null && <div className={style.full_time}>
                                         <h4>FT</h4>
                                         <div>
-                                            <p>{match.score.fulltime.home}</p>
+                                            <p>{match.scores.home.total}</p>
                                             <p>-</p>
-                                            <p>{match.score.fulltime.home}</p>
+                                            <p>{match.scores.away.total}</p>
                                         </div>
                                     </div>
                                 }
@@ -107,13 +131,8 @@ const page = () => {
 
                         <section className={style.section_stadium}>
                             <h2>Stadium Information</h2>
-                            <p><strong>Name:</strong> {match.fixture.venue.name}</p>
-                            <p><strong>Location:</strong> {match.fixture.venue.city}</p>
-                        </section>
-
-                        <section className={style.section_stadium}>
-                            <h2>Referee Name</h2>
-                            <p><strong>Referee:</strong> {match.fixture.referee}</p>
+                            <p><strong>Name:</strong> {match.venue}</p>
+                            <p><strong>Location:</strong> {match.venue}</p>
                         </section>
 
                         <section className={style.section}>

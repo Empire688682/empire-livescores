@@ -7,13 +7,13 @@ import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
 
-const MatchAfterBasketball = ({ team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
+const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
 
     const handleClick = () => {
         if (id) {
-          router.push(`/football/${id}`);
+          router.push(`/basketball/${id}`);
         } else {
           console.error("ID is undefined");
         }
