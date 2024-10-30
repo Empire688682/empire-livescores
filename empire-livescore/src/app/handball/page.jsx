@@ -30,7 +30,7 @@ const page = () => {
       }
       if (response) {
         setData(response.data.response);
-        localStorage.setItem("handball", JSON.stringify(response.data.response))
+        localStorage.setItem("handball", JSON.stringify(response.data.response));
       }
     } catch (error) {
       setNetworkError(error.message);

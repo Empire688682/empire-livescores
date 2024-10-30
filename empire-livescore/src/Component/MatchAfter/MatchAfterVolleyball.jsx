@@ -5,11 +5,24 @@ import Image from 'next/image';
 import manchester from '../../public/manchester_united.png';
 import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
+import { useRouter } from 'next/navigation';
 
-const MatchAfterVolleyball = ({ team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
+const MatchAfterVolleyball = ({ team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2, id }) => {
     const [starClick, setStarClick] = useState(false);
+    const router = useRouter();
+
+    const handleClick = () =>{
+        if(id){
+            router.push(`/volleyball/${id}`);
+        }
+        else{
+            console.log("No id data found");
+        }
+    }
+
+
     return (
-        <div className={style.match_after}>
+        <div className={style.match_after} onClick={handleClick}>
             <div className={style.left_Content}>
                 <div className={style.time}>
                     {

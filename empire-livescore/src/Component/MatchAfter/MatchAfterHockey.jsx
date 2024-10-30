@@ -10,7 +10,6 @@ import { useRouter } from 'next/navigation';
 const MatchAfterHockey = ({ team1Logo, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2, id }) => {
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
-    console.log(id[0]);
 
     const handleClick = () =>{
         if(id){

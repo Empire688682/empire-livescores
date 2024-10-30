@@ -30,6 +30,7 @@ const page = () => {
       }
       if (response) {
         setData(response.data.response);
+        localStorage.setItem("volleyball", JSON.stringify(response.data.response))
       }
     } catch (error) {
       setNetworkError(error.message);
@@ -73,7 +74,7 @@ const page = () => {
                             return (
                               <div key={id}>
                                 <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterVolleyball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} />
+                                <MatchAfterVolleyball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} id={data.id}/>
                               </div>
                             )
                           })
