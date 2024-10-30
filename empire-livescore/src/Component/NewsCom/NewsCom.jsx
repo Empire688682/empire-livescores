@@ -4,6 +4,7 @@ import style from './NewsCom.module.css';
 import { IoIosArrowForward } from "react-icons/io";
 import Image from 'next/image';
 import news_Img from '../../public/news_img.jpg';
+import NewsAPI from 'newsapi';
 
 const NewsCom = () => {
     return (
