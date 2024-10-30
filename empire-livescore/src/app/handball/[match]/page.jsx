@@ -50,6 +50,8 @@ const page = () => {
         fetchMatch();
     }, [data]);
 
+    console.log(match);
+
     return (
         <div className={style.matchContainer}>
             {
