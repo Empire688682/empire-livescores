@@ -131,7 +131,7 @@ const page = () => {
                         </section>
                     </>
                     :
-                    <h3>Loading......</h3>
+                    <p className={style.loadingText}>Loading</p>
             }
         </div>
     );
