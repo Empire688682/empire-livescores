@@ -1,16 +1,18 @@
 'use client'
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './volleyball.module.css';
 import MainDate from '@/Component/MainDate/MainDate';
 import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
 import MatchAfterVolleyball from '@/Component/MatchAfter/MatchAfterVolleyball';
+import { useGlobalContext } from '@/Component/Context';
 
 const page = () => {
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState('');
+  const { matchCategory, setMatchCategory } = useGlobalContext();
 
   const fetchData = async () => {
     setLoding(true);
@@ -57,7 +59,7 @@ const page = () => {
               networkError ? <div className={style.limitExceeded}>
                 <h2>{networkError} 🚫</h2>
                 <p>Please check your connection and try again.</p>
-                </div>
+              </div>
                 :
                 <>
                   {
@@ -71,12 +73,14 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            return (
-                              <div key={id}>
-                                <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterVolleyball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} id={data.id}/>
-                              </div>
-                            )
+                            if (matchCategory === "All" || matchCategory === "Live" && data.status.short !== "FT" && data.scores.home !== null) {
+                              return (
+                                <div key={id}>
+                                  <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
+                                  <MatchAfterVolleyball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} id={data.id} />
+                                </div>
+                              )
+                            }
                           })
                         }
                       </>
