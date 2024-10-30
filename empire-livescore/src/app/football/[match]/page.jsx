@@ -63,9 +63,11 @@ const page = () => {
                             </div>
                             {
                                 match.score.penalty.home !== null ? <div className={style.scores}>
-                                    <p>{match.goals.home} - {match.goals.away}</p>
+                                    <p>{match.score.penalty.home} - {match.score.penalty.away}</p>
                                     <p style={{ color: "tomato" }}>
-                                        {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed}'
+                                        {
+                                            match.fixture.status.long === "Match Finished" ? "FT" : match.fixture.status.elapsed
+                                        }
                                     </p>
                                     <p style={{ color: "tomato" }}>
                                         {match.fixture.status.short === "PEN" ? "PEN" : null}
@@ -73,7 +75,7 @@ const page = () => {
                                 </div>
                                     :
                                     <div className={style.scores}>
-                                        <p>{match.score.penalty.home} - {match.score.penalty.away}</p>
+                                        <p>{match.goals.home} - {match.goals.away}</p>
                                         <p style={{ color: "tomato" }}>
                                             {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed}'
                                         </p>

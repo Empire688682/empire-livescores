@@ -1,12 +1,14 @@
 'use client'
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import style from './football.module.css';
 import MainDate from '@/Component/MainDate/MainDate';
 import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
 import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
+import { useGlobalContext } from '@/Component/Context';
 
 const page = () => {
+  const { matchCategory, setMatchCategory } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
@@ -56,7 +58,7 @@ const page = () => {
               networkError ? <div className={style.limitExceeded}>
                 <h2>{networkError} 🚫</h2>
                 <p>Please check your connection and try again.</p>
-                </div>
+              </div>
                 :
                 <>
                   {
@@ -70,12 +72,14 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            return (
-                              <div key={id}>
-                                <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} timeCount={data.fixture.status.elapsed} team1={data.teams.home.name} id={data.fixture.id} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} />
-                              </div>
-                            )
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null) {
+                              return (
+                                <div key={id}>
+                                  <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
+                                  <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} id={data.fixture.id} timeCount={data.fixture.status.elapsed} />
+                                </div>
+                              )
+                            }
                           })
                         }
                       </>

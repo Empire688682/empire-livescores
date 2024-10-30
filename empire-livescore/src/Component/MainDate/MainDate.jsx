@@ -1,5 +1,7 @@
+'use client'
 import React from 'react';
 import style from './MainDate.module.css';
+import { useGlobalContext } from '../Context';
 
 const MainDate = () => {
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -7,6 +9,7 @@ const MainDate = () => {
   const today = new Date();
   const month = new Date().getMonth();
   const currentDayIndex = today.getDay(); // Get today's index (0-6)
+  const {matchCategory, setMatchCategory} = useGlobalContext()
 
   // Function to generate the dates of the current week
   const getWeekDates = () => {
@@ -19,11 +22,20 @@ const MainDate = () => {
 
   const weekDates = getWeekDates();
 
+  const handCat = () =>{
+    if(matchCategory === 'Live'){
+      setMatchCategory('All')
+    }
+    else{
+      setMatchCategory("Live")
+    }
+  }
+
   return (
     <div className={style.main_Data}>
       <div className={style.days}>
-        <div className={style.live}>
-          <p>Live</p>
+        <div className={matchCategory === 'Live' ? `${style.live} ${style.active}` : style.live}>
+          <p onClick={ handCat}>Live</p>
         </div>
         {days.map((day, index) => (
           <div key={day} className={style.day}>
