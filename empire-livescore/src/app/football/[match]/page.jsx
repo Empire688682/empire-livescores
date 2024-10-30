@@ -61,15 +61,27 @@ const page = () => {
                                 <Image src={match.teams.home.logo} alt='logo' width={50} height={50} className={style.teamLogo} />
                                 <p>{match.teams.home.name}</p>
                             </div>
-                            <div className={style.scores}>
-                                <p>{match.goals.home} - {match.goals.away}</p>
-                                <p style={{ color: "tomato" }}>
-                                    {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed}'
-                                </p>
-                                <p style={{ color: "tomato" }}>
-                                {match.fixture.status.short === "HT" ? "HT" : null}
-                                </p>
-                            </div>
+                            {
+                                match.score.penalty.home !== null ? <div className={style.scores}>
+                                    <p>{match.goals.home} - {match.goals.away}</p>
+                                    <p style={{ color: "tomato" }}>
+                                        {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed}'
+                                    </p>
+                                    <p style={{ color: "tomato" }}>
+                                        {match.fixture.status.short === "PEN" ? "PEN" : null}
+                                    </p>
+                                </div>
+                                    :
+                                    <div className={style.scores}>
+                                        <p>{match.score.penalty.home} - {match.score.penalty.away}</p>
+                                        <p style={{ color: "tomato" }}>
+                                            {match.fixture.status.short === "FT" ? "FT" : match.fixture.status.elapsed}'
+                                        </p>
+                                        <p style={{ color: "tomato" }}>
+                                            {match.fixture.status.short === "HT" ? "HT" : null}
+                                        </p>
+                                    </div>
+                            }
                             <div>
                                 <Image src={match.teams.away.logo} alt='logo' width={50} height={50} className={style.teamLogo} />
                                 <p>{match.teams.away.name}</p>
@@ -98,7 +110,17 @@ const page = () => {
                                         <div>
                                             <p>{match.score.fulltime.home}</p>
                                             <p>-</p>
-                                            <p>{match.score.fulltime.home}</p>
+                                            <p>{match.score.fulltime.away}</p>
+                                        </div>
+                                    </div>
+                                }
+                                {
+                                    match.score.penalty.home !== null && <div className={style.full_time}>
+                                        <h4>PEN</h4>
+                                        <div>
+                                            <p>{match.score.penalty.home}</p>
+                                            <p>-</p>
+                                            <p>{match.score.penalty.away}</p>
                                         </div>
                                     </div>
                                 }
