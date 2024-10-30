@@ -25,7 +25,7 @@ const page = () => {
         }
 
       });
-      if (response.data.errors.requests.length > 0) {
+      if (response.data.errors > 0) {
         setLimitExceeded(true);
       }
       if (response) {

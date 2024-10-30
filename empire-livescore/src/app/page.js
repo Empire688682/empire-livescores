@@ -25,7 +25,6 @@ const page = () => {
         }
 
       });
-      console.log("RESPONSE:", response);
       if (response.data.errors > 0) {
         setLimitExceeded(true);
       }
@@ -40,7 +39,6 @@ const page = () => {
       setLoding(false);
     }
   };
-  console.log("DATA:", data);
 
   useEffect(() => {
     fetchData();
@@ -49,7 +47,7 @@ const page = () => {
     <div className={style.page}>
       <MainDate />
       {
-        loading ? <h2>LOADING.....</h2>
+        loading ? <p className={style.loadingText}>Loading</p>
           :
           <>
             {
@@ -73,7 +71,7 @@ const page = () => {
                             return (
                               <div key={id}>
                                 <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} />
+                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} id={data.fixture.id} timeCount={data.fixture.status.elapsed} />
                               </div>
                             )
                           })

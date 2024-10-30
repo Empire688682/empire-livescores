@@ -1,0 +1,142 @@
+.matchContainer {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  .matchContainer p, .matchContainer strong{
+    font-size: 14px;
+  }
+
+  .matchContainer  section{
+    margin: 30px 0;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header div{
+    flex-basis: 50%;
+  }
+
+  .scores{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .scores p{
+    font-size: 20px;
+    font-weight: bolder;
+  }
+  
+  .teamLogo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .section {
+    margin-top: 20px;
+  }
+  .section_stadium{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .section_stadium h2{
+    text-align: start;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  .notice_section {
+    margin-top: 20px;
+    position: relative;
+  }
+  .cross_icon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin-right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    border: 0.5px solid var(--text-color);
+    margin-top: 20px;
+  }
+
+  .section h2, .notice_section h2{
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .notice_section.clear{
+    display: none;
+  }
+  
+  .statsList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .half_time h4, .full_time h4{
+    text-align: center;
+  }
+
+  .half_time div, .full_time div{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .coaches{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .coaches div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loadingText {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-size: 1.5em;
+    font-weight: bold;
+    position: relative;
+    color: var(--white);
+    margin-top: 20px;
+  }
+  
+  .loadingText::before {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 6px solid white;
+    border-top: var(--active) 6px solid;
+    animation: spin 1s linear infinite;
+    top: 0;
+    left: 0;
+  }
+  
