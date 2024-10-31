@@ -62,7 +62,7 @@ const page = () => {
                                 <p>{match.teams.home.name}</p>
                             </div>
                             <div className={style.scores}>
-                                <p>{match.scores.home} - {match.scores.home}</p>
+                                <p>{match.scores.home} - {match.scores.away}</p>
                                 <p style={{ color: "tomato" }}>
                                     {match.status.short === "FT" ? "FT" : match.status.short === "NS" ? "NS" : null}'
                                 </p>

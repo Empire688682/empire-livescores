@@ -30,6 +30,7 @@ const page = () => {
       }
       if (response) {
         setData(response.data.response);
+        console.log(response);
       }
     } catch (error) {
       setNetworkError(error.message);
@@ -39,6 +40,7 @@ const page = () => {
       setLoding(false);
     }
   };
+  console.log(data);
 
   useEffect(() => {
     fetchData();
