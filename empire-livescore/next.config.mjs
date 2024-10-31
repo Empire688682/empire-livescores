@@ -4,7 +4,7 @@ const nextConfig = {
       domains: ['media.api-sports.io'],
     },
     webpack: (config) => {
-      config.cache = false;
+      config.cache = true;
       return config;
     },
   };
