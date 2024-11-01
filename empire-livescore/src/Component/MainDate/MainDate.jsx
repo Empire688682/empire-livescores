@@ -9,7 +9,7 @@ const MainDate = () => {
   const today = new Date();
   const month = new Date().getMonth();
   const currentDayIndex = today.getDay(); // Get today's index (0-6)
-  const {matchCategory, setMatchCategory} = useGlobalContext()
+  const {matchCategory, setMatchCategory, setTheCountry} = useGlobalContext()
 
   // Function to generate the dates of the current week
   const getWeekDates = () => {
@@ -22,20 +22,22 @@ const MainDate = () => {
 
   const weekDates = getWeekDates();
 
-  const handCat = () =>{
+  const handleLiveClick = () =>{
     if(matchCategory === 'Live'){
-      setMatchCategory('All')
+      setMatchCategory('All');
+      setTheCountry("");
     }
     else{
-      setMatchCategory("Live")
+      setMatchCategory("Live");
+      setTheCountry("");
     }
-  }
+  };
 
   return (
     <div className={style.main_Data}>
       <div className={style.days}>
         <div className={matchCategory === 'Live' ? `${style.live} ${style.active}` : style.live}>
-          <p onClick={ handCat}>Live</p>
+          <p onClick={ handleLiveClick}>Live</p>
         </div>
         {days.map((day, index) => (
           <div key={day} className={style.day}>

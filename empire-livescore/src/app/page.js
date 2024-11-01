@@ -35,11 +35,11 @@ const page = () => {
         }
 
       });
-      if (response.data.errors > 0) {
+      if (response.data.errors.requests === "You have reached the request limit for the day, Go to https://dashboard.api-football.com to upgrade your plan.") {
         setLimitExceeded(true);
       }
       if (response) {
-        console.log("DATA:", response.data.response);
+        console.log("DATA:", response);
         setData(response.data.response);
         localStorage.setItem("football", JSON.stringify(response.data.response));
       }
