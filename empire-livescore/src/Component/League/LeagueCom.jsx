@@ -1,10 +1,11 @@
-import React from 'react';
+'use client'
+import React, { useEffect } from 'react';
 import style from './LeagueCom.module.css';
 import Image from 'next/image';
 import { IoIosArrowForward } from "react-icons/io";
-import premier_league from '../../public/premier-league.png';
 
 const LeagueCom = ({country,league,leagueLogo}) => {
+  
   return (
     <div className={style.league}>
       <div className={style.header}>
