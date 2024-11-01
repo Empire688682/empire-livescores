@@ -12,7 +12,14 @@ const page = () => {
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState('');
-  const { matchCategory, setMatchCategory } = useGlobalContext();
+  const { matchCategory, setMatchCategory, setTheCountry, theCountry } = useGlobalContext();
+
+  const handleCountryClick = (country) =>{
+    setTheCountry(country);
+    setMatchCategory("")
+  }
+  console.log(matchCategory)
+  console.log(theCountry, theCountry)
   const fetchData = async () => {
     setLoding(true);
     try {
@@ -71,10 +78,12 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            if (matchCategory === "All" || matchCategory === "Live" && data.status.long !== "Not Started" && data.scores.home !== null && data.scores.away !== null) {
+                            if (matchCategory === "All" || matchCategory === "Live" && data.status.long !== "Not Started" && data.scores.home !== null && data.scores.away !== null || theCountry === data.country.name) {
                               return (
                                 <div key={id}>
-                                  <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
+                                 <div onClick={() =>handleCountryClick(data.country.name)}>
+                                 <LeagueCom country={data.country.name} league={data.league.name} leagueLogo={data.league.logo} />
+                                 </div>
                                   <MatchAfterHandball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} id={data.id} />
                                 </div>
                               )
