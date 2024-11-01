@@ -12,12 +12,7 @@ const page = () => {
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState('');
-  const { matchCategory, setMatchCategory, setTheCountry, theCountry } = useGlobalContext();
-
-  const handleCountryClick = (country) =>{
-    setTheCountry(country);
-    setMatchCategory("")
-  }
+  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
 
   const fetchData = async () => {
     setLoding(true);

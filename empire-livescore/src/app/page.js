@@ -6,21 +6,13 @@ import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
 import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
 import { useGlobalContext } from '@/Component/Context';
-import dotenv from 'dotenv';
-import { set } from 'mongoose';
-dotenv.config()
 
 const page = () => {
-  const { matchCategory, setMatchCategory, setTheCountry, theCountry } = useGlobalContext();
+  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState('');
-
-  const handleCountryClick = (country) =>{
-    setTheCountry(country);
-    setMatchCategory("")
-  }
 
   const fetchData = async () => {
     setLoding(true);
@@ -35,11 +27,11 @@ const page = () => {
         }
 
       });
-      if (response.data.errors.requests === "You have reached the request limit for the day, Go to https://dashboard.api-football.com to upgrade your plan.") {
+      if (response.data.errors > 0) {
         setLimitExceeded(true);
       }
       if (response) {
-        console.log("DATA:", response);
+        console.log("DATA:", response.data.response);
         setData(response.data.response);
         localStorage.setItem("football", JSON.stringify(response.data.response));
       }
@@ -80,11 +72,11 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null ||  data.league.country === theCountry ) {
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country) {
                               return (
                                 <div key={id}>
-                                  <div onClick={()=>handleCountryClick(data.league.country)}>
-                                  <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
+                                  <div onClick={() => handleCountryClick(data.league.country)}>
+                                    <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
                                   </div>
                                   <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} id={data.fixture.id} timeCount={data.fixture.status.elapsed} />
                                 </div>

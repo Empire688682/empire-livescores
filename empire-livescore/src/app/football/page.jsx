@@ -8,7 +8,7 @@ import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
 import { useGlobalContext } from '@/Component/Context';
 
 const page = () => {
-  const { matchCategory, setMatchCategory } = useGlobalContext();
+  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
@@ -72,10 +72,12 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null) {
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country) {
                               return (
                                 <div key={id}>
-                                  <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
+                                  <div onClick={() => handleCountryClick(data.league.country)}>
+                                    <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
+                                  </div>
                                   <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} id={data.fixture.id} timeCount={data.fixture.status.elapsed} />
                                 </div>
                               )

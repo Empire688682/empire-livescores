@@ -12,14 +12,8 @@ const page = () => {
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState('');
-  const { matchCategory, setMatchCategory, setTheCountry, theCountry } = useGlobalContext();
+  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
 
-  const handleCountryClick = (country) =>{
-    setTheCountry(country);
-    setMatchCategory("")
-  }
-  console.log(matchCategory)
-  console.log(theCountry, theCountry)
   const fetchData = async () => {
     setLoding(true);
     try {
@@ -87,9 +81,6 @@ const page = () => {
                                   <MatchAfterHandball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} team2={data.teams.away.name} time={data.time} status={data.status.short} teamGoal1={data.scores.home} teamGoal2={data.scores.away} id={data.id} />
                                 </div>
                               )
-                            }
-                            else{
-                              return <p style={{color:"white"}} key={id}>No Live Match</p>
                             }
                            
                           })
