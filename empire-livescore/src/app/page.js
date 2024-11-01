@@ -5,12 +5,16 @@ import MainDate from '@/Component/MainDate/MainDate';
 import LeagueCom from '@/Component/League/LeagueCom';
 import axios from 'axios';
 import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
+import { useGlobalContext } from '@/Component/Context';
+import dotenv from 'dotenv';
+dotenv.config()
 
 const page = () => {
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState('');
+  const {matchCategory, setMatchCategory} = useGlobalContext();
 
   const fetchData = async () => {
     setLoding(true);
@@ -18,7 +22,7 @@ const page = () => {
       const response = await axios.get("https://v3.football.api-sports.io/fixtures", {
         headers: {
           "x-rapidapi-host": "v3.football.api-sports.io",
-          "x-rapidapi-key": process.env.NEXT_PUBLIC_API
+          "x-rapidapi-key": process.env.NEXT_PUBLIC_API,
         },
         params: {
           date: new Date().toISOString().slice(0, 10)
@@ -40,7 +44,6 @@ const page = () => {
       setLoding(false);
     }
   };
-  console.log(data);
 
   useEffect(() => {
     fetchData();
@@ -70,12 +73,14 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            return (
-                              <div key={id}>
-                                <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
-                                <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} id={data.fixture.id} timeCount={data.fixture.status.elapsed} />
-                              </div>
-                            )
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null) {
+                              return (
+                                <div key={id}>
+                                  <LeagueCom country={data.league.country} league={data.league.name} leagueLogo={data.league.logo} />
+                                  <MatchAfterFootball team1Logo={data.teams.home.logo} team2Logo={data.teams.away.logo} team1={data.teams.home.name} status={data.fixture.status.short} teamGoal1={data.goals.home} teamGoal2={data.goals.away} team2={data.teams.away.name} time={data.fixture.date} id={data.fixture.id} timeCount={data.fixture.status.elapsed} />
+                                </div>
+                              )
+                            }
                           })
                         }
                       </>

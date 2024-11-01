@@ -10,6 +10,7 @@ export const AppProvider = ({ children }) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showSideMenu, setShowSideMenu] = useState(false);
   const [matchCategory, setMatchCategory] = useState("All");
+  const [country, setCountry] = useState("All");
   return (
     <AppContext.Provider value={{
       showSidebar,
