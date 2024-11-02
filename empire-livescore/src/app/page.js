@@ -76,7 +76,7 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country || league === data.league.name) {
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country || league.league === data.league.name && league.country === data.league.country ) {
                               return (
                                 <div key={id}>
                                   <div onClick={() => handleCountryClick(data.league.country)}>

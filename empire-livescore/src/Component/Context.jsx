@@ -11,7 +11,7 @@ export const AppProvider = ({ children }) => {
   const [showSideMenu, setShowSideMenu] = useState(false);
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
-  const [league, setLeague] = useState("");
+  const [league, setLeague] = useState({});
 
   const handleCountryClick = (country) => {
     setTheCountry(country);

@@ -86,7 +86,7 @@ const SideBar = () => {
                 <div className={style.colum_content}>
                     {
                         sideBarData[2].competitions.map((competition) => (
-                            <div key={competition.title} className={style.colum_cart} onClick={()=> setLeague(competition.title)}>
+                            <div key={competition.title} className={style.colum_cart} onClick={()=> setLeague({league:competition.title, country:competition.country})}>
                                 <div className={style.imgCon}>
                                     <Image sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" src={competition.img} alt='Logo' fill />
                                 </div>
