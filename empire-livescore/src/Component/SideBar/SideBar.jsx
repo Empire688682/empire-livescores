@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { useGlobalContext } from '../Context';
 
 const SideBar = () => {
-    const {showSidebar, setShowSidebar} = useGlobalContext();
+    const {showSidebar, setShowSidebar, handleCountryClick} = useGlobalContext();
     return (
         <div className={showSidebar? `${style.side_bar} ${style.display}`:style.side_bar}>
             <div className={style.header}>
@@ -34,7 +34,7 @@ const SideBar = () => {
                         sideBarData[0].regions.map((region) => (
                             <div key={region.title} className={style.colum_cart}>
                                 <span className={`fi ${region.icon}`}></span>
-                                <span className={style.colum_title}>
+                                <span onClick={()=>handleCountryClick(region.title)} className={style.colum_title}>
                                     {region.title}
                                 </span>
                             </div>
