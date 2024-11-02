@@ -10,6 +10,11 @@ import { useGlobalContext } from '../Context';
 
 const SideBar = () => {
     const {showSidebar, setShowSidebar, handleCountryClick} = useGlobalContext();
+
+    const handleSidebarClick = (country) =>{
+        handleCountryClick(country);
+        setShowSidebar(false)
+    }
     return (
         <div className={showSidebar? `${style.side_bar} ${style.display}`:style.side_bar}>
             <div className={style.header}>
@@ -32,7 +37,7 @@ const SideBar = () => {
                 <div className={style.colum_content}>
                     {
                         sideBarData[0].regions.map((region) => (
-                            <div key={region.title} className={style.colum_cart} onClick={()=>handleCountryClick(region.title)}>
+                            <div key={region.title} className={style.colum_cart} onClick={()=>handleSidebarClick(region.title)}>
                                 <span className={`fi ${region.icon}`}></span>
                                 <span className={style.colum_title}>
                                     {region.title}
