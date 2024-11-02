@@ -32,9 +32,9 @@ const SideBar = () => {
                 <div className={style.colum_content}>
                     {
                         sideBarData[0].regions.map((region) => (
-                            <div key={region.title} className={style.colum_cart}>
+                            <div key={region.title} className={style.colum_cart} onClick={()=>handleCountryClick(region.title)}>
                                 <span className={`fi ${region.icon}`}></span>
-                                <span onClick={()=>handleCountryClick(region.title)} className={style.colum_title}>
+                                <span className={style.colum_title}>
                                     {region.title}
                                 </span>
                             </div>
