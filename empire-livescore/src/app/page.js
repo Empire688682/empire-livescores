@@ -8,7 +8,7 @@ import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
 import { useGlobalContext } from '@/Component/Context';
 
 const page = () => {
-  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
+  const { matchCategory, handleCountryClick, theCountry, league, setLeague } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
@@ -47,6 +47,10 @@ const page = () => {
   useEffect(() => {
     fetchData();
   }, [])
+
+  console.log("league", league)
+  console.log("data", data)
+
   return (
     <div className={style.page}>
       <MainDate />
@@ -72,7 +76,7 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country) {
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country || league === data.league.name) {
                               return (
                                 <div key={id}>
                                   <div onClick={() => handleCountryClick(data.league.country)}>

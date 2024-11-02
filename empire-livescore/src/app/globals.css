@@ -49,8 +49,11 @@
   width: 100%;
   padding: 0 5%;
 }
-.sidebar{
+.sidebarCon{
   flex-basis: 20%;
+}
+.sidebar{
+  width: 100%;
 }
 .main{
   flex-basis: 70%;
