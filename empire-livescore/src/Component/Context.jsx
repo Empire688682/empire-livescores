@@ -17,6 +17,13 @@ export const AppProvider = ({ children }) => {
     setTheCountry(country);
     setMatchCategory("")
   }
+  const handleLeagueClick = (leagueData) => {
+    setShowSidebar(false);
+    setMatchCategory("");
+    setLeague({leagueData})
+  }
+
+  console.log(league.leagueData);
 
   return (
     <AppContext.Provider value={{
@@ -30,7 +37,7 @@ export const AppProvider = ({ children }) => {
       setTheCountry,
       handleCountryClick,
       league, 
-      setLeague
+      handleLeagueClick
     }}>
       {children}
     </AppContext.Provider>

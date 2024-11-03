@@ -48,9 +48,6 @@ const page = () => {
     fetchData();
   }, [])
 
-  console.log("league", league)
-  console.log("data", data)
-
   return (
     <div className={style.page}>
       <MainDate />
@@ -76,7 +73,7 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country || league.league === data.league.name && league.country === data.league.country ) {
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country || data.league.name === league.league &&  data.league.country ===league.country ) {
                               return (
                                 <div key={id}>
                                   <div onClick={() => handleCountryClick(data.league.country)}>
