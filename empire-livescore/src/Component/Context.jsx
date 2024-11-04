@@ -19,18 +19,20 @@ export const AppProvider = ({ children }) => {
     setMatchCategory("")
   }
 
-  const handleFavClick = (data) =>{
-    data.map((item)=>{
-      setFav((prev)=>{
-        if(!prev.id){
-          return prev.id
-        }
-        else{
-          delete(prev.id);
-        }
-      })
+  const handleFavClick = (id) =>{
+    setFav((prev)=>{
+      const updateFav = {...prev};
+      if(!updateFav[id]){
+        updateFav[id] = id
+      }
+      else{
+        delete updateFav[id];
+      }
+      return updateFav;
     })
+    console.log(id);
   }
+  console.log(fav);
 
   return (
     <AppContext.Provider value={{
