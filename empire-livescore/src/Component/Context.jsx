@@ -19,6 +19,15 @@ export const AppProvider = ({ children }) => {
     setMatchCategory("")
   }
 
+  useEffect(()=>{
+    if(typeof window !== "undefined"){
+      const storedFav = JSON.parse(localStorage.getItem("favourite"));
+      if(storedFav){
+        setFav(storedFav);
+      }
+    }
+  },[])
+
   const handleFavClick = (id) =>{
     setFav((prev)=>{
       const updateFav = {...prev};
@@ -29,10 +38,12 @@ export const AppProvider = ({ children }) => {
         delete updateFav[id];
       }
       return updateFav;
-    })
-    console.log(id);
+    });
   }
-  console.log(fav);
+
+  useEffect(()=>{
+    localStorage.setItem("favourite", JSON.stringify(fav));
+  }, [fav])
 
   return (
     <AppContext.Provider value={{
@@ -48,6 +59,7 @@ export const AppProvider = ({ children }) => {
       league, 
       setLeague,
       handleFavClick,
+      fav
     }}>
       {children}
     </AppContext.Provider>

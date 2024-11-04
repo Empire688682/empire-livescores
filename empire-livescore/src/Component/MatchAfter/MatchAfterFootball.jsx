@@ -10,7 +10,7 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
-    const {handleFavClick} = useGlobalContext();
+    const {handleFavClick, fav} = useGlobalContext();
 
     const handleClick = () => {
         if (id) {
@@ -22,12 +22,17 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
 
       const handleStarClick = (id) =>{
         handleFavClick(id);
-        setStarClick(!starClick);
+        if(fav.id){
+            setStarClick(true)
+        }
+        else{
+            setStarClick(false)
+        }
       }
 
     return (
-        <div className={style.match_after} onClick={handleClick}>
-            <div className={style.left_Content}>
+        <div className={style.match_after}>
+            <div className={style.left_Content} onClick={handleClick}>
                 <div className={style.time}>
                     {
                         teamGoal1 !== null
