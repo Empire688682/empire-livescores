@@ -1,16 +1,18 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './MatchAfter.module.css';
 import Image from 'next/image';
-import manchester from '../../public/manchester_united.png';
-import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
+import { useGlobalContext } from '../Context';
 
 const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
+    const {handleFavClick} = useGlobalContext();
+    const 
+
     const handleClick = () => {
         if (id) {
           router.push(`/football/${id}`);
@@ -18,6 +20,17 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
           console.error("ID is undefined");
         }
       };
+
+      useEffect(()=>{
+        if(typeof window !== "undefined"){
+
+        }
+      },[])
+
+      const handleStarClick = () =>{
+        handleFavClick();
+        setStarClick(!starClick);
+      }
 
     return (
         <div className={style.match_after} onClick={handleClick}>

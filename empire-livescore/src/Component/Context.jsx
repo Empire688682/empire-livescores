@@ -12,10 +12,24 @@ export const AppProvider = ({ children }) => {
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
+  const [fav, setFav] = useState([]);
 
   const handleCountryClick = (country) => {
     setTheCountry(country);
     setMatchCategory("")
+  }
+
+  const handleFavClick = (data, id) =>{
+    data.map((item)=>{
+      setFav((prev)=>{
+        if(!prev.id){
+          return prev.id
+        }
+        else{
+          delete(prev.id);
+        }
+      })
+    })
   }
 
   return (
@@ -31,6 +45,7 @@ export const AppProvider = ({ children }) => {
       handleCountryClick,
       league, 
       setLeague,
+      handleFavClick,
     }}>
       {children}
     </AppContext.Provider>
