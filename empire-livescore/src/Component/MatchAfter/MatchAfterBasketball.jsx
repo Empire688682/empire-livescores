@@ -22,16 +22,13 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
       const handleStarClick = (id) =>{
         handleFavClick(id);
         if(fav){
-            Object.values(fav).forEach((favId)=>{
-                if(id === favId){
-                    setStarClick(false);
-                }
-                else{
-                    setStarClick(true)
-                }
-            })
-        }
+            console.log('FAV:', fav)
+            const isFavorite  = Object.keys(fav).some((favId) => favId === String(id));
+            console.log("isFavorite :", isFavorite, id );
+            return isFavorite
+        }return false;
       }
+
 
     return (
         <div className={style.match_after}>
