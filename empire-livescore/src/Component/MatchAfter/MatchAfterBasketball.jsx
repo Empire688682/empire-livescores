@@ -2,26 +2,40 @@
 import React, { useState } from 'react';
 import style from './MatchAfter.module.css';
 import Image from 'next/image';
-import manchester from '../../public/manchester_united.png';
-import chelsea from '../../public/chelsea.png';
 import { CiStar } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
+import { useGlobalContext } from '../Context';
 
 const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
+    const {handleFavClick, fav} = useGlobalContext();
 
     const handleClick = () => {
         if (id) {
-          router.push(`/basketball/${id}`);
+          router.push(`/football/${id}`);
         } else {
           console.error("ID is undefined");
         }
       };
 
+      const handleStarClick = (id) =>{
+        handleFavClick(id);
+        if(fav){
+            Object.values(fav).forEach((favId)=>{
+                if(id === favId){
+                    setStarClick(false);
+                }
+                else{
+                    setStarClick(true)
+                }
+            })
+        }
+      }
+
     return (
-        <div className={style.match_after} onClick={handleClick}>
-            <div className={style.left_Content}>
+        <div className={style.match_after}>
+            <div className={style.left_Content} onClick={handleClick}>
                 <div className={style.time}>
                     {
                         teamGoal1 !== null
@@ -64,7 +78,7 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
                 </div>
             </div>
             <div className={style.right_Content}>
-                <CiStar onClick={() => setStarClick(!starClick)} className={`${style.star_icon} ${starClick ? style.active : ''}`} />
+                <CiStar onClick={() => handleStarClick(id)} className={`${style.star_icon} ${starClick ? style.active : ''}`} />
             </div>
         </div>
     )

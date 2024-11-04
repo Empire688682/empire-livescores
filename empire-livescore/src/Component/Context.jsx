@@ -1,8 +1,5 @@
 'use client';
-import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-import dotenv from 'dotenv';
-dotenv.config()
 
 const AppContext = React.createContext();
 

@@ -43,8 +43,6 @@ const page = () => {
     }
   };
 
-  console.log(data);
-
   useEffect(() => {
     fetchData();
   }, [])

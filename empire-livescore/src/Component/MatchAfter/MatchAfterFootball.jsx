@@ -22,11 +22,15 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
 
       const handleStarClick = (id) =>{
         handleFavClick(id);
-        if(fav.id){
-            setStarClick(true)
-        }
-        else{
-            setStarClick(false)
+        if(fav){
+            Object.values(fav).forEach((favId)=>{
+                if(id === favId){
+                    setStarClick(false);
+                }
+                else{
+                    setStarClick(true)
+                }
+            })
         }
       }
 
