@@ -9,9 +9,9 @@ import { useGlobalContext } from '../Context';
 const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
+    const [data, setData] = useState([])
     const router = useRouter();
     const {handleFavClick} = useGlobalContext();
-    const 
 
     const handleClick = () => {
         if (id) {
@@ -23,11 +23,16 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
 
       useEffect(()=>{
         if(typeof window !== "undefined"){
-
+            const storedData = JSON.parse(localStorage.getItem("football"));
+            if(storedData){
+                setData(storedData);
+            }
         }
       },[])
 
-      const handleStarClick = () =>{
+      console.log(data);
+
+      const handleStarClick = (data, item) =>{
         handleFavClick();
         setStarClick(!starClick);
       }

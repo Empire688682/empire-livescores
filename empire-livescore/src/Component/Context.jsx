@@ -19,7 +19,7 @@ export const AppProvider = ({ children }) => {
     setMatchCategory("")
   }
 
-  const handleFavClick = (data, id) =>{
+  const handleFavClick = (data) =>{
     data.map((item)=>{
       setFav((prev)=>{
         if(!prev.id){
