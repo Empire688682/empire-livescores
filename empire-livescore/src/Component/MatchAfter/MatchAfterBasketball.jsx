@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import style from './MatchAfter.module.css';
 import Image from 'next/image';
 import { CiStar } from "react-icons/ci";
@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useGlobalContext } from '../Context';
 
 const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
-    const [starClick, setStarClick] = useState(false);
+    const [starClick, setStarClick] = useState({});
     const router = useRouter();
     const {handleFavClick, fav} = useGlobalContext();
 
@@ -22,12 +22,18 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
       const handleStarClick = (id) =>{
         handleFavClick(id);
         if(fav){
-            console.log('FAV:', fav)
             const isFavorite  = Object.keys(fav).some((favId) => favId === String(id));
-            console.log("isFavorite :", isFavorite, id );
+            if(!isFavorite){
+                starClick.push(id)
+            }
+            else{
+                starClick.pop(id);
+            }
             return isFavorite
-        }return false;
-      }
+        }
+      };
+
+      console.log(starClick, "starClick");
 
 
     return (
