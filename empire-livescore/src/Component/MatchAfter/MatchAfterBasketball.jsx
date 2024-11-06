@@ -7,9 +7,13 @@ import { useRouter } from 'next/navigation';
 import { useGlobalContext } from '../Context';
 
 const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
-    const [basketFav, setBasketFav] = useState([]);
+    const [basketFav, setBasketFav] = useState(() => {
+        if (typeof window !== "undefined") {
+            return JSON.parse(localStorage.getItem("basketFav")) || [];
+        }
+        return []
+    });
     const router = useRouter();
-    const { fav,handleFavClick } = useGlobalContext();
 
     const handleClick = () => {
         if (id) {
@@ -18,10 +22,24 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
             console.error("ID is undefined");
         }
     };
+
+    const handleFavClick = (id) => {
+        setBasketFav((prev) => {
+            const updateFav = { ...prev };
+            if (!updateFav[id]) {
+                updateFav[id] = id
+            }
+            else {
+                delete updateFav[id];
+            }
+            return updateFav;
+        });
+    }
+
     // Log basketFav whenever it changes
     useEffect(() => {
-        console.log(fav);
-    }, [fav]);
+        localStorage.setItem("basketFav", JSON.stringify(basketFav))
+    }, [basketFav]);
 
     return (
         <div className={style.match_after}>
@@ -68,9 +86,9 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
                 </div>
             </div>
             <div className={style.right_Content}>
-                <CiStar 
-                    onClick={() => handleFavClick(id)} 
-                    className={`${style.star_icon} ${basketFav[id] ? style.active : ''}`} 
+                <CiStar
+                    onClick={() => handleFavClick(id)}
+                    className={`${style.star_icon} ${basketFav[id] ? style.active : ''}`}
                 />
             </div>
         </div>
