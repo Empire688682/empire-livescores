@@ -21,15 +21,6 @@ export const AppProvider = ({ children }) => {
     setMatchCategory("")
   }
 
-  useEffect(()=>{
-    if(typeof window !== "undefined"){
-      const storedFav = JSON.parse(localStorage.getItem("favourite"));
-      if(storedFav){
-        setFav(storedFav);
-      }
-    }
-  },[])
-
 
   return (
     <AppContext.Provider value={{
