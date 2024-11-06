@@ -9,12 +9,12 @@ export const AppProvider = ({ children }) => {
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
-  const [fav, setFav] = useState(() => {
-    if (typeof window !== "undefined") {
-      return JSON.parse(localStorage.getItem("favourite")) || [];
-    }
-    return []
-  });
+ // const [fav, setFav] = useState(() => {
+   // if (typeof window !== "undefined") {
+   //   return JSON.parse(localStorage.getItem("favourite")) || [];
+   // }
+   // return []
+  //});
 
   const handleCountryClick = (country) => {
     setTheCountry(country);
@@ -30,22 +30,6 @@ export const AppProvider = ({ children }) => {
     }
   },[])
 
-  const handleFavClick = (id) =>{
-    setFav((prev)=>{
-      const updateFav = {...prev};
-      if(!updateFav[id]){
-        updateFav[id] = id
-      }
-      else{
-        delete updateFav[id];
-      }
-      return updateFav;
-    });
-  }
-
-  useEffect(()=>{
-    localStorage.setItem("favourite", JSON.stringify(fav));
-  }, [fav])
 
   return (
     <AppContext.Provider value={{
@@ -60,8 +44,6 @@ export const AppProvider = ({ children }) => {
       handleCountryClick,
       league, 
       setLeague,
-      handleFavClick,
-      fav
     }}>
       {children}
     </AppContext.Provider>
