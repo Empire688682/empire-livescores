@@ -14,7 +14,7 @@ const LeagueCom = ({country,league,leagueLogo}) => {
             <Image
               src={leagueLogo}
               alt='Premier League'
-              ssizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
             />
           </div>
