@@ -58,7 +58,7 @@ const page = () => {
                     <>
                         <div className={style.header}>
                             <div>
-                                <Image src={match.teams.home.logo} alt='logo' width={50} height={50} className={style.teamLogo} />
+                                <Image src={match.teams.home.logo} alt='logo' width={50} height={50} className={style.teamLogo} sizes='(70vw, 70vh)' />
                                 <p>{match.teams.home.name}</p>
                             </div>
                             <div className={style.scores}>
@@ -72,7 +72,7 @@ const page = () => {
                                 </p>
                             </div>
                             <div>
-                                <Image src={match.teams.away.logo} alt='logo' width={50} height={50} className={style.teamLogo} />
+                                <Image src={match.teams.away.logo} alt='logo' width={50} height={50} className={style.teamLogo} sizes='(70vw, 70vh)' />
                                 <p>{match.teams.away.name}</p>
                             </div>
                         </div>
