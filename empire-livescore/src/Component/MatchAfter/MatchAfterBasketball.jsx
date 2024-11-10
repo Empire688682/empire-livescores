@@ -4,15 +4,15 @@ import style from './MatchAfter.module.css';
 import Image from 'next/image';
 import { CiStar } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
-import { useGlobalContext } from '../Context';
 
 const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
     const [basketFav, setBasketFav] = useState(() => {
         if (typeof window !== "undefined") {
-            return JSON.parse(localStorage.getItem("basketFav")) || [];
+            return JSON.parse(localStorage.getItem("basketFav")) || {};
         }
-        return []
+        return {};
     });
+
     const router = useRouter();
 
     const handleClick = () => {
@@ -25,35 +25,32 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
 
     const handleFavClick = (id) => {
         setBasketFav((prev) => {
-            const updateFav = { ...prev };
-            if (!updateFav[id]) {
-                updateFav[id] = id
+            const updatedFav = { ...prev };
+            if (updatedFav[id]) {
+                delete updatedFav[id];
+            } else {
+                updatedFav[id] = true;
             }
-            else {
-                delete updateFav[id];
-            }
-            return updateFav;
+            return updatedFav;
         });
-    }
+    };
 
-    // Log basketFav whenever it changes
+    // Update localStorage whenever basketFav changes
     useEffect(() => {
-        localStorage.setItem("basketFav", JSON.stringify(basketFav))
+        localStorage.setItem("basketFav", JSON.stringify(basketFav));
     }, [basketFav]);
+
+    console.log("basketFav", basketFav);
 
     return (
         <div className={style.match_after}>
             <div className={style.left_Content} onClick={handleClick}>
                 <div className={style.time}>
-                    {
-                        teamGoal1 !== null
-                            ?
-                            <>
-                                <p>{teamGoal1} : {teamGoal2}</p>
-                            </>
-                            :
-                            <p>{time}</p>
-                    }
+                    {teamGoal1 !== null ? (
+                        <p>{teamGoal1} : {teamGoal2}</p>
+                    ) : (
+                        <p>{time}</p>
+                    )}
                     <p>{status}</p>
                 </div>
                 <div className={style.teams}>
