@@ -6,12 +6,7 @@ import { CiStar } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
 
 const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
-    const [basketFav, setBasketFav] = useState(() => {
-        if (typeof window !== "undefined") {
-            return JSON.parse(localStorage.getItem("basketFav")) || {};
-        }
-        return {};
-    });
+    const [basketFav, setBasketFav] = useState({});
 
     const router = useRouter();
 
@@ -26,10 +21,10 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
     const handleFavClick = (id) => {
         setBasketFav((prev) => {
             const updatedFav = { ...prev };
-            if (updatedFav[id]) {
-                delete updatedFav[id];
-            } else {
+            if (!updatedFav[id]) {
                 updatedFav[id] = true;
+            } else {
+                delete updatedFav[id];
             }
             return updatedFav;
         });

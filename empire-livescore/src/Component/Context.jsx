@@ -9,12 +9,6 @@ export const AppProvider = ({ children }) => {
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
-  //const [fav, setFav] = useState(() => {
-   // if (typeof window !== "undefined") {
-     // return JSON.parse(localStorage.getItem("favourite")) || [];
-   // }
-   // return []
- // });
 
   const handleCountryClick = (country) => {
     setTheCountry(country);
