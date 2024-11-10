@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
 import style from './football.module.css';
 import MainDate from '@/Component/MainDate/MainDate';
 import LeagueCom from '@/Component/League/LeagueCom';
@@ -8,7 +8,7 @@ import MatchAfterFootball from '@/Component/MatchAfter/MatchAfterFootball';
 import { useGlobalContext } from '@/Component/Context';
 
 const page = () => {
-  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
+  const { matchCategory, handleCountryClick, theCountry, league, setLeague } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
@@ -47,6 +47,11 @@ const page = () => {
   useEffect(() => {
     fetchData();
   }, [])
+
+  console.log("league", league)
+  console.log("name", league.league)
+  console.log("contry", league.country)
+
   return (
     <div className={style.football}>
       <MainDate />
@@ -72,7 +77,7 @@ const page = () => {
                       <>
                         {
                           data.map((data, id) => {
-                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country) {
+                            if (matchCategory === "All" || matchCategory === "Live" && data.fixture.status.long !== "Match Finished" && data.fixture.status.long !== "Match Suspended" && data.score.halftime.home !== null || theCountry === data.league.country || league.league === data.league.name && league.country === data.league.country ) {
                               return (
                                 <div key={id}>
                                   <div onClick={() => handleCountryClick(data.league.country)}>

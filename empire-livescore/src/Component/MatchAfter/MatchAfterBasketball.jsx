@@ -6,8 +6,6 @@ import { CiStar } from "react-icons/ci";
 import { useRouter } from 'next/navigation';
 
 const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, status, teamGoal1, teamGoal2 }) => {
-    const [basketFav, setBasketFav] = useState({});
-
     const router = useRouter();
 
     const handleClick = () => {
@@ -18,24 +16,6 @@ const MatchAfterBasketball = ({ team1Logo, id, team2Logo, team1, team2, time, st
         }
     };
 
-    const handleFavClick = (id) => {
-        setBasketFav((prev) => {
-            const updatedFav = { ...prev };
-            if (!updatedFav[id]) {
-                updatedFav[id] = true;
-            } else {
-                delete updatedFav[id];
-            }
-            return updatedFav;
-        });
-    };
-
-    // Update localStorage whenever basketFav changes
-    useEffect(() => {
-        localStorage.setItem("basketFav", JSON.stringify(basketFav));
-    }, [basketFav]);
-
-    console.log("basketFav", basketFav);
 
     return (
         <div className={style.match_after}>

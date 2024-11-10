@@ -10,7 +10,6 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
     const timeOnly = new Date(time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     const [starClick, setStarClick] = useState(false);
     const router = useRouter();
-    const {handleFavClick, fav} = useGlobalContext();
 
     const handleClick = () => {
         if (id) {
@@ -19,20 +18,6 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
           console.error("ID is undefined");
         }
       };
-
-      const handleStarClick = (id) =>{
-        handleFavClick(id);
-        if(fav){
-            Object.values(fav).forEach((favId)=>{
-                if(id === favId){
-                    setStarClick(false);
-                }
-                else{
-                    setStarClick(true)
-                }
-            })
-        }
-      }
 
     return (
         <div className={style.match_after}>
@@ -86,7 +71,7 @@ const MatchAfterFootball = ({team1Logo, timeCount, id, team2Logo, team1, team2, 
                 </div>
             </div>
             <div className={style.right_Content}>
-                <CiStar onClick={() => handleStarClick(id)} className={`${style.star_icon} ${starClick ? style.active : ''}`} />
+                <CiStar onClick={() => setStarClick(!starClick)} className={`${style.star_icon} ${starClick ? style.active : ''}`} />
             </div>
         </div>
     )
