@@ -5,7 +5,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'media.api-sports.io',
-        pathname: '/**', // Allows all paths under this domain
+        pathname: '/**', 
       },
     ],
   },
