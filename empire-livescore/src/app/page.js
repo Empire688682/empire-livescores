@@ -51,11 +51,8 @@ const Page = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
-  console.log("league", league);
-  console.log("name", league.league);
-  console.log("contry", league.country);
 
   return (
     <div className={style.page}>
