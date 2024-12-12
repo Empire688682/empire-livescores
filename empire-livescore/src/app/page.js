@@ -53,7 +53,6 @@ const Page = () => {
     fetchData();
   });
 
-
   return (
     <div className={style.page}>
       <MainDate />
