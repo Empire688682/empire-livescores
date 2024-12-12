@@ -68,7 +68,7 @@ const Page = () => {
                 {match.scores.home} - {match.scores.away}
               </p>
               <p style={{ color: "tomato" }}>
-                {match.status.short === "FT" ? "FT" : match.status.elapsed}'
+                {match.status.short === "FT" ? "FT" : match.status.elapsed}.
               </p>
               <p style={{ color: "tomato" }}>
                 {match.status.short === "HT" ? "HT" : null}

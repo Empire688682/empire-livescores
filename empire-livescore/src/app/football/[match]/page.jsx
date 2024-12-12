@@ -86,7 +86,7 @@ const Page = () => {
                   {match.fixture.status.short === "FT"
                     ? "FT"
                     : match.fixture.status.elapsed}
-                  '
+                  .
                 </p>
                 <p style={{ color: "tomato" }}>
                   {match.fixture.status.short === "HT" ? "HT" : null}

@@ -46,7 +46,7 @@ const MatchAfterFootball = ({
           ) : (
             <p>{timeOnly}</p>
           )}
-          {timeCount !== null && status !== "FT" ? <p>{timeCount}`&apos;`</p> : null}
+          {timeCount !== null && status !== "FT" ? <p>{timeCount}.</p> : null}
           <p>{status}</p>
         </div>
         <div className={style.teams}>
