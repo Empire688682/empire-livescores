@@ -1,41 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   background-color: var(--bg-color);
 }
-:root{
-  --navbar-color:#ffffff;
-  --bg-color:rgb(12, 11, 11);
-  --menu-color:black;
-  --text-color:#777777;
-  --footer-bg:#04091E;
-  --link-color:#8490ff;
-  --section-bg:#62bdfc;
+:root {
+  --navbar-color: #ffffff;
+  --bg-color: rgb(12, 11, 11);
+  --menu-color: black;
+  --text-color: #777777;
+  --footer-bg: #04091e;
+  --link-color: #8490ff;
+  --section-bg: #62bdfc;
   --active: #d8460d;
-  --black-color:black;
-  --white:white;
+  --black-color: black;
+  --white: white;
   --mobile-bg: rgba(0, 0, 0, 0.7);
   --blogHome-bg: #f9f9ff;
-  --heading-color:black;
+  --heading-color: black;
 }
 .dark-mode {
-  --navbar-color: rgba(0, 0, 0, 1); 
-  --menu-color:white;      
-  --text-color: #9b9bb1;     
-  --footer-bg: rgba(0, 0, 0, 0.9);     
-  --link-color: rgb(77, 199, 77);     
-  --section-bg:rgb(77, 199, 77);     
-  --black-color: #f9f9ff;  
-  --white: black;        
-  --mobile-bg: rgba(0, 0, 0, 1);   
+  --navbar-color: rgba(0, 0, 0, 1);
+  --menu-color: white;
+  --text-color: #9b9bb1;
+  --footer-bg: rgba(0, 0, 0, 0.9);
+  --link-color: rgb(77, 199, 77);
+  --section-bg: rgb(77, 199, 77);
+  --black-color: #f9f9ff;
+  --white: black;
+  --mobile-bg: rgba(0, 0, 0, 1);
   --bg-color: #ffffff;
-  --heading-color:white;
+  --heading-color: white;
 }
-.layout{
-  width:100% ;
+.layout {
+  width: 100%;
   min-height: 100vh;
   background-color: var(--bg-color);
   display: flex;
@@ -43,16 +43,16 @@
   gap: 20px;
   position: relative;
 }
-.content{
+.content {
   display: flex;
   gap: 20px;
   width: 100%;
   padding: 0 5%;
 }
-.sidebar{
+.sidebar {
   flex-basis: 20%;
 }
-.main{
+.main {
   flex-basis: 70%;
   border: var(--text-color) 0.5px solid;
   border-radius: 10px;
@@ -60,11 +60,11 @@
   min-width: 300px;
 }
 
-@media (max-width:919px){
-  .main{
+@media (max-width: 919px) {
+  .main {
     flex-basis: 100%;
   }
-  .content{
+  .content {
     flex-wrap: wrap;
   }
 }

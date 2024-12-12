@@ -1,11 +1,10 @@
-'use client'
-import React, { useEffect } from 'react';
-import style from './LeagueCom.module.css';
-import Image from 'next/image';
+"use client";
+import React, { useEffect } from "react";
+import style from "./LeagueCom.module.css";
+import Image from "next/image";
 import { IoIosArrowForward } from "react-icons/io";
 
-const LeagueCom = ({country,league,leagueLogo}) => {
-  
+const LeagueCom = ({ country, league, leagueLogo }) => {
   return (
     <div className={style.league}>
       <div className={style.header}>
@@ -13,7 +12,7 @@ const LeagueCom = ({country,league,leagueLogo}) => {
           <div className={style.img_Container}>
             <Image
               src={leagueLogo}
-              alt='Premier League'
+              alt="Premier League"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               fill
             />
@@ -28,7 +27,7 @@ const LeagueCom = ({country,league,leagueLogo}) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default LeagueCom
+export default LeagueCom;

@@ -1,33 +1,33 @@
-.subNavbar{
-    width: 100%;
-    padding: 0 5%;
+.subNavbar {
+  width: 100%;
+  padding: 0 5%;
 }
-.subNavbar ul{
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+.subNavbar ul {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
-.subNavbar ul li{
-    list-style: none;
-    margin-bottom: 10px;
+.subNavbar ul li {
+  list-style: none;
+  margin-bottom: 10px;
 }
-.link{
-    text-decoration: none;
-    color: var(--text-color);
-    padding: 5px 5px;
-    background-color:#4c4c501f ;
-    border-radius: 7px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: .1s ease-in-out;
-    font-weight: bolder;
-    margin-bottom: 10px;
+.link {
+  text-decoration: none;
+  color: var(--text-color);
+  padding: 5px 5px;
+  background-color: #4c4c501f;
+  border-radius: 7px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+  font-weight: bolder;
+  margin-bottom: 10px;
 }
-.link:hover{
-    background-color: var(--active);
-    color: white;
+.link:hover {
+  background-color: var(--active);
+  color: white;
 }
-.link.active{
-    background-color: var(--active);
-    color: white;
+.link.active {
+  background-color: var(--active);
+  color: white;
 }

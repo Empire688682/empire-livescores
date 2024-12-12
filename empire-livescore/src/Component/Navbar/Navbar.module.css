@@ -1,75 +1,75 @@
-.navbar{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    width: 100%;
-    color: var(--text-color);
-    border-bottom: 1px solid var(--text-color);
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  width: 100%;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--text-color);
 }
-.left_col{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
+.left_col {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
 }
-.left_col .menu_icon{
-    font-size: 30px;
-    transform: rotate(180deg);
+.left_col .menu_icon {
+  font-size: 30px;
+  transform: rotate(180deg);
 }
-.logo{
-    font-size: 20px;
-    color:tomato;
-    font-weight: bolder;
-    text-decoration: none;
+.logo {
+  font-size: 20px;
+  color: tomato;
+  font-weight: bolder;
+  text-decoration: none;
 }
-.right_col ul{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    justify-content: center;
+.right_col ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
 }
-.right_col ul .menu{
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
+.right_col ul .menu {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
-.right_col ul .menu .menu_icon{
-    font-size: 25px;
+.right_col ul .menu .menu_icon {
+  font-size: 25px;
 }
-.right_col ul .menu:hover{
-    color: var(--active);
+.right_col ul .menu:hover {
+  color: var(--active);
 }
-.right_col .active{
-    color: var(--active);
+.right_col .active {
+  color: var(--active);
 }
-.right_searchBar{
-    display: none;
+.right_searchBar {
+  display: none;
 }
 
-@media screen and (max-width: 919px){
-    .right_searchBar{
-        display: block;
-        position: relative;
-        height: 25px;
-        width: 25px;
-        cursor: pointer;
-    }
-    .right_col{
-        position: fixed;
-        bottom: 0;
-        z-index: 88;
-        width: 100%;
-        padding-bottom: 20px;
-    }
-    .right_col ul{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
-    }
+@media screen and (max-width: 919px) {
+  .right_searchBar {
+    display: block;
+    position: relative;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+  }
+  .right_col {
+    position: fixed;
+    bottom: 0;
+    z-index: 88;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  .right_col ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
 }

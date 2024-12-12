@@ -2,6 +2,6 @@
   "extends": "next",
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier":["error",{"endOfline":"auto"}]
+    "prettier/prettier": ["error", { "endOfline": "auto" }]
   }
 }

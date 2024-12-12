@@ -1,184 +1,184 @@
 .side_bar {
-    width: 100%;
-    color: var(--text-color);
-    border: var(--text-color) 0.5px solid;
-    padding-top: 5px;
-    border-radius: 10px;
-    margin-top: 10px;
+  width: 100%;
+  color: var(--text-color);
+  border: var(--text-color) 0.5px solid;
+  padding-top: 5px;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding: 10px;
-    color: var(--text-color);
-    border-bottom: var(--text-color) 1px solid;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px;
+  color: var(--text-color);
+  border-bottom: var(--text-color) 1px solid;
 }
 
 .header input {
-    flex: 1;
-    background-color: transparent;
-    outline: none;
-    height: 100%;
-    border: none;
-    font-size: 20px;
-    color: var(--text-color);
+  flex: 1;
+  background-color: transparent;
+  outline: none;
+  height: 100%;
+  border: none;
+  font-size: 20px;
+  color: var(--text-color);
 }
 
 .header label {
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header .icon {
-    display: none;
+  display: none;
 }
 
 .colum {
-    color: var(--text-color);
-    padding: 10px;
-    width: 100%;
-    border-bottom: .5px solid var(--text-color);
+  color: var(--text-color);
+  padding: 10px;
+  width: 100%;
+  border-bottom: 0.5px solid var(--text-color);
 }
 
 .colum_header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .colum_header .icon {
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    color: white;
-    background-color: transparent;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: transparent;
 }
 
 .colum_content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    cursor: pointer;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 .region .colum_cart {
-    display: flex;
-    gap: 10px;
-    background-color: #4c4c501f;
-    align-items: center;
-    padding: 10px 5px;
-    border-radius: 5px;
-    transition: all .1s ease-in-out;
+  display: flex;
+  gap: 10px;
+  background-color: #4c4c501f;
+  align-items: center;
+  padding: 10px 5px;
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
 }
 
 .team .colum_cart {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    background-color: #4c4c501f;
-    padding: 5px;
-    border-radius: 5px;
-    transition: all .1s ease-in-out;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: #4c4c501f;
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
 }
 
 .competition {
-    margin-bottom: 30px;
-    border-bottom: none;
+  margin-bottom: 30px;
+  border-bottom: none;
 }
 
 .competition .colum_cart {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    background-color: #4c4c501f;
-    padding: 5px;
-    border-radius: 5px;
-    transition: all .1s ease-in-out;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background-color: #4c4c501f;
+  padding: 5px;
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
 }
 
 .team .colum_cart:hover,
 .region .colum_cart:hover,
 .competition .colum_cart:hover {
-    background-color: #444447ad;
-    color: white;
+  background-color: #444447ad;
+  color: white;
 }
 
 .imgCon {
-    position: relative;
-    width: 25px;
-    height: 25px;
-    z-index: 1;
-    border-radius: 50%;
-    overflow: hidden;
+  position: relative;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .title_Con {
-    display: flex;
-    flex-direction: column;
-    background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
 }
 
 .colum_title {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .colum_league {
-    font-size: 13px;
-    background-color: transparent;
+  font-size: 13px;
+  background-color: transparent;
 }
 
-@media screen and (max-width:919px) {
-    .side_bar {
-        position: absolute;
-        top: 0;
-        z-index: 99;
-        left: 0;
-        width: 100%;
-        display: none;
-    }
-    .side_bar.display {
-        width: 100%;
-        color: var(--text-color);
-        border: var(--text-color) 0.5px solid;
-        padding: 5px;
-        border-radius: 10px;
-        margin-top: 10px;
-        display: block;
-    }
+@media screen and (max-width: 919px) {
+  .side_bar {
+    position: absolute;
+    top: 0;
+    z-index: 99;
+    left: 0;
+    width: 100%;
+    display: none;
+  }
+  .side_bar.display {
+    width: 100%;
+    color: var(--text-color);
+    border: var(--text-color) 0.5px solid;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: block;
+  }
 
-    .header {
-        display: flex;
-        align-items: center;
-    }
+  .header {
+    display: flex;
+    align-items: center;
+  }
 
-    .header .icon {
-        font-size: 25px;
-        cursor: pointer;
-        text-align: center;
-        transform: rotate(180deg);
-        color: white;
-        display: block;
-    }
+  .header .icon {
+    font-size: 25px;
+    cursor: pointer;
+    text-align: center;
+    transform: rotate(180deg);
+    color: white;
+    display: block;
+  }
 
-    .header input {
-        flex: 1;
-        background-color: transparent;
-        outline: none;
-        height: 100%;
-        border: none;
-        font-size: 15px;
-        color: var(--text-color);
-        font-weight: bolder;
-    }
+  .header input {
+    flex: 1;
+    background-color: transparent;
+    outline: none;
+    height: 100%;
+    border: none;
+    font-size: 15px;
+    color: var(--text-color);
+    font-weight: bolder;
+  }
 
-    .header label {
-        display: none;
-    }
+  .header label {
+    display: none;
+  }
 }

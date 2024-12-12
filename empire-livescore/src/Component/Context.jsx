@@ -1,5 +1,5 @@
-'use client';
-import React, { useContext, useEffect, useState } from 'react';
+"use client";
+import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext();
 
@@ -12,24 +12,25 @@ export const AppProvider = ({ children }) => {
 
   const handleCountryClick = (country) => {
     setTheCountry(country);
-    setMatchCategory("")
-  }
-
+    setMatchCategory("");
+  };
 
   return (
-    <AppContext.Provider value={{
-      showSidebar,
-      setShowSidebar,
-      showSideMenu,
-      setShowSideMenu,
-      matchCategory, 
-      setMatchCategory,
-      theCountry, 
-      setTheCountry,
-      handleCountryClick,
-      league, 
-      setLeague,
-    }}>
+    <AppContext.Provider
+      value={{
+        showSidebar,
+        setShowSidebar,
+        showSideMenu,
+        setShowSideMenu,
+        matchCategory,
+        setMatchCategory,
+        theCountry,
+        setTheCountry,
+        handleCountryClick,
+        league,
+        setLeague,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
