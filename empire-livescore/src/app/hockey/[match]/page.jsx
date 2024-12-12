@@ -8,7 +8,7 @@ import ScoreNotice from "@/Component/ScoreNotice/ScoreNotice";
 import { LiaTimesSolid } from "react-icons/lia";
 import { useParams } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState(null);
   const [match, setMatch] = useState({});
   const [noticeClear, setNoticeClear] = useState(false);
@@ -24,7 +24,7 @@ const page = () => {
         console.log("No data found in localStorage");
       }
     }
-  }, []);
+  });
 
   const fetchMatch = () => {
     if (data) {
@@ -194,4 +194,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

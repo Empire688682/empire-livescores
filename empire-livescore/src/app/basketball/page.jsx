@@ -7,7 +7,7 @@ import LeagueCom from "@/Component/League/LeagueCom";
 import axios from "axios";
 import { useGlobalContext } from "@/Component/Context";
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
@@ -128,4 +128,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

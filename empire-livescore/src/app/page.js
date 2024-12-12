@@ -7,7 +7,7 @@ import axios from "axios";
 import MatchAfterFootball from "@/Component/MatchAfter/MatchAfterFootball";
 import { useGlobalContext } from "@/Component/Context";
 
-const page = () => {
+const Page = () => {
   const { matchCategory, handleCountryClick, theCountry, league, setLeague } =
     useGlobalContext();
   const [data, setData] = useState([]);
@@ -75,7 +75,7 @@ const page = () => {
                 <div className={style.limitExceeded}>
                   <h2>Daily Request Limit Reached 🚫</h2>
                   <p>
-                    Thank you for using E-Live Score app! Unfortunately, we've
+                    Thank you for using E-Live Score app! Unfortunately, we`&apos;`ve
                     exceeded the daily limit of 100 requests provided by the
                     free API we use to fetch live match data.
                   </p>
@@ -139,4 +139,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

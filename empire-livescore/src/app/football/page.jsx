@@ -7,7 +7,7 @@ import axios from "axios";
 import MatchAfterFootball from "@/Component/MatchAfter/MatchAfterFootball";
 import { useGlobalContext } from "@/Component/Context";
 
-const page = () => {
+const Page = () => {
   const { matchCategory, handleCountryClick, theCountry, league, setLeague } =
     useGlobalContext();
   const [data, setData] = useState([]);
@@ -139,4 +139,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
