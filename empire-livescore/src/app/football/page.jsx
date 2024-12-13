@@ -49,9 +49,9 @@ const Page = () => {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+ useEffect(() => {
+     fetchData();
+   },[]);
 
   return (
     <div className={style.football}>
