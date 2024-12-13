@@ -42,7 +42,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchMatch();
-  }, [data]);
+  }, []);
 
   console.log(match);
 
