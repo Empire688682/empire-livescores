@@ -50,8 +50,8 @@ const Page = () => {
 
   useEffect(() => {
     fetchData();
-  },[]);
-  
+  }, []);
+
   return (
     <div className={style.tennis}>
       <MainDate />

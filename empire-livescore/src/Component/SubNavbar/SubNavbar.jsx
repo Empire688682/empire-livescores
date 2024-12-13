@@ -8,22 +8,23 @@ import { useRouter } from "next/navigation";
 
 const SubNavbar = () => {
   const pathName = usePathname();
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div className={style.subNavbar}>
       <ul>
         {subNavbarData.map((item) => (
-          <li key={item.title}  
-          onClick={()=>router.replace(`${item.path}`)}
-          className={
-            pathName === item.path
-              ? `${style.link} ${style.active}`
-              : style.link
-          }>
+          <li
+            key={item.title}
+            onClick={() => router.replace(`${item.path}`)}
+            className={
+              pathName === item.path
+                ? `${style.link} ${style.active}`
+                : style.link
+            }
+          >
             {item.title}
           </li>
-          
         ))}
       </ul>
     </div>

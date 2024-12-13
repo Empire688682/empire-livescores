@@ -65,9 +65,7 @@ const MatchAfterBasketball = ({
         </div>
       </div>
       <div className={style.right_Content}>
-        <CiStar
-          className={style.star_icon}
-        />
+        <CiStar className={style.star_icon} />
       </div>
     </div>
   );

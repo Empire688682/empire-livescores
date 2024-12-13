@@ -26,7 +26,7 @@ const MatchAfterHandball = ({
     } else {
       console.error("ID is undefined");
     }
-  }; 
+  };
 
   return (
     <div className={style.match_after} onClick={handleClick}>
