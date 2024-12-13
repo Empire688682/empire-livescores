@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import style from "./MatchAfter.module.css";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
@@ -17,6 +17,29 @@ const MatchAfterBasketball = ({
   teamGoal2,
 }) => {
   const router = useRouter();
+  const [basketFavorite, setBasketFavorite] = useState(() => {
+    const storedbasketFavorite = localStorage.getItem("basketFavorite");
+    return storedbasketFavorite ? JSON.parse(storedbasketFavorite) : [];
+});
+
+const handlebasketFavorite = (id) =>{
+  if(id){
+    const updateFav = basketFavorite.includes(id) ? 
+    basketFavorite.filter((favId)=> favId !== id)
+    :
+    [...basketFavorite, id]
+    setBasketFavorite(updateFav);
+  }
+  else{
+    console.log("No id found man");
+  }
+}
+
+  useEffect(()=>{
+    localStorage.setItem("basketFavorite", JSON.stringify(basketFavorite));
+  },[basketFavorite]);
+
+  console.log("basketFavorite:", basketFavorite);
 
   const handleClick = () => {
     if (id) {
@@ -49,7 +72,9 @@ const MatchAfterBasketball = ({
                 fill
               />
             </div>
-            <div className={style.team_name}>{team1}</div>
+            <div className={style.team_name}>
+              {team1}
+            </div>
           </div>
           <div className={style.team} id="team2">
             <div className={style.team_logo}>
@@ -65,7 +90,7 @@ const MatchAfterBasketball = ({
         </div>
       </div>
       <div className={style.right_Content}>
-        <CiStar className={style.star_icon} />
+        <CiStar className={style.star_icon} onClick={() => handlebasketFavorite(id)}/>
       </div>
     </div>
   );

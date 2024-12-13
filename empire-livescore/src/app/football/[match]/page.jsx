@@ -24,7 +24,7 @@ const Page = () => {
         console.log("No data found in localStorage");
       }
     }
-  });
+  }, []);
 
   const fetchMatch = () => {
     if (data) {
