@@ -55,7 +55,7 @@ const MatchAfterFootball = ({
               <Image
                 src={team1Logo}
                 alt="Premier League"
-                ssizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 fill
               />
             </div>
@@ -66,7 +66,7 @@ const MatchAfterFootball = ({
               <Image
                 src={team2Logo}
                 alt="Premier League"
-                ssizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 fill
               />
             </div>
@@ -77,7 +77,7 @@ const MatchAfterFootball = ({
       <div className={style.right_Content}>
         <CiStar
           onClick={() => setStarClick(!starClick)}
-          className={`${style.star_icon} ${starClick ? style.active : ""}`}
+          className={style.star_icon}
         />
       </div>
     </div>
