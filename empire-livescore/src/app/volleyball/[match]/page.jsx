@@ -71,7 +71,6 @@ const Page = () => {
                   : match.status.short === "NS"
                     ? "NS"
                     : null}
-                `&apos;`
               </p>
               <p style={{ color: "tomato" }}>
                 {match.status.short === "HT" ? "HT" : null}
