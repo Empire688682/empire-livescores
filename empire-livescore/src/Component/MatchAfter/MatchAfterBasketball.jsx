@@ -20,24 +20,22 @@ const MatchAfterBasketball = ({
   const [basketFavorite, setBasketFavorite] = useState(() => {
     const storedbasketFavorite = localStorage.getItem("basketFavorite");
     return storedbasketFavorite ? JSON.parse(storedbasketFavorite) : [];
-});
+  });
 
-const handlebasketFavorite = (id) =>{
-  if(id){
-    const updateFav = basketFavorite.includes(id) ? 
-    basketFavorite.filter((favId)=> favId !== id)
-    :
-    [...basketFavorite, id]
-    setBasketFavorite(updateFav);
-  }
-  else{
-    console.log("No id found man");
-  }
-}
+  const handlebasketFavorite = (id) => {
+    if (id) {
+      const updateFav = basketFavorite.includes(id)
+        ? basketFavorite.filter((favId) => favId !== id)
+        : [...basketFavorite, id];
+      setBasketFavorite(updateFav);
+    } else {
+      console.log("No id found man");
+    }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem("basketFavorite", JSON.stringify(basketFavorite));
-  },[basketFavorite]);
+  }, [basketFavorite]);
 
   console.log("basketFavorite:", basketFavorite);
 
@@ -72,9 +70,7 @@ const handlebasketFavorite = (id) =>{
                 fill
               />
             </div>
-            <div className={style.team_name}>
-              {team1}
-            </div>
+            <div className={style.team_name}>{team1}</div>
           </div>
           <div className={style.team} id="team2">
             <div className={style.team_logo}>
@@ -90,7 +86,10 @@ const handlebasketFavorite = (id) =>{
         </div>
       </div>
       <div className={style.right_Content}>
-        <CiStar className={style.star_icon} onClick={() => handlebasketFavorite(id)}/>
+        <CiStar
+          className={style.star_icon}
+          onClick={() => handlebasketFavorite(id)}
+        />
       </div>
     </div>
   );
