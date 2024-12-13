@@ -66,7 +66,7 @@ const MatchAfterBasketball = ({
       </div>
       <div className={style.right_Content}>
         <CiStar
-          className={`${style.star_icon} ${basketFav[id] ? style.active : ""}`}
+          className={style.star_icon}
         />
       </div>
     </div>

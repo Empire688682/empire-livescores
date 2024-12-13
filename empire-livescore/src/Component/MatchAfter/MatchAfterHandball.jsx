@@ -20,16 +20,8 @@ const MatchAfterHandball = ({
 }) => {
   const [starClick, setStarClick] = useState(false);
   const router = useRouter();
-
-  const handleClick = () => {
-    if (id) {
-      router.push(`/handball/${id}`);
-    } else {
-      console.log("ERROR:", "No id data found");
-    }
-  };
   return (
-    <div className={style.match_after} onClick={handleClick}>
+    <div className={style.match_after}>
       <div className={style.left_Content}>
         <div className={style.time}>
           {teamGoal1 !== null ? (
