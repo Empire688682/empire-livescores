@@ -36,6 +36,7 @@ const Page = () => {
       if (response) {
         console.log("DATA:", response.data.response);
         setData(response.data.response);
+        console.log(response);
         localStorage.setItem(
           "football",
           JSON.stringify(response.data.response),
