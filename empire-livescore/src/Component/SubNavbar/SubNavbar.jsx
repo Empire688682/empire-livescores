@@ -4,26 +4,26 @@ import style from "./SubNavbar.module.css";
 import { subNavbarData } from "../data";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const SubNavbar = () => {
   const pathName = usePathname();
+  const router = useRouter()
 
   return (
     <div className={style.subNavbar}>
       <ul>
         {subNavbarData.map((item) => (
-          <li key={item.title}>
-            <Link
-              className={
-                pathName === item.path
-                  ? `${style.link} ${style.active}`
-                  : style.link
-              }
-              href={item.path}
-            >
-              {item.title}
-            </Link>
+          <li key={item.title}  
+          onClick={()=>router.replace(`${item.path}`)}
+          className={
+            pathName === item.path
+              ? `${style.link} ${style.active}`
+              : style.link
+          }>
+            {item.title}
           </li>
+          
         ))}
       </ul>
     </div>
