@@ -10,8 +10,13 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Page = () => {
-  const { matchCategory, handleCountryClick, theCountry, league, setLeague } =
-    useGlobalContext();
+  const { matchCategory,
+    handleCountryClick,
+    theCountry, league,
+    setLeague,
+    footballFavorite,
+    handleFootballFavorite
+  } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
@@ -58,8 +63,8 @@ const Page = () => {
   }, []);
 
   const handleMatchClick = (id) => {
-      router.push(`/football/${id}`);
-      console.log("Id:", id);
+    router.push(`/football/${id}`);
+    console.log("Id:", id);
   };
 
   return (
@@ -130,7 +135,7 @@ const Page = () => {
                         <p>timeOnly</p>
                       )}
                       {data.fixture.status.elapsed !== null &&
-                      status !== "FT" ? (
+                        status !== "FT" ? (
                         <p>{data.fixture.status.elapsed}.</p>
                       ) : null}
                       <p>{data.fixture.status.short}</p>
@@ -165,7 +170,7 @@ const Page = () => {
                     </div>
                   </div>
                   <div className={style.right_Content}>
-                    <CiStar className={style.star_icon} />
+                    <CiStar className={style.star_icon} onClick={()=>handleFootballFavorite(data.fixture.id)} />
                   </div>
                 </div>
               </div>

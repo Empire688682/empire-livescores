@@ -9,11 +9,23 @@ export const AppProvider = ({ children }) => {
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
+  const [footballFavorite, setFootballFavorite] = useState([]);
 
   const handleCountryClick = (country) => {
     setTheCountry(country);
     setMatchCategory("");
   };
+
+  const handleFootballFavorite = (id) =>{
+    setFootballFavorite((prevFav)=>
+      prevFav.includes(id)?
+      prevFav.filter((item)=> item !== id)
+      :
+      [...prevFav, id]
+    )
+  };
+
+  console.log("footballFavorite:", footballFavorite)
 
   return (
     <AppContext.Provider
@@ -29,6 +41,8 @@ export const AppProvider = ({ children }) => {
         handleCountryClick,
         league,
         setLeague,
+        footballFavorite, 
+        handleFootballFavorite
       }}
     >
       {children}
