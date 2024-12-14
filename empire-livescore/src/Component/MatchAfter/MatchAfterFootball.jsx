@@ -22,29 +22,54 @@ const MatchAfterFootball = ({
     hour: "2-digit",
     minute: "2-digit",
   });
-  const [starClick, setStarClick] = useState(false);
   const router = useRouter();
+
+  // Initialize state from localStorage on first render
   const [footballFavorite, setFootballFavorite] = useState(() => {
-    const storedfootballFavorite = localStorage.getItem("footballFavorite");
-    return storedfootballFavorite ? JSON.parse(storedfootballFavorite) : [];
+    if (typeof window !== "undefined") {
+      const savedFavorites = localStorage.getItem("footballFavorites");
+      return savedFavorites ? JSON.parse(savedFavorites) : {};
+    }
   });
 
   const handlefootballFavorite = (id) => {
     if (id) {
-      const updateFav = footballFavorite.includes(id)
-        ? footballFavorite.filter((favId) => favId !== id)
-        : [...footballFavorite, id];
-      setFootballFavorite(updateFav);
+      setFootballFavorite((prev) => {
+        const updateFavorites = { ...prev };
+
+        if (updateFavorites[id]) {
+          delete updateFavorites[id];
+        } else {
+          updateFavorites[id] = {
+            id,
+            team1,
+            team2,
+            time,
+            team1Logo,
+            team2Logo,
+            status,
+            teamGoal1,
+            teamGoal2,
+          };
+        }
+
+        // Persist to localStorage
+        localStorage.setItem(
+          "footballFavorites",
+          JSON.stringify(updateFavorites),
+        );
+
+        return updateFavorites;
+      });
     } else {
       console.log("No id found man");
     }
   };
 
-  useEffect(() => {
-    localStorage.setItem("footballFavorite", JSON.stringify(footballFavorite));
-  }, [footballFavorite]);
-
   console.log("footballFavorite:", footballFavorite);
+
+  // Check if this specific match is a favorite
+  const isFavorite = footballFavorite && footballFavorite[id] !== undefined;
 
   const handleClick = () => {
     if (id) {
@@ -53,7 +78,6 @@ const MatchAfterFootball = ({
       console.error("ID is undefined");
     }
   };
-
   return (
     <div className={style.match_after}>
       <div className={style.left_Content} onClick={handleClick}>
@@ -97,7 +121,7 @@ const MatchAfterFootball = ({
       </div>
       <div className={style.right_Content}>
         <CiStar
-          onClick={() => setStarClick(!starClick)}
+          onClick={() => handlefootballFavorite(id)}
           className={style.star_icon}
         />
       </div>
