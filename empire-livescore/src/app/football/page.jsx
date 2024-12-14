@@ -10,12 +10,14 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Page = () => {
-  const { matchCategory,
+  const {
+    matchCategory,
     handleCountryClick,
-    theCountry, league,
+    theCountry,
+    league,
     setLeague,
     footballFavorite,
-    handleFootballFavorite
+    handleFootballFavorite,
   } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
@@ -135,7 +137,7 @@ const Page = () => {
                         <p>timeOnly</p>
                       )}
                       {data.fixture.status.elapsed !== null &&
-                        status !== "FT" ? (
+                      status !== "FT" ? (
                         <p>{data.fixture.status.elapsed}.</p>
                       ) : null}
                       <p>{data.fixture.status.short}</p>
@@ -170,7 +172,10 @@ const Page = () => {
                     </div>
                   </div>
                   <div className={style.right_Content}>
-                    <CiStar className={style.star_icon} onClick={()=>handleFootballFavorite(data.fixture.id)} />
+                    <CiStar
+                      className={style.star_icon}
+                      onClick={() => handleFootballFavorite(data.fixture.id)}
+                    />
                   </div>
                 </div>
               </div>

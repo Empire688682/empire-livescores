@@ -16,16 +16,15 @@ export const AppProvider = ({ children }) => {
     setMatchCategory("");
   };
 
-  const handleFootballFavorite = (id) =>{
-    setFootballFavorite((prevFav)=>
-      prevFav.includes(id)?
-      prevFav.filter((item)=> item !== id)
-      :
-      [...prevFav, id]
-    )
+  const handleFootballFavorite = (id) => {
+    setFootballFavorite((prevFav) =>
+      prevFav.includes(id)
+        ? prevFav.filter((item) => item !== id)
+        : [...prevFav, id],
+    );
   };
 
-  console.log("footballFavorite:", footballFavorite)
+  console.log("footballFavorite:", footballFavorite);
 
   return (
     <AppContext.Provider
@@ -41,8 +40,8 @@ export const AppProvider = ({ children }) => {
         handleCountryClick,
         league,
         setLeague,
-        footballFavorite, 
-        handleFootballFavorite
+        footballFavorite,
+        handleFootballFavorite,
       }}
     >
       {children}
