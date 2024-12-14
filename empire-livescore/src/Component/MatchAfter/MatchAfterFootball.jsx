@@ -24,22 +24,31 @@ const MatchAfterFootball = ({
   });
   const router = useRouter();
 
-  // Initialize state from localStorage on first render
+  // More verbose initialization
   const [footballFavorite, setFootballFavorite] = useState(() => {
-    if (typeof window !== "undefined") {
+    try {
       const savedFavorites = localStorage.getItem("footballFavorites");
       return savedFavorites ? JSON.parse(savedFavorites) : {};
+    } catch (error) {
+      console.error("Error parsing localStorage:", error);
+      return {};
     }
   });
 
   const handlefootballFavorite = (id) => {
+    console.log("Current Favorites Before Update:", footballFavorite);
+    console.log("Trying to add/remove ID:", id);
+
     if (id) {
       setFootballFavorite((prev) => {
-        const updateFavorites = { ...prev };
+        // Create a deep copy to ensure we're not mutating
+        const updateFavorites = JSON.parse(JSON.stringify(prev));
 
         if (updateFavorites[id]) {
+          console.log("Removing favorite:", id);
           delete updateFavorites[id];
         } else {
+          console.log("Adding favorite:", id);
           updateFavorites[id] = {
             id,
             team1,
@@ -53,11 +62,15 @@ const MatchAfterFootball = ({
           };
         }
 
-        // Persist to localStorage
-        localStorage.setItem(
-          "footballFavorites",
-          JSON.stringify(updateFavorites),
-        );
+        try {
+          localStorage.setItem(
+            "footballFavorites",
+            JSON.stringify(updateFavorites),
+          );
+          console.log("Updated Favorites:", updateFavorites);
+        } catch (error) {
+          console.error("Error saving to localStorage:", error);
+        }
 
         return updateFavorites;
       });
@@ -66,9 +79,11 @@ const MatchAfterFootball = ({
     }
   };
 
-  console.log("footballFavorite:", footballFavorite);
+  // Log favorites whenever they change
+  useEffect(() => {
+    console.log("footballFavorite state updated:", footballFavorite);
+  }, [footballFavorite]);
 
-  // Check if this specific match is a favorite
   const isFavorite = footballFavorite && footballFavorite[id] !== undefined;
 
   const handleClick = () => {
