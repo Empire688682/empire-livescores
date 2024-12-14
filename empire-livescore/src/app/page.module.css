@@ -43,3 +43,81 @@
   top: 0;
   left: 0;
 }
+
+/* Match page*/
+.match_after {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  background-color: #4c4c501f;
+  padding: 10px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.match_after:hover {
+  background-color: #444447ad;
+}
+.match_after:hover .time {
+  background-color: transparent;
+  font-weight: bolder;
+}
+.match_after:hover .teams {
+  background-color: transparent;
+  font-weight: bolder;
+}
+.left_Content {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  gap: 20px;
+}
+.time {
+  transition: all 0.1s ease-in-out;
+}
+.time p {
+  background-color: #4c4c501f;
+  font-size: 14px;
+}
+.teams {
+  transition: all 0.1s ease-in-out;
+}
+.team {
+  background-color: #4c4c501f;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px 0;
+}
+.team .team_name {
+  background-color: transparent;
+}
+.team_logo {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.right_Content {
+  background-color: transparent;
+}
+.star_icon {
+  background-color: transparent;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.1s ease-in-out;
+}
+.star_icon:hover {
+  background-color: white;
+  color: var(--active);
+}
+.star_icon.active {
+  background-color: white;
+  color: var(--active);
+}

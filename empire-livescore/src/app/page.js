@@ -1,19 +1,29 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import style from "./page.module.css";
+import { CiStar } from "react-icons/ci";
 import MainDate from "@/Component/MainDate/MainDate";
 import LeagueCom from "@/Component/League/LeagueCom";
 import axios from "axios";
-import MatchAfterFootball from "@/Component/MatchAfter/MatchAfterFootball";
 import { useGlobalContext } from "@/Component/Context";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Page = () => {
-  const { matchCategory, handleCountryClick, theCountry, league, setLeague } =
-    useGlobalContext();
+  const {
+    matchCategory,
+    handleCountryClick,
+    theCountry,
+    league,
+    setLeague,
+    footballFavorite,
+    handleFootballFavorite,
+  } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState("");
+  const router = useRouter();
 
   const fetchData = async () => {
     setLoding(true);
@@ -36,6 +46,7 @@ const Page = () => {
       if (response) {
         console.log("DATA:", response.data.response);
         setData(response.data.response);
+        console.log("response:", response);
         localStorage.setItem(
           "football",
           JSON.stringify(response.data.response),
@@ -53,84 +64,124 @@ const Page = () => {
     fetchData();
   }, []);
 
+  const handleMatchClick = (id) => {
+    router.push(`/football/${id}`);
+    console.log("Id:", id);
+  };
+
   return (
-    <div className={style.page}>
+    <div className={style.football}>
       <MainDate />
-      {loading ? (
-        <p className={style.loadingText}>Loading</p>
-      ) : (
-        <>
-          {networkError ? (
-            <div className={style.limitExceeded}>
-              <h2>{networkError} 🚫</h2>
-              <p>Please check your connection and try again.</p>
-            </div>
-          ) : (
-            <>
-              {limitExceeded ? (
-                <div className={style.limitExceeded}>
-                  <h2>Daily Request Limit Reached 🚫</h2>
-                  <p>
-                    Thank you for using E-Live Score app! Unfortunately, we have
-                    exceeded the daily limit of 100 requests provided by the
-                    free API we use to fetch live match data.
-                  </p>
-                  <p>
-                    Since the app is built using a free service, we are only
-                    allowed to make 100 requests per day. We apologize for the
-                    inconvenience and invite you to check back tomorrow when the
-                    request limit resets.
-                  </p>
-                  <p>We appreciate your support and understanding!</p>
+      {loading && <p className={style.loadingText}>Loading</p>}
+      <div>
+        {networkError && (
+          <div className={style.limitExceeded}>
+            <h2>{networkError} 🚫</h2>
+            <p>Please check your connection and try again.</p>
+          </div>
+        )}
+      </div>
+      <div>
+        {limitExceeded && (
+          <div className={style.limitExceeded}>
+            <h2>Daily Request Limit Reached 🚫</h2>
+            <p>
+              Thank you for using E-Live Score app! Unfortunately, we have
+              exceeded the daily limit of 100 requests provided by the free API
+              we use to fetch live match data.
+            </p>
+            <p>
+              Since the app is built using a free service, we are only allowed
+              to make 100 requests per day. We apologize for the inconvenience
+              and invite you to check back tomorrow when the request limit
+              resets.
+            </p>
+            <p>We appreciate your support and understanding!</p>
+          </div>
+        )}
+      </div>
+      {data &&
+        data.map((data, id) => {
+          if (
+            matchCategory === "All" ||
+            (matchCategory === "Live" &&
+              data.fixture.status.long !== "Match Finished" &&
+              data.fixture.status.long !== "Match Suspended" &&
+              data.score.halftime.home !== null) ||
+            theCountry === data.league.country ||
+            (league.league === data.league.name &&
+              league.country === data.league.country)
+          ) {
+            return (
+              <div key={data.fixture.id}>
+                <div onClick={() => handleCountryClick(data.league.country)}>
+                  <LeagueCom
+                    country={data.league.country}
+                    league={data.league.name}
+                    leagueLogo={data.league.logo}
+                  />
                 </div>
-              ) : (
-                <>
-                  {data.map((data, id) => {
-                    if (
-                      matchCategory === "All" ||
-                      (matchCategory === "Live" &&
-                        data.fixture.status.long !== "Match Finished" &&
-                        data.fixture.status.long !== "Match Suspended" &&
-                        data.score.halftime.home !== null) ||
-                      theCountry === data.league.country ||
-                      (league.league === data.league.name &&
-                        league.country === data.league.country)
-                    ) {
-                      return (
-                        <div key={id}>
-                          <div
-                            onClick={() =>
-                              handleCountryClick(data.league.country)
-                            }
-                          >
-                            <LeagueCom
-                              country={data.league.country}
-                              league={data.league.name}
-                              leagueLogo={data.league.logo}
-                            />
-                          </div>
-                          <MatchAfterFootball
-                            team1Logo={data.teams.home.logo}
-                            team2Logo={data.teams.away.logo}
-                            team1={data.teams.home.name}
-                            status={data.fixture.status.short}
-                            teamGoal1={data.goals.home}
-                            teamGoal2={data.goals.away}
-                            team2={data.teams.away.name}
-                            time={data.fixture.date}
-                            id={data.fixture.id}
-                            timeCount={data.fixture.status.elapsed}
+                <div className={style.match_after}>
+                  <div
+                    className={style.left_Content}
+                    onClick={() => handleMatchClick(data.fixture.id)}
+                  >
+                    <div className={style.time}>
+                      {data.goals.home !== null ? (
+                        <>
+                          <p>
+                            {data.goals.home} : {data.goals.away}
+                          </p>
+                        </>
+                      ) : (
+                        <p>timeOnly</p>
+                      )}
+                      {data.fixture.status.elapsed !== null &&
+                      status !== "FT" ? (
+                        <p>{data.fixture.status.elapsed}.</p>
+                      ) : null}
+                      <p>{data.fixture.status.short}</p>
+                    </div>
+                    <div className={style.teams}>
+                      <div className={style.team} id="team1">
+                        <div className={style.team_logo}>
+                          <Image
+                            src={data.teams.home.logo}
+                            alt="Premier League"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            fill
                           />
                         </div>
-                      );
-                    }
-                  })}
-                </>
-              )}
-            </>
-          )}
-        </>
-      )}
+                        <div className={style.team_name}>
+                          {data.teams.home.name}
+                        </div>
+                      </div>
+                      <div className={style.team} id="team2">
+                        <div className={style.team_logo}>
+                          <Image
+                            src={data.teams.away.logo}
+                            alt="Premier League"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            fill
+                          />
+                        </div>
+                        <div className={style.team_name}>
+                          {data.teams.away.name}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={style.right_Content}>
+                    <CiStar
+                      className={style.star_icon}
+                      onClick={() => handleFootballFavorite(data.fixture.id)}
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          }
+        })}
     </div>
   );
 };

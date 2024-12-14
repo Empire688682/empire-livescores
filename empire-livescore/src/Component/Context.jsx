@@ -9,11 +9,14 @@ export const AppProvider = ({ children }) => {
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
-  const [footballFavorite, setFootballFavorite] = useState([]);
+  const [footballFavorite, setFootballFavorite] = useState(() => {
+    const storedFav = localStorage.getItem("footballFav");
+    storedFav ? JSON.parse(storedFav) : [];
+    return storedFav;
+  });
 
   const handleCountryClick = (country) => {
-    setTheCountry(country);
-    setMatchCategory("");
+    setTheCountry((prev) => (prev === country ? "" : country));
   };
 
   const handleFootballFavorite = (id) => {
@@ -23,6 +26,10 @@ export const AppProvider = ({ children }) => {
         : [...prevFav, id],
     );
   };
+
+  useEffect(() => {
+    localStorage.setItem("footballFav", footballFavorite);
+  }, [footballFavorite]);
 
   console.log("footballFavorite:", footballFavorite);
 
