@@ -24,6 +24,27 @@ const MatchAfterFootball = ({
   });
   const [starClick, setStarClick] = useState(false);
   const router = useRouter();
+   const [footballFavorite, setFootballFavorite] = useState(() => {
+      const storedfootballFavorite = localStorage.getItem("footballFavorite");
+      return storedfootballFavorite ? JSON.parse(storedfootballFavorite) : [];
+    });
+  
+    const handlefootballFavorite = (id) => {
+      if (id) {
+        const updateFav = footballFavorite.includes(id)
+          ? footballFavorite.filter((favId) => favId !== id)
+          : [...footballFavorite, id];
+        setFootballFavorite(updateFav);
+      } else {
+        console.log("No id found man");
+      }
+    };
+  
+    useEffect(() => {
+      localStorage.setItem("footballFavorite", JSON.stringify(footballFavorite));
+    }, [footballFavorite]);
+  
+    console.log("footballFavorite:", footballFavorite);
 
   const handleClick = () => {
     if (id) {
