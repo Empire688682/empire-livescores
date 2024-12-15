@@ -5,6 +5,7 @@ import Footer from "@/Component/Footer/Footer";
 import SubNavbar from "@/Component/SubNavbar/SubNavbar";
 import SideBar from "@/Component/SideBar/SideBar";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({ children }) {
   return (
@@ -26,7 +27,10 @@ export default function RootLayout({ children }) {
             <div className="sidebar">
               <SideBar />
             </div>
-            <div className="main">{children}</div>
+            <div className="main">
+              {children}
+              <SpeedInsights />
+            </div>
           </div>
           <Footer />
         </AppProvider>
