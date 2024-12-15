@@ -39,12 +39,12 @@ const Navbar = () => {
             <IoIosFootball className={style.menu_icon} /> Scores{" "}
           </Link>
           <Link
-            href="/favourite"
-            onClick={() => setMenu("favourite")}
-            className={menu === "favourite" ? style.active : style.menu}
+            href="/favorite"
+            onClick={() => setMenu("favorite")}
+            className={menu === "favorite" ? style.active : style.menu}
           >
             {" "}
-            <CiStar className={style.menu_icon} /> Favourite{" "}
+            <CiStar className={style.menu_icon} /> Favorite{" "}
           </Link>
           <Link
             href="/news"

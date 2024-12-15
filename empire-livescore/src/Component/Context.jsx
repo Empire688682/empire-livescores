@@ -9,13 +9,13 @@ export const AppProvider = ({ children }) => {
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
-  const [footballFavorite, setFootballFavorite] = useState(() => {
+  const [footballFavorite, setFootballFavorite] = useState([]);
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedFav = localStorage.getItem("footballFav");
-      storedFav ? JSON.parse(storedFav) : [];
-      return storedFav;
+      setFootballFavorite(localStorage.getItem("footballFav") || []);
     }
-  });
+  }, []);
 
   const handleCountryClick = (country) => {
     setTheCountry((prev) => (prev === country ? "" : country));
