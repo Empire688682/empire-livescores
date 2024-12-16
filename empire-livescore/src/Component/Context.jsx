@@ -40,8 +40,6 @@ export const AppProvider = ({ children }) => {
     );
   };
 
-  console.log("footballFavorite:", footballFavorite);
-
   return (
     <AppContext.Provider
       value={{
