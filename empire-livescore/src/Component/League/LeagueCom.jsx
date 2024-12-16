@@ -3,8 +3,11 @@ import React, { useEffect } from "react";
 import style from "./LeagueCom.module.css";
 import Image from "next/image";
 import { IoIosArrowForward } from "react-icons/io";
+import { useGlobalContext } from "../Context";
 
 const LeagueCom = ({ country, league, leagueLogo }) => {
+  const { setLeague, theCountry } = useGlobalContext();
+
   return (
     <div className={style.league}>
       <div className={style.header}>

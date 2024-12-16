@@ -19,7 +19,11 @@ export const AppProvider = ({ children }) => {
 
   const handleCountryClick = (country) => {
     setTheCountry((prev) => (prev === country ? "" : country));
+    setMatchCategory((prev) => (prev === "All" ? "" : "All"));
   };
+
+  console.log("theCountry:", theCountry);
+  console.log("matchCategory:", matchCategory);
 
   const handleFootballFavorite = (id) => {
     setFootballFavorite((prevFav) =>
