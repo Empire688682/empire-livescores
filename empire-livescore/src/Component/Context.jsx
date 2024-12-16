@@ -13,7 +13,14 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      setFootballFavorite(localStorage.getItem("footballFav") || []);
+      localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
+    }
+  }, [footballFavorite]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedFav = localStorage.getItem("footballFav");
+      setFootballFavorite(storedFav ? JSON.parse(storedFav) : []);
     }
   }, []);
 
@@ -32,12 +39,6 @@ export const AppProvider = ({ children }) => {
         : [...prevFav, id],
     );
   };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("footballFav", footballFavorite);
-    }
-  }, [footballFavorite]);
 
   console.log("footballFavorite:", footballFavorite);
 
