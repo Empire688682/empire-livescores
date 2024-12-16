@@ -13,12 +13,6 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
-    }
-  }, [footballFavorite]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
       const storedFav = localStorage.getItem("footballFav");
       setFootballFavorite(storedFav ? JSON.parse(storedFav) : []);
     }
@@ -29,9 +23,6 @@ export const AppProvider = ({ children }) => {
     setMatchCategory((prev) => (prev === "All" ? "" : "All"));
   };
 
-  console.log("theCountry:", theCountry);
-  console.log("matchCategory:", matchCategory);
-
   const handleFootballFavorite = (id) => {
     setFootballFavorite((prevFav) =>
       prevFav.includes(id)
@@ -39,6 +30,18 @@ export const AppProvider = ({ children }) => {
         : [...prevFav, id],
     );
   };
+
+  const removeFootballFavorite = (id) => {
+    const updatedFav = footballFavorite.filter((favId) => favId !== id);
+    setFootballFavorite(updatedFav);
+    console.log("deletedId:", id);
+  };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
+    }
+  }, [footballFavorite, removeFootballFavorite]);
 
   return (
     <AppContext.Provider
@@ -56,6 +59,7 @@ export const AppProvider = ({ children }) => {
         setLeague,
         footballFavorite,
         handleFootballFavorite,
+        removeFootballFavorite,
       }}
     >
       {children}

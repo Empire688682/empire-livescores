@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import style from "./favorite.module.css";
-import { CiStar } from "react-icons/ci";
+import { LiaTimesSolid } from "react-icons/lia";
 import LeagueCom from "@/Component/League/LeagueCom";
 import { useGlobalContext } from "@/Component/Context";
 import Image from "next/image";
@@ -9,13 +9,15 @@ import { useRouter } from "next/navigation";
 
 const Page = () => {
   const router = useRouter();
-  const { handleCountryClick, footballFavorite } = useGlobalContext();
+  const { handleCountryClick, removeFootballFavorite } = useGlobalContext();
   const [footballData, setFootballData] = useState([]);
   const [idsData, setIdsData] = useState([]);
+  const [footballFavorites, setFootballFavorites] = useState([]);
 
   const handleMatchClick = (id) => {
     router.push(`/football/${id}`);
   };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedFootball = localStorage.getItem("football");
@@ -25,14 +27,22 @@ const Page = () => {
     }
   }, []);
 
-  const footballFavorites = footballData
-    ? footballData.filter((favorite) => idsData.includes(favorite.fixture.id))
-    : [];
+  const updateFootballFav = () => {
+    setFootballFavorites(
+      footballData
+        ? footballData.filter((favorite) =>
+            idsData.includes(favorite.fixture.id),
+          )
+        : [],
+    );
+  };
+
+  useEffect(() => {
+    updateFootballFav();
+  }, [idsData, removeFootballFavorite]);
 
   console.log("fav:", footballFavorites);
 
-  console.log("Ids", idsData);
-  console.log("fooballdata:", footballData);
   return (
     <div className={style.favorite}>
       {footballFavorites &&
@@ -96,7 +106,10 @@ const Page = () => {
                   </div>
                 </div>
                 <div className={style.right_Content}>
-                  <CiStar className={style.star_icon} />
+                  <LiaTimesSolid
+                    className={style.star_icon}
+                    onClick={() => removeFootballFavorite(data.fixture.id)}
+                  />
                 </div>
               </div>
             </div>
