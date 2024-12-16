@@ -34,7 +34,7 @@ export const AppProvider = ({ children }) => {
   const removeFootballFavorite = (id) => {
     const updatedFav = footballFavorite.filter((favId) => favId !== id);
     setFootballFavorite(updatedFav);
-    console.log("deletedId:", id);
+    localStorage.setItem("footballFav", JSON.stringify(updatedFav));
   };
 
   useEffect(() => {
