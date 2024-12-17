@@ -21,27 +21,23 @@ const AboutPage = () => {
       </p>
       <p className={style.description}>
         With <strong>E-Livescore</strong>, you can:
-        <ul className={style.featuresList}>
-          <li>
-            Stay updated with live scores from top football leagues and
-            competitions.
-          </li>
-          <li>
-            Get detailed match statistics, including goals, assists, cards, and
-            substitutions.
-          </li>
-          <li>
-            Track your favorite teams and receive real-time notifications on
-            match events.
-          </li>
-          <li>
-            View fixtures, results, and league standings all in one place.
-          </li>
-          <li>
-            Access news and insights about your favorite players and clubs.
-          </li>
-        </ul>
       </p>
+      <ul className={style.featuresList}>
+        <li>
+          Stay updated with live scores from top football leagues and
+          competitions.
+        </li>
+        <li>
+          Get detailed match statistics, including goals, assists, cards, and
+          substitutions.
+        </li>
+        <li>
+          Track your favorite teams and receive real-time notifications on match
+          events.
+        </li>
+        <li>View fixtures, results, and league standings all in one place.</li>
+        <li>Access news and insights about your favorite players and clubs.</li>
+      </ul>
       <p className={style.description}>
         Our mission is to make following football easy and enjoyable for
         everyone, from casual viewers to hardcore fans. E-Livescore is designed

@@ -2,7 +2,6 @@
 import React from "react";
 import style from "./SubNavbar.module.css";
 import { subNavbarData } from "../data";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
@@ -16,7 +15,7 @@ const SubNavbar = () => {
         {subNavbarData.map((item) => (
           <li
             key={item.title}
-            onClick={() => router.replace(`${item.path}`)}
+            onClick={() => router.push(`${item.path}`)}
             className={
               pathName === item.path
                 ? `${style.link} ${style.active}`

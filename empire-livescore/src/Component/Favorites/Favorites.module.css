@@ -83,3 +83,6 @@
   background-color: white;
   color: var(--active);
 }
+.noFavorite {
+  color: var(--white);
+}

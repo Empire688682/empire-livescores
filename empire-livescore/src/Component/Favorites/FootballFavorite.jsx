@@ -101,7 +101,7 @@ const FootballFavorite = () => {
           </div>
         ))
       ) : (
-        <p>No favorites yet.</p>
+        <p className={style.noFavorite}>No favorites yet.</p>
       )}
     </div>
   );

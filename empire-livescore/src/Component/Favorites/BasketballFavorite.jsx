@@ -45,7 +45,10 @@ const BasketballFavorite = () => {
               />
             </div>
             <div className={style.match_after}>
-              <div className={style.left_Content} onClick={handleMatchClick}>
+              <div
+                className={style.left_Content}
+                onClick={() => handleMatchClick(data.id)}
+              >
                 <div className={style.time}>
                   {data.scores.home.total !== null ? (
                     <p>
@@ -95,7 +98,7 @@ const BasketballFavorite = () => {
           </div>
         ))
       ) : (
-        <p>No favorites yet.</p>
+        <p className={style.noFavorite}>No favorites yet.</p>
       )}
     </div>
   );

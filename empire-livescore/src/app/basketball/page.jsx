@@ -14,9 +14,6 @@ const Page = () => {
     matchCategory,
     handleCountryClick,
     theCountry,
-    league,
-    setLeague,
-    basketballFavorite,
     handleBasketballFavorite,
   } = useGlobalContext();
   const [data, setData] = useState([]);
@@ -125,7 +122,7 @@ const Page = () => {
                           <div className={style.match_after}>
                             <div
                               className={style.left_Content}
-                              onClick={handleMatchClick}
+                              onClick={() => handleMatchClick(data.id)}
                             >
                               <div className={style.time}>
                                 {data.scores.home.total !== null ? (

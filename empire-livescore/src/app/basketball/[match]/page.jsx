@@ -2,14 +2,12 @@
 import React, { useEffect, useState } from "react";
 import style from "./Match.module.css";
 import Image from "next/image";
-import arsenal from "../../../public/arsenal.png";
-import aston_Villa from "../../../public/aston-villa.png";
 import ScoreNotice from "@/Component/ScoreNotice/ScoreNotice";
 import { LiaTimesSolid } from "react-icons/lia";
 import { useParams } from "next/navigation";
 
 const Page = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [match, setMatch] = useState({});
   const [noticeClear, setNoticeClear] = useState(false);
   const param = useParams();
@@ -42,7 +40,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchMatch();
-  }, []);
+  }, [data]);
 
   console.log(match);
 
