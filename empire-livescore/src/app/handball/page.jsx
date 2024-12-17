@@ -16,12 +16,12 @@ const Page = () => {
   const [networkError, setNetworkError] = useState("");
   const router = useRouter();
   const {
-      matchCategory,
-      handleCountryClick,
-      theCountry,
-      league,
-      handleHandballFavorite,
-    } = useGlobalContext();
+    matchCategory,
+    handleCountryClick,
+    theCountry,
+    league,
+    handleHandballFavorite,
+  } = useGlobalContext();
 
   const fetchData = async () => {
     setLoding(true);
@@ -121,7 +121,10 @@ const Page = () => {
                   />
                 </div>
                 <div className={style.match_after}>
-                  <div className={style.left_Content} onClick={()=>handleMatchClick(data.id)}>
+                  <div
+                    className={style.left_Content}
+                    onClick={() => handleMatchClick(data.id)}
+                  >
                     <div className={style.time}>
                       {data.scores.home !== null ? (
                         <>
@@ -144,7 +147,9 @@ const Page = () => {
                             fill
                           />
                         </div>
-                        <div className={style.team_name}>{data.teams.home.name}</div>
+                        <div className={style.team_name}>
+                          {data.teams.home.name}
+                        </div>
                       </div>
                       <div className={style.team} id={data.teams.away.name}>
                         <div className={style.team_logo}>
@@ -155,7 +160,9 @@ const Page = () => {
                             fill
                           />
                         </div>
-                        <div className={style.team_name}>{data.teams.away.name}</div>
+                        <div className={style.team_name}>
+                          {data.teams.away.name}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -166,7 +173,6 @@ const Page = () => {
                     />
                   </div>
                 </div>
-
               </div>
             );
           }

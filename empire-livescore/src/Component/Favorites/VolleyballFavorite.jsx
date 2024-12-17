@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./Favorites.module.css";
 import { LiaTimesSolid } from "react-icons/lia";
 import LeagueCom from "@/Component/League/LeagueCom";
@@ -7,37 +6,39 @@ import { useGlobalContext } from "@/Component/Context";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-const HockeyballFavorite = () => {
+const VolleyballFavorite = () => {
   const router = useRouter();
-  const { handleCountryClick, handleHockeyballFavorite, hockeyballFavorite } =
+  const { handleCountryClick, handleVolleyballFavorite, volleyballFavorite } =
     useGlobalContext();
-  const [hockeyballData, setHockeyballData] = useState([]);
+  const [volleyballData, setVolleyballData] = useState([]);
 
   const handleMatchClick = (id) => {
-    router.push(`/hockeyball/${id}`);
+    router.push(`/volleyball/${id}`);
   };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedHockeyball = localStorage.getItem("hockey");
-      setHockeyballData(storedHockeyball ? JSON.parse(storedHockeyball) : []);
+      const storedVolleyball = localStorage.getItem("volleyball");
+      setVolleyballData(storedVolleyball ? JSON.parse(storedVolleyball) : []);
     }
   }, []);
 
-  const hockeyballFavorites = hockeyballData
-    ? hockeyballData.filter((favorite) =>
-        hockeyballFavorite.includes(favorite.id),
+  const volleyballFavorites = volleyballData
+    ? volleyballData.filter((favorite) =>
+        volleyballFavorite.includes(favorite.id),
       )
     : [];
 
+  console.log("volleyballData:", volleyballFavorites);
+
   return (
-    <div className={style.hockeyballFavorite}>
-      {hockeyballFavorites.length > 0 ? (
-        hockeyballFavorites.map((data, id) => (
-          <div key={data.id}>
+    <div className={style.volleyballFavorite}>
+      {volleyballFavorites.length > 0 ? (
+        volleyballFavorites.map((data, id) => (
+          <div key={id}>
             <div onClick={() => handleCountryClick(data.league.country)}>
               <LeagueCom
-                country={data.league.country}
+                country={data.country.name}
                 league={data.league.name}
                 leagueLogo={data.league.logo}
               />
@@ -48,11 +49,10 @@ const HockeyballFavorite = () => {
                 onClick={() => handleMatchClick(data.id)}
               >
                 <div className={style.time}>
-                  {data.scores.home.quarter_1 !== null ? (
+                  {data.scores.home !== null ? (
                     <>
                       <p>
-                        {data.scores.home.quarter_1} :{" "}
-                        {data.scores.away.quarter_1}
+                        {data.scores.home} : {data.scores.away}
                       </p>
                     </>
                   ) : (
@@ -91,7 +91,7 @@ const HockeyballFavorite = () => {
               </div>
               <div className={style.right_Content}>
                 <LiaTimesSolid
-                  onClick={() => handleHockeyballFavorite(data.id)}
+                  onClick={() => handleVolleyballFavorite(data.id)}
                   className={style.star_icon}
                 />
               </div>
@@ -105,4 +105,4 @@ const HockeyballFavorite = () => {
   );
 };
 
-export default HockeyballFavorite;
+export default VolleyballFavorite;

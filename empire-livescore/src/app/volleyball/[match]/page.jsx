@@ -2,8 +2,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./Match.module.css";
 import Image from "next/image";
-import arsenal from "../../../public/arsenal.png";
-import aston_Villa from "../../../public/aston-villa.png";
 import ScoreNotice from "@/Component/ScoreNotice/ScoreNotice";
 import { LiaTimesSolid } from "react-icons/lia";
 import { useParams } from "next/navigation";
@@ -24,7 +22,7 @@ const Page = () => {
         console.log("No data found in localStorage");
       }
     }
-  });
+  }, []);
 
   const fetchMatch = () => {
     if (data) {

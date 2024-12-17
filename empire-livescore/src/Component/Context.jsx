@@ -40,6 +40,14 @@ export const AppProvider = ({ children }) => {
     return [];
   });
 
+  const [volleyballFavorite, setVolleyballFavorite] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedFav = localStorage.getItem("volleyballFav");
+      return storedFav ? JSON.parse(storedFav) : [];
+    }
+    return [];
+  });
+
   const handleCountryClick = (country) => {
     setTheCountry((prev) => (prev === country ? "" : country));
     setMatchCategory((prev) => (prev === "All" ? "" : "All"));
@@ -101,6 +109,20 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const handleVolleyballFavorite = (id) => {
+    if (!id || !Array.isArray(volleyballFavorite)) return;
+    setVolleyballFavorite((prevFav) => {
+      const upadatedFav = prevFav.includes(id)
+        ? prevFav.filter((item) => item !== id)
+        : [...prevFav, id];
+      // Update localStorage with the new state
+      if (typeof window !== "undefined") {
+        localStorage.setItem("volleyballFav", JSON.stringify(upadatedFav));
+      }
+      return upadatedFav;
+    });
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
@@ -125,6 +147,12 @@ export const AppProvider = ({ children }) => {
     }
   }, [hockeyballFavorite]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("volleyballFav", JSON.stringify(volleyballFavorite));
+    }
+  }, [volleyballFavorite]);
+
   return (
     <AppContext.Provider
       value={{
@@ -143,10 +171,12 @@ export const AppProvider = ({ children }) => {
         basketballFavorite,
         handballFavorite,
         hockeyballFavorite,
+        volleyballFavorite,
         handleFootballFavorite,
         handleBasketballFavorite,
         handleHandballFavorite,
         handleHockeyballFavorite,
+        handleVolleyballFavorite,
       }}
     >
       {children}

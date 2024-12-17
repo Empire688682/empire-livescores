@@ -6,21 +6,26 @@ import LeagueCom from "@/Component/League/LeagueCom";
 import axios from "axios";
 import { CiStar } from "react-icons/ci";
 import { useGlobalContext } from "@/Component/Context";
-import Image from 'next/image';
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState("");
- const {
-       matchCategory,
-       handleCountryClick,
-       theCountry,
-       league,
-       handleHockeyballFavorite,
-     } = useGlobalContext();
- 
+  const router = useRouter();
+  const {
+    matchCategory,
+    handleCountryClick,
+    theCountry,
+    handleHockeyballFavorite,
+  } = useGlobalContext();
+
+  const handleMatchClick = (id) => {
+    router.push(`/hockeyball/${id}`);
+    console.log("Id:", id);
+  };
 
   const fetchData = async () => {
     setLoding(true);
@@ -107,12 +112,16 @@ const Page = () => {
                   />
                 </div>
                 <div className={style.match_after}>
-                  <div className={style.left_Content} onClick={() => handleMatchClick(data.id)}>
+                  <div
+                    className={style.left_Content}
+                    onClick={() => handleMatchClick(data.id)}
+                  >
                     <div className={style.time}>
                       {data.scores.home.quarter_1 !== null ? (
                         <>
                           <p>
-                            {data.scores.home.quarter_1 } : {data.scores.away.quarter_1 }
+                            {data.scores.home.quarter_1} :{" "}
+                            {data.scores.away.quarter_1}
                           </p>
                         </>
                       ) : (
@@ -130,7 +139,9 @@ const Page = () => {
                             fill
                           />
                         </div>
-                        <div className={style.team_name}>{data.teams.home.name}</div>
+                        <div className={style.team_name}>
+                          {data.teams.home.name}
+                        </div>
                       </div>
                       <div className={style.team} id={data.teams.away.name}>
                         <div className={style.team_logo}>
@@ -141,7 +152,9 @@ const Page = () => {
                             fill
                           />
                         </div>
-                        <div className={style.team_name}>{data.teams.away.name}</div>
+                        <div className={style.team_name}>
+                          {data.teams.away.name}
+                        </div>
                       </div>
                     </div>
                   </div>

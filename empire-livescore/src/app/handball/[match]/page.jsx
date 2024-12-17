@@ -16,7 +16,7 @@ const Page = () => {
   const param = useParams();
   const id = param.match;
 
- useEffect(() => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const storedData = localStorage.getItem("handball");
       if (storedData) {
@@ -29,9 +29,7 @@ const Page = () => {
 
   const fetchMatch = () => {
     if (data) {
-      const foundMatch = data.find(
-        (match) => match.id === parseInt(id),
-      );
+      const foundMatch = data.find((match) => match.id === parseInt(id));
       if (foundMatch) {
         setMatch(foundMatch);
         console.log(foundMatch);

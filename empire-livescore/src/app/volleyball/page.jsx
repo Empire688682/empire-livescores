@@ -4,15 +4,28 @@ import style from "./volleyball.module.css";
 import MainDate from "@/Component/MainDate/MainDate";
 import LeagueCom from "@/Component/League/LeagueCom";
 import axios from "axios";
-import MatchAfterVolleyball from "@/Component/MatchAfter/MatchAfterVolleyball";
 import { useGlobalContext } from "@/Component/Context";
+import { useRouter } from "next/navigation";
+import { CiStar } from "react-icons/ci";
+import Image from "next/image";
 
 const Page = () => {
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState("");
-  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
+  const router = useRouter();
+  const {
+    matchCategory,
+    handleCountryClick,
+    theCountry,
+    handleVolleyballFavorite,
+  } = useGlobalContext();
+
+  const handleMatchClick = (id) => {
+    router.push(`/volleyball/${id}`);
+    console.log("Id:", id);
+  };
 
   const fetchData = async () => {
     setLoding(true);
@@ -70,20 +83,19 @@ const Page = () => {
           <h2>Daily Request Limit Reached 🚫</h2>
           <p>
             Thank you for using E-Live Score app! Unfortunately, we have
-            exceeded the daily limit of 100 requests provided by the free API
-            we use to fetch live match data.
+            exceeded the daily limit of 100 requests provided by the free API we
+            use to fetch live match data.
           </p>
           <p>
-            Since the app is built using a free service, we are only allowed
-            to make 100 requests per day. We apologize for the inconvenience
-            and invite you to check back tomorrow when the request limit
-            resets.
+            Since the app is built using a free service, we are only allowed to
+            make 100 requests per day. We apologize for the inconvenience and
+            invite you to check back tomorrow when the request limit resets.
           </p>
           <p>We appreciate your support and understanding!</p>
         </div>
       )}
-      {
-        data.length > 0 && data.map((data, id) => {
+      {data.length > 0 &&
+        data.map((data, id) => {
           if (
             matchCategory === "All" ||
             (matchCategory === "Live" &&
@@ -93,14 +105,18 @@ const Page = () => {
           ) {
             return (
               <div key={id}>
-                <LeagueCom
-                  country={data.country.name}
-                  league={data.league.name}
-                  leagueLogo={data.league.logo}
-                />
-
-                <div className={style.match_after} onClick={handleClick}>
-                  <div className={style.left_Content}>
+                <div onClick={() => handleCountryClick(data.league.country)}>
+                  <LeagueCom
+                    country={data.country.name}
+                    league={data.league.name}
+                    leagueLogo={data.league.logo}
+                  />
+                </div>
+                <div className={style.match_after}>
+                  <div
+                    className={style.left_Content}
+                    onClick={() => handleMatchClick(data.id)}
+                  >
                     <div className={style.time}>
                       {data.scores.home !== null ? (
                         <>
@@ -123,7 +139,9 @@ const Page = () => {
                             fill
                           />
                         </div>
-                        <div className={style.team_name}>{data.teams.home.name}</div>
+                        <div className={style.team_name}>
+                          {data.teams.home.name}
+                        </div>
                       </div>
                       <div className={style.team} id={data.teams.away.name}>
                         <div className={style.team_logo}>
@@ -134,22 +152,23 @@ const Page = () => {
                             fill
                           />
                         </div>
-                        <div className={style.team_name}>{data.teams.away.name}</div>
+                        <div className={style.team_name}>
+                          {data.teams.away.name}
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className={style.right_Content}>
                     <CiStar
-                      onClick={() => setStarClick(!starClick)}
+                      onClick={() => handleVolleyballFavorite(data.id)}
                       className={style.star_icon}
                     />
                   </div>
                 </div>
               </div>
-            )
+            );
           }
-        })
-      }
+        })}
     </div>
   );
 };
