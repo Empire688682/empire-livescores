@@ -32,22 +32,24 @@ export const AppProvider = ({ children }) => {
   };
 
   const handleFootballFavorite = (id) => {
-    setFootballFavorite((prevFav) =>
-      prevFav.includes(id)
-        ? prevFav.filter((item) => item !== id)
-        : [...prevFav, id],
-    );
+    id &&
+      setFootballFavorite((prevFav) =>
+        prevFav.includes(id)
+          ? prevFav.filter((item) => item !== id)
+          : [...prevFav, id],
+      );
     if (typeof window !== "undefined") {
       localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
     }
   };
 
   const handleBasketballFavorite = (id) => {
-    setBasketballFavorite((prevFav) =>
-      prevFav.includes(id)
-        ? prevFav.filter((item) => item !== id)
-        : [...prevFav, id],
-    );
+    id &&
+      setBasketballFavorite((prevFav) =>
+        prevFav.includes(id)
+          ? prevFav.filter((item) => item !== id)
+          : [...prevFav, id],
+      );
     if (typeof window !== "undefined") {
       localStorage.setItem("basketballFav", JSON.stringify(basketballFavorite));
     }
