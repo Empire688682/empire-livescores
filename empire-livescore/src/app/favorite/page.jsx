@@ -79,6 +79,11 @@ const Page = () => {
           <FootballFavorite />
         </div>
       )}
+      {menu === "handball" && (
+        <div className={style.fooballFav}>
+          <HandballFavorite />
+        </div>
+      )}
       {menu === "hockeyball" && (
         <div className={style.fooballFav}>
           <HockeyballFavorite />

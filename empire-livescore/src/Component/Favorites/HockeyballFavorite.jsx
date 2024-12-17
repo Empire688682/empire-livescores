@@ -9,34 +9,32 @@ import { useRouter } from "next/navigation";
 
 const HockeyballFavorite = () => {
   const router = useRouter();
-  const { handleCountryClick, handleHockeyballFavorite, hockeyballFavorite } =
-    useGlobalContext();
-  const [hockeyballData, setHockeyballData] = useState([]);
-
-  const handleMatchClick = (id) => {
-    router.push(`/hockeyball/${id}`);
-  };
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedHockeyball = localStorage.getItem("hockeyball");
-      setHockeyballData(storedHockeyball ? JSON.parse(storedHockeyball) : []);
-    }
-  }, []);
-
-  const hockeyballFavorites = hockeyballData
-    ? hockeyballData.filter((favorite) =>
-        hockeyballFavorite.includes(favorite.id),
-      )
-    : [];
-
-  console.log("fav:", hockeyballFavorites);
-
+     const { handleCountryClick, handleHockeyballFavorite, hockeyballFavorite } =
+         useGlobalContext();
+     const [hockeyballData, setHockeyballData] = useState([]);
+ 
+     const handleMatchClick = (id) => {
+         router.push(`/hockeyball/${id}`);
+     };
+ 
+     useEffect(() => {
+         if (typeof window !== "undefined") {
+             const storedHockeyball = localStorage.getItem("hockey");
+             setHockeyballData(storedHockeyball ? JSON.parse(storedHockeyball) : []);
+         }
+     }, []);
+ 
+     const hockeyballFavorites = hockeyballData
+         ? hockeyballData.filter((favorite) =>
+             hockeyballFavorite.includes(favorite.id),
+         )
+         : [];
+ 
   return (
     <div className={style.hockeyballFavorite}>
       {hockeyballFavorites.length > 0 ? (
-        hockeyballFavorites.map((data) => (
-          <div key={data.fixture.id}>
+        hockeyballFavorites.map((data, id) => (
+          <div key={data.id}>
             <div onClick={() => handleCountryClick(data.league.country)}>
               <LeagueCom
                 country={data.league.country}
@@ -45,25 +43,21 @@ const HockeyballFavorite = () => {
               />
             </div>
             <div className={style.match_after}>
-              <div
-                className={style.left_Content}
-                onClick={() => handleMatchClick(data.id)}
-              >
+              <div className={style.left_Content} onClick={() => handleMatchClick(data.id)}>
                 <div className={style.time}>
-                  {data.goals.home !== null ? (
-                    <p>
-                      {data.goals.home} : {data.goals.away}
-                    </p>
+                  {data.scores.home.quarter_1 !== null ? (
+                    <>
+                      <p>
+                        {data.scores.home.quarter_1} : {data.scores.away.quarter_1}
+                      </p>
+                    </>
                   ) : (
-                    <p>timeOnly</p>
+                    <p>{data.time}</p>
                   )}
-                  {data.fixture.status.elapsed !== null ? (
-                    <p>{data.fixture.status.elapsed}.</p>
-                  ) : null}
-                  <p>{data.fixture.status.short}</p>
+                  <p>{data.status.short}</p>
                 </div>
                 <div className={style.teams}>
-                  <div className={style.team} id="team1">
+                  <div className={style.team} id={data.teams.home.name}>
                     <div className={style.team_logo}>
                       <Image
                         src={data.teams.home.logo}
@@ -72,11 +66,9 @@ const HockeyballFavorite = () => {
                         fill
                       />
                     </div>
-                    <div className={style.team_name}>
-                      {data.teams.home.name}
-                    </div>
+                    <div className={style.team_name}>{data.teams.home.name}</div>
                   </div>
-                  <div className={style.team} id="team2">
+                  <div className={style.team} id={data.teams.away.name}>
                     <div className={style.team_logo}>
                       <Image
                         src={data.teams.away.logo}
@@ -85,16 +77,14 @@ const HockeyballFavorite = () => {
                         fill
                       />
                     </div>
-                    <div className={style.team_name}>
-                      {data.teams.away.name}
-                    </div>
+                    <div className={style.team_name}>{data.teams.away.name}</div>
                   </div>
                 </div>
               </div>
               <div className={style.right_Content}>
                 <LiaTimesSolid
+                  onClick={() => handleHockeyballFavorite(data.id)}
                   className={style.star_icon}
-                  onClick={() => handleHockeyballFavorite(data.fixture.id)}
                 />
               </div>
             </div>
