@@ -7,18 +7,16 @@ import { useGlobalContext } from "@/Component/Context";
 
 const Page = () => {
   const { footballFavorite, basketballFavorite } = useGlobalContext();
-  console.log("footballFavorite:", footballFavorite);
   return (
     <div className={style.favorites}>
-      {footballFavorite && (
-        <div className={style.fooballFav}>
-          <FootballFavorite />
-        </div>
-      )}
-
       {basketballFavorite && (
         <div className={style.fooballFav}>
           <BasketballFavorite />
+        </div>
+      )}
+      {footballFavorite && (
+        <div className={style.fooballFav}>
+          <FootballFavorite />
         </div>
       )}
     </div>
