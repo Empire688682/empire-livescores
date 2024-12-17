@@ -2,16 +2,14 @@ import React from "react";
 
 const SaveData = () => {
   return <div>
-    <MatchAfterHockey
-                            id={data.id}
-                          />
-   <div className={style.match_after} onClick={handleClick}>
+
+    <div className={style.match_after} onClick={handleClick}>
       <div className={style.left_Content}>
         <div className={style.time}>
-          {data.scores.home.total !== null ? (
+          {data.scores.home !== null ? (
             <>
               <p>
-                {data.scores.home.total} : {data.scores.away.total}
+                {data.scores.home} : {data.scores.away}
               </p>
             </>
           ) : (
@@ -51,15 +49,6 @@ const SaveData = () => {
         />
       </div>
     </div>
-    {
-      if (
-        matchCategory === "All" ||
-        (matchCategory === "Live" &&
-          data.status.long !== "Game Finished" &&
-          data.scores.home.quarter_1 !== null) ||
-        theCountry === data.country.name
-      )
-    }
 
   </div>;
 };
