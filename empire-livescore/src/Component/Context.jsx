@@ -37,7 +37,9 @@ export const AppProvider = ({ children }) => {
         ? prevFav.filter((item) => item !== id)
         : [...prevFav, id],
     );
-    localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
+    }
   };
 
   const handleBasketballFavorite = (id) => {
@@ -46,7 +48,9 @@ export const AppProvider = ({ children }) => {
         ? prevFav.filter((item) => item !== id)
         : [...prevFav, id],
     );
-    localStorage.setItem("basketballFav", JSON.stringify(basketballFavorite));
+    if (typeof window !== "undefined") {
+      localStorage.setItem("basketballFav", JSON.stringify(basketballFavorite));
+    }
   };
 
   useEffect(() => {
