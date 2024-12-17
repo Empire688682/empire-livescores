@@ -86,8 +86,8 @@ export const AppProvider = ({ children }) => {
         league,
         setLeague,
         footballFavorite,
-        handleFootballFavorite,
         basketballFavorite,
+        handleFootballFavorite,
         handleBasketballFavorite,
       }}
     >
