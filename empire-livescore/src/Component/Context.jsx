@@ -9,22 +9,20 @@ export const AppProvider = ({ children }) => {
   const [matchCategory, setMatchCategory] = useState("All");
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
-  const [footballFavorite, setFootballFavorite] = useState([]);
-  const [basketballFavorite, setBasketballFavorite] = useState([]);
-
-  useEffect(() => {
+  const [footballFavorite, setFootballFavorite] = useState(() => {
     if (typeof window !== "undefined") {
       const storedFav = localStorage.getItem("footballFav");
-      setFootballFavorite(storedFav ? JSON.parse(storedFav) : []);
+      return storedFav ? JSON.parse(storedFav) : [];
     }
-  }, []);
-
-  useEffect(() => {
+    return [];
+  });
+  const [basketballFavorite, setBasketballFavorite] = useState(() => {
     if (typeof window !== "undefined") {
       const storedFav = localStorage.getItem("basketballFav");
-      setBasketballFavorite(storedFav ? JSON.parse(storedFav) : []);
+      return storedFav ? JSON.parse(storedFav) : [];
     }
-  }, []);
+    return [];
+  });
 
   const handleCountryClick = (country) => {
     setTheCountry((prev) => (prev === country ? "" : country));
@@ -32,7 +30,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const handleFootballFavorite = (id) => {
-    if (!id) return;
+    if (!id || !Array.isArray(footballFavorite)) return;
     setFootballFavorite((prevFav) => {
       const upadatedFav = prevFav.includes(id)
         ? prevFav.filter((item) => item !== id)
@@ -46,7 +44,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const handleBasketballFavorite = (id) => {
-    if (!id) return;
+    if (!id || !Array.isArray(basketballFavorite)) return;
     setBasketballFavorite((prevFav) => {
       const upadatedFav = prevFav.includes(id)
         ? prevFav.filter((item) => item !== id)

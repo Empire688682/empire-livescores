@@ -32,8 +32,10 @@ const Page = () => {
       if (response.data.errors > 0) {
         setLimitExceeded(true);
       }
-      if (response) {
+      if (typeof window !== "undefined" && response) {
+        console.log("DATA:", response.data.response);
         setData(response.data.response);
+        console.log("response:", response);
         localStorage.setItem(
           "volleyball",
           JSON.stringify(response.data.response),
