@@ -32,27 +32,31 @@ export const AppProvider = ({ children }) => {
   };
 
   const handleFootballFavorite = (id) => {
-    id &&
-      setFootballFavorite((prevFav) =>
-        prevFav.includes(id)
-          ? prevFav.filter((item) => item !== id)
-          : [...prevFav, id],
-      );
-    if (typeof window !== "undefined") {
-      localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
-    }
+    if (!id) return;
+    setFootballFavorite((prevFav) => {
+      const upadatedFav = prevFav.includes(id)
+        ? prevFav.filter((item) => item !== id)
+        : [...prevFav, id];
+      // Update localStorage with the new state
+      if (typeof window !== "undefined") {
+        localStorage.setItem("footballFav", JSON.stringify(upadatedFav));
+      }
+      return upadatedFav;
+    });
   };
 
   const handleBasketballFavorite = (id) => {
-    id &&
-      setBasketballFavorite((prevFav) =>
-        prevFav.includes(id)
-          ? prevFav.filter((item) => item !== id)
-          : [...prevFav, id],
-      );
-    if (typeof window !== "undefined") {
-      localStorage.setItem("basketballFav", JSON.stringify(basketballFavorite));
-    }
+    if (!id) return;
+    setBasketballFavorite((prevFav) => {
+      const upadatedFav = prevFav.includes(id)
+        ? prevFav.filter((item) => item !== id)
+        : [...prevFav, id];
+      // Update localStorage with the new state
+      if (typeof window !== "undefined") {
+        localStorage.setItem("basketballFav", JSON.stringify(upadatedFav));
+      }
+      return upadatedFav;
+    });
   };
 
   useEffect(() => {
