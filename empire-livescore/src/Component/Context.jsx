@@ -10,11 +10,19 @@ export const AppProvider = ({ children }) => {
   const [theCountry, setTheCountry] = useState("");
   const [league, setLeague] = useState({});
   const [footballFavorite, setFootballFavorite] = useState([]);
+  const [basketballFavorite, setBasketballFavorite] = useState([]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedFav = localStorage.getItem("footballFav");
       setFootballFavorite(storedFav ? JSON.parse(storedFav) : []);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedFav = localStorage.getItem("basketballFav");
+      setBasketballFavorite(storedFav ? JSON.parse(storedFav) : []);
     }
   }, []);
 
@@ -29,19 +37,29 @@ export const AppProvider = ({ children }) => {
         ? prevFav.filter((item) => item !== id)
         : [...prevFav, id],
     );
+    localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
   };
 
-  const removeFootballFavorite = (id) => {
-    const updatedFav = footballFavorite.filter((favId) => favId !== id);
-    setFootballFavorite(updatedFav);
-    localStorage.setItem("footballFav", JSON.stringify(updatedFav));
+  const handleBasketballFavorite = (id) => {
+    setBasketballFavorite((prevFav) =>
+      prevFav.includes(id)
+        ? prevFav.filter((item) => item !== id)
+        : [...prevFav, id],
+    );
+    localStorage.setItem("basketballFav", JSON.stringify(basketballFavorite));
   };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
     }
-  }, [footballFavorite, removeFootballFavorite]);
+  }, [footballFavorite]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("basketballFav", JSON.stringify(basketballFavorite));
+    }
+  }, [basketballFavorite]);
 
   return (
     <AppContext.Provider
@@ -59,7 +77,8 @@ export const AppProvider = ({ children }) => {
         setLeague,
         footballFavorite,
         handleFootballFavorite,
-        removeFootballFavorite,
+        basketballFavorite,
+        handleBasketballFavorite,
       }}
     >
       {children}

@@ -16,7 +16,6 @@ const Page = () => {
     theCountry,
     league,
     setLeague,
-    footballFavorite,
     handleFootballFavorite,
   } = useGlobalContext();
   const [data, setData] = useState([]);

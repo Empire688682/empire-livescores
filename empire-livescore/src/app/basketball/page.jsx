@@ -2,17 +2,28 @@
 import React, { useState, useEffect } from "react";
 import style from "./basketball.module.css";
 import MainDate from "@/Component/MainDate/MainDate";
-import MatchAfterBasketball from "@/Component/MatchAfter/MatchAfterBasketball";
+import { CiStar } from "react-icons/ci";
 import LeagueCom from "@/Component/League/LeagueCom";
 import axios from "axios";
 import { useGlobalContext } from "@/Component/Context";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Page = () => {
+  const {
+    matchCategory,
+    handleCountryClick,
+    theCountry,
+    league,
+    setLeague,
+    basketballFavorite,
+    handleBasketballFavorite,
+  } = useGlobalContext();
   const [data, setData] = useState([]);
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState("");
-  const { matchCategory, handleCountryClick, theCountry } = useGlobalContext();
+  const router = useRouter();
 
   const fetchData = async () => {
     setLoding(true);
@@ -50,6 +61,12 @@ const Page = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleMatchClick = (id) => {
+    router.push(`/basketball/${id}`);
+    console.log("Id:", id);
+  };
+
   return (
     <div className={style.basketball}>
       <MainDate />
@@ -103,17 +120,66 @@ const Page = () => {
                               leagueLogo={data.league.logo}
                             />
                           </div>
-                          <MatchAfterBasketball
-                            team1Logo={data.teams.home.logo}
-                            team2Logo={data.teams.away.logo}
-                            team1={data.teams.home.name}
-                            team2={data.teams.away.name}
-                            time={data.time}
-                            status={data.status.short}
-                            teamGoal1={data.scores.home.total}
-                            teamGoal2={data.scores.away.total}
-                            id={data.id}
-                          />
+                          <div className={style.match_after}>
+                            <div
+                              className={style.left_Content}
+                              onClick={handleMatchClick}
+                            >
+                              <div className={style.time}>
+                                {data.scores.home.total !== null ? (
+                                  <p>
+                                    {data.scores.home.total} :{" "}
+                                    {data.scores.away.total}
+                                  </p>
+                                ) : (
+                                  <p>{data.time}</p>
+                                )}
+                                <p>{data.status.short}</p>
+                              </div>
+                              <div className={style.teams}>
+                                <div
+                                  className={style.team}
+                                  id={data.teams.home.name}
+                                >
+                                  <div className={style.team_logo}>
+                                    <Image
+                                      src={data.teams.home.logo}
+                                      alt="Premier League"
+                                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                      fill
+                                    />
+                                  </div>
+                                  <div className={style.team_name}>
+                                    {data.teams.home.name}
+                                  </div>
+                                </div>
+                                <div
+                                  className={style.team}
+                                  id={data.teams.away.name}
+                                >
+                                  <div className={style.team_logo}>
+                                    <Image
+                                      src={data.teams.away.logo}
+                                      alt="Premier League"
+                                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                      fill
+                                    />
+                                  </div>
+                                  <div className={style.team_name}>
+                                    {data.teams.away.name}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className={style.right_Content}>
+                              <CiStar
+                                className={style.star_icon}
+                                onClick={() =>
+                                  handleBasketballFavorite(data.id)
+                                }
+                              />
+                            </div>
+                          </div>
                         </div>
                       );
                     }
