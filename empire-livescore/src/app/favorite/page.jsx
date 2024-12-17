@@ -4,6 +4,8 @@ import style from "./favorite.module.css";
 import FootballFavorite from "@/Component/Favorites/FootballFavorite";
 import BasketballFavorite from "@/Component/Favorites/BasketballFavorite";
 import { useGlobalContext } from "@/Component/Context";
+import HandballFavorite from "@/Component/Favorites/HandballFavorite";
+import HockeyballFavorite from "@/Component/Favorites/HockeyballFavorite";
 
 const Page = () => {
   const { footballFavorite, basketballFavorite } = useGlobalContext();
@@ -75,6 +77,11 @@ const Page = () => {
       {menu === "football" && (
         <div className={style.fooballFav}>
           <FootballFavorite />
+        </div>
+      )}
+      {menu === "hockeyball" && (
+        <div className={style.fooballFav}>
+          <HockeyballFavorite />
         </div>
       )}
     </div>

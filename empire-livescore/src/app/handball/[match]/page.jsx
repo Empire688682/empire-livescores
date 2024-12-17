@@ -9,14 +9,14 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { useParams } from "next/navigation";
 
 const Page = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [match, setMatch] = useState({});
   const [noticeClear, setNoticeClear] = useState(false);
   const [idError, setidError] = useState("");
   const param = useParams();
   const id = param.match;
 
-  useEffect(() => {
+ useEffect(() => {
     if (typeof window !== "undefined") {
       const storedData = localStorage.getItem("handball");
       if (storedData) {
@@ -25,19 +25,20 @@ const Page = () => {
         console.log("No data found in localStorage");
       }
     }
-  });
+  }, []);
 
   const fetchMatch = () => {
     if (data) {
-      const foundMatch = data.find((match) => match.id === parseInt(id));
+      const foundMatch = data.find(
+        (match) => match.id === parseInt(id),
+      );
       if (foundMatch) {
         setMatch(foundMatch);
+        console.log(foundMatch);
       } else {
-        setidError("No match found");
         console.log("No match found");
       }
     } else {
-      setidError("No match found with the given ID");
       console.log("No match found with the given ID");
     }
   };

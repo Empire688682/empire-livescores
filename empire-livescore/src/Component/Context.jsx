@@ -24,6 +24,22 @@ export const AppProvider = ({ children }) => {
     return [];
   });
 
+  const [handballFavorite, setHandballFavorite] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedFav = localStorage.getItem("handballFav");
+      return storedFav ? JSON.parse(storedFav) : [];
+    }
+    return [];
+  });
+
+  const [hockeyballFavorite, setHockeyballFavorite] = useState(() => {
+    if (typeof window !== "undefined") {
+      const storedFav = localStorage.getItem("hockeyballFav");
+      return storedFav ? JSON.parse(storedFav) : [];
+    }
+    return [];
+  });
+
   const handleCountryClick = (country) => {
     setTheCountry((prev) => (prev === country ? "" : country));
     setMatchCategory((prev) => (prev === "All" ? "" : "All"));
@@ -57,6 +73,34 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const handleHandballFavorite = (id) => {
+    if (!id || !Array.isArray(handballFavorite)) return;
+    setHandballFavorite((prevFav) => {
+      const upadatedFav = prevFav.includes(id)
+        ? prevFav.filter((item) => item !== id)
+        : [...prevFav, id];
+      // Update localStorage with the new state
+      if (typeof window !== "undefined") {
+        localStorage.setItem("handballFav", JSON.stringify(upadatedFav));
+      }
+      return upadatedFav;
+    });
+  };
+
+  const handleHockeyballFavorite = (id) => {
+    if (!id || !Array.isArray(hockeyballFavorite)) return;
+    setHockeyballFavorite((prevFav) => {
+      const upadatedFav = prevFav.includes(id)
+        ? prevFav.filter((item) => item !== id)
+        : [...prevFav, id];
+      // Update localStorage with the new state
+      if (typeof window !== "undefined") {
+        localStorage.setItem("hockeyballFav", JSON.stringify(upadatedFav));
+      }
+      return upadatedFav;
+    });
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("footballFav", JSON.stringify(footballFavorite));
@@ -68,6 +112,18 @@ export const AppProvider = ({ children }) => {
       localStorage.setItem("basketballFav", JSON.stringify(basketballFavorite));
     }
   }, [basketballFavorite]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("handballFav", JSON.stringify(handballFavorite));
+    }
+  }, [handballFavorite]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("hockeyballFav", JSON.stringify(hockeyballFavorite));
+    }
+  }, [hockeyballFavorite]);
 
   return (
     <AppContext.Provider
@@ -85,8 +141,12 @@ export const AppProvider = ({ children }) => {
         setLeague,
         footballFavorite,
         basketballFavorite,
+        handballFavorite,
+        hockeyballFavorite,
         handleFootballFavorite,
         handleBasketballFavorite,
+        handleHandballFavorite,
+        handleHockeyballFavorite,
       }}
     >
       {children}

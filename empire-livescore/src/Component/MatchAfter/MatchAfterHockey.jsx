@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import style from "./MatchAfter.module.css";
 import Image from "next/image";
-import manchester from "../../public/manchester_united.png";
-import chelsea from "../../public/chelsea.png";
 import { CiStar } from "react-icons/ci";
 import { useRouter } from "next/navigation";
 
