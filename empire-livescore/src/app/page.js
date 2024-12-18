@@ -144,7 +144,7 @@ const Page = () => {
                           </p>
                         </>
                       ) : (
-                        <div>{getTime(data.fixture.date)}</div>
+                        <p>{getTime(data.fixture.date)}</p>
                       )}
                       {data.fixture.status.elapsed !== null &&
                       status !== "FT" ? (

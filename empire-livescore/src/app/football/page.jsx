@@ -64,6 +64,15 @@ const Page = () => {
     router.push(`/football/${id}`);
   };
 
+  const getTime = (time) => {
+    if (!time) return "Invalid time";
+    const date = new Date(time);
+    if (isNaN(date)) return "Invalid date";
+    const hours = date.getUTCHours().toString().padStart(2, "0");
+    const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <div className={style.football}>
       <MainDate />
@@ -129,7 +138,7 @@ const Page = () => {
                           </p>
                         </>
                       ) : (
-                        <p>timeOnly</p>
+                        <p>{getTime(data.fixture.date)}</p>
                       )}
                       {data.fixture.status.elapsed !== null &&
                       status !== "FT" ? (

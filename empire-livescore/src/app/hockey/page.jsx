@@ -59,7 +59,7 @@ const Page = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   return (
     <div className={style.hockey}>
       <MainDate />
