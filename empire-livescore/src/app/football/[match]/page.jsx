@@ -46,8 +46,6 @@ const Page = () => {
     fetchMatch();
   }, [data]);
 
-  console.log(match);
-
   return (
     <div className={style.matchContainer}>
       {match && match.fixture ? (

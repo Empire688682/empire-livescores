@@ -41,9 +41,7 @@ const Page = () => {
         setLimitExceeded(true);
       }
       if (typeof window !== "undefined" && response) {
-        console.log("DATA:", response.data.response);
         setData(response.data.response);
-        console.log("response:", response);
         localStorage.setItem(
           "basketball",
           JSON.stringify(response.data.response),
@@ -63,7 +61,6 @@ const Page = () => {
 
   const handleMatchClick = (id) => {
     router.push(`/basketball/${id}`);
-    console.log("Id:", id);
   };
 
   return (

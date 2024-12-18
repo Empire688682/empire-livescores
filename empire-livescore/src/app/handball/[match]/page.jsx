@@ -32,7 +32,6 @@ const Page = () => {
       const foundMatch = data.find((match) => match.id === parseInt(id));
       if (foundMatch) {
         setMatch(foundMatch);
-        console.log(foundMatch);
       } else {
         console.log("No match found");
       }
@@ -44,8 +43,6 @@ const Page = () => {
   useEffect(() => {
     fetchMatch();
   }, [data]);
-
-  console.log(match);
 
   return (
     <div className={style.matchContainer}>

@@ -24,7 +24,6 @@ const Page = () => {
 
   const handleMatchClick = (id) => {
     router.push(`/hockeyball/${id}`);
-    console.log("Id:", id);
   };
 
   const fetchData = async () => {
@@ -46,9 +45,7 @@ const Page = () => {
         setLimitExceeded(true);
       }
       if (typeof window !== "undefined" && response) {
-        console.log("DATA:", response.data.response);
         setData(response.data.response);
-        console.log("response:", response);
         localStorage.setItem("hockey", JSON.stringify(response.data.response));
       }
     } catch (error) {
@@ -62,6 +59,7 @@ const Page = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  
   return (
     <div className={style.hockey}>
       <MainDate />

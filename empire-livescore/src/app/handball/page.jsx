@@ -42,9 +42,7 @@ const Page = () => {
         setLimitExceeded(true);
       }
       if (typeof window !== "undefined" && response) {
-        console.log("DATA:", response.data.response);
         setData(response.data.response);
-        console.log("response:", response);
         localStorage.setItem(
           "handball",
           JSON.stringify(response.data.response),
@@ -57,11 +55,9 @@ const Page = () => {
       setLoding(false);
     }
   };
-  console.log(data);
 
   const handleMatchClick = (id) => {
     router.push(`/handball/${id}`);
-    console.log("Id:", id);
   };
 
   useEffect(() => {
