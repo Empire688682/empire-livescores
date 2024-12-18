@@ -23,6 +23,7 @@ const Page = () => {
   const [loading, setLoding] = useState(false);
   const [limitExceeded, setLimitExceeded] = useState(false);
   const [networkError, setNetworkError] = useState("");
+  const [time, setTime] = useState("");
   const router = useRouter();
 
   const fetchData = async () => {
@@ -67,6 +68,15 @@ const Page = () => {
   const handleMatchClick = (id) => {
     router.push(`/football/${id}`);
     console.log("Id:", id);
+  };
+
+  const getTime = (time) => {
+    if (!time) return "Invalid time";
+    const date = new Date(time);
+    if (isNaN(date)) return "Invalid date";
+    const hours = date.getUTCHours().toString().padStart(2, "0");
+    const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+    return `${hours}:${minutes}`;
   };
 
   return (
@@ -134,7 +144,7 @@ const Page = () => {
                           </p>
                         </>
                       ) : (
-                        <p>timeOnly</p>
+                        <div>{getTime(data.fixture.date)}</div>
                       )}
                       {data.fixture.status.elapsed !== null &&
                       status !== "FT" ? (
